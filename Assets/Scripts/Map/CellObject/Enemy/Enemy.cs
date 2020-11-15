@@ -21,7 +21,7 @@ public abstract class Enemy : CellObject
 
     private void Start()
     {
-        _patternMoveSystem.StartMove(CurrentCell, _movePattern.VectorPattern);
+        _patternMoveSystem.StartMove(CurrentCell, _movePattern);
     }
 
     public void InitMovePattern(MovePattern movePattern)

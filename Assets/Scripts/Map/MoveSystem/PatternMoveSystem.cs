@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PatternMoveSystem 
 {
 	private MoveSystem _moveSystem;
-	private List<Vector2Int> _pattern;
+	private MovePattern _pattern;
 	private int _patternIndex;
 
 	public event UnityAction<GameCell> MoveStarted;
@@ -16,9 +16,9 @@ public class PatternMoveSystem
 		_moveSystem = moveSystem;
 	}
 
-	public void StartMove(GameCell fromCell, List<Vector2Int> pattern)
+	public void StartMove(GameCell fromCell, MovePattern pattern)
 	{
-		if (pattern == null || pattern.Count == 0)
+		if (pattern == null || pattern.VectorPattern.Count == 0)
 			return;
 
 		_pattern = pattern;
@@ -29,12 +29,12 @@ public class PatternMoveSystem
 
 	private void MoveNext(GameCell from)
 	{
-		GameCell adjacentCell = from.TryGetAdjacent(_pattern[_patternIndex]);
+		GameCell adjacentCell = from.TryGetAdjacent(_pattern.VectorPattern[_patternIndex]);
 		if (adjacentCell == null)
 			return;
 
 		_moveSystem.MoveEnded += OnMoveEnded;
-		_moveSystem.Move(adjacentCell, _pattern[_patternIndex]);
+		_moveSystem.Move(adjacentCell, _pattern.VectorPattern[_patternIndex]);
 
 		MoveStarted?.Invoke(adjacentCell);
 	}
@@ -42,7 +42,7 @@ public class PatternMoveSystem
 	private void OnMoveEnded(GameCell finishCell)
 	{
 		_moveSystem.MoveEnded -= OnMoveEnded;
-		_patternIndex = (_patternIndex + 1) % _pattern.Count;
+		_patternIndex = (_patternIndex + 1) % _pattern.VectorPattern.Count;
 
 		MoveNext(finishCell);
 	}
