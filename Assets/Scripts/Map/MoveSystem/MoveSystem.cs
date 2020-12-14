@@ -38,7 +38,7 @@ public class MoveSystem : MonoBehaviour
         if (transform.position == _targetCell.transform.position)
         {
             enabled = false;
-            Direction = Vector2Int.zero;
+            //Direction = Vector2Int.zero;
             MoveEnded?.Invoke(_targetCell);
         }
     }

@@ -2,25 +2,31 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using CustomRedactor;
 
 [CustomEditor(typeof(LevelRedactor))]
 public class RedactorEditor : Editor
 {
     private LevelRedactor _levelRedactor;
+    private SerializedProperty _levelObjects;
+    private SerializedProperty _property;
+    private UnityAction _setObjectAction;
 
     private void OnEnable()
     {
         _levelRedactor = (LevelRedactor)target;
+
+        _property = serializedObject.FindProperty("_parameter");
     }
 
     private void OnSceneGUI()
     {
-        
+
         Event e = Event.current;
         if (e.isMouse && e.button != 0)
             return;
-        
+
         int controlID = GUIUtility.GetControlID(FocusType.Passive);
         switch (e.GetTypeForControl(controlID))
         {
@@ -29,10 +35,6 @@ public class RedactorEditor : Editor
                 Raycast();
                 e.Use();
                 EditorUtility.SetDirty(_levelRedactor.LevelDataBase);
-                break;
-            case EventType.MouseUp:
-                GUIUtility.hotControl = 0;
-                e.Use();
                 break;
             case EventType.MouseDrag:
                 GUIUtility.hotControl = controlID;
@@ -52,7 +54,22 @@ public class RedactorEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
+        //serializedObject.Update();
+
+        //_levelObjects = serializedObject.FindProperty("_levelObjects");
+        //while (true)
+        //{
+        //    var myRect = GUILayoutUtility.GetRect(0f, 16f);
+        //    var showChildren = EditorGUI.PropertyField(myRect, _levelObjects);
+        //    if (_levelObjects.NextVisible(showChildren) == false)
+        //        break;
+        //}
+
+
+        //serializedObject.ApplyModifiedProperties();
+
+        //base.OnInspectorGUI();
+
         ShowTitle();
 
         if (_levelRedactor.CurrentLevelData == null)
@@ -66,18 +83,40 @@ public class RedactorEditor : Editor
         GUILayout.Label("Выбор текущего игрового объекта");
 
         EditorGUILayout.BeginHorizontal();
-        if (GUILayout.Button("Пол", GUILayout.Width(0.1f * Screen.width)))
-            _levelRedactor.SetCurrentObject<CustomRedactor.Empty>();
-        if (GUILayout.Button("Игрок", GUILayout.Width(0.1f * Screen.width)))
-            _levelRedactor.SetCurrentObject<CustomRedactor.Player>();
-        if (GUILayout.Button("Микроб", GUILayout.Width(0.1f * Screen.width)))
-            _levelRedactor.SetCurrentObject<CustomRedactor.Microbe>();
-        if (GUILayout.Button("Вирус", GUILayout.Width(0.1f * Screen.width)))
-            _levelRedactor.SetCurrentObject<CustomRedactor.Virus>();
+        GUILevelObjectButton<CustomRedactor.Empty>("Пол", 0.1f * Screen.width);
+        GUILevelObjectButton<CustomRedactor.Player>("Игрок", 0.1f * Screen.width);
+        GUILevelObjectButton<CustomRedactor.Microbe>("Микроб", 0.1f * Screen.width);
+        GUILevelObjectButton<CustomRedactor.Virus>("Вирус", 0.1f * Screen.width);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.LabelField("ПОЛ");
+
+        EditorGUILayout.PropertyField(_property, new GUIContent("Parameter"));
+
+        EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("Добавить", GUILayout.Width(0.1f * Screen.width)))
+        {
+            _setObjectAction?.Invoke();
+            _levelRedactor.EditType = EditType.Add;
+        }
+        if (GUILayout.Button("Удалить", GUILayout.Width(0.1f * Screen.width)))
+        {
+            _setObjectAction?.Invoke();
+            _levelRedactor.EditType = EditType.Remove;
+        }
         EditorGUILayout.EndHorizontal();
 
         if (GUI.changed)
             EditorUtility.SetDirty(_levelRedactor.LevelDataBase);
+    }
+
+    private void GUILevelObjectButton<T>(string name, float width) where T : LevelObject
+    {
+        if (GUILayout.Button(name, GUILayout.Width(width)))
+        {
+            _setObjectAction = delegate { _levelRedactor.SetCurrentObject<T>(); };
+            _levelRedactor.EditType = EditType.None;
+        }
     }
 
     private void ShowTitle()

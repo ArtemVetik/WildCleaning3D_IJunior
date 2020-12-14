@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CellMarker))]
 public class GameCell : MonoBehaviour
@@ -8,6 +9,8 @@ public class GameCell : MonoBehaviour
     private Vector2Int _position;
     private Dictionary<Vector2Int, GameCell> _adjacentCells;
     private CellMarker _cellMarker;
+
+    public event UnityAction Marked;
 
     public bool IsMarked { get; private set; }
     public Vector2Int Position => _position;
@@ -39,5 +42,6 @@ public class GameCell : MonoBehaviour
     {
         IsMarked = true;
         _cellMarker.Mark();
+        Marked?.Invoke();
     }
 }

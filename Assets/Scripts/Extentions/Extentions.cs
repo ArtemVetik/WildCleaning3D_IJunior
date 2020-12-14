@@ -28,4 +28,12 @@ public static class Extentions
     {
         return new Vector3(vector.x, y, vector.y);
     }
+
+    public static Vector2Int Rotate(this Vector2Int vector, float angle)
+    {
+        float newX = vector.x * Mathf.Cos(Mathf.Deg2Rad * angle) - vector.y * Mathf.Sin(Mathf.Deg2Rad * angle);
+        float newY = vector.y * Mathf.Cos(Mathf.Deg2Rad * angle) + vector.x * Mathf.Sin(Mathf.Deg2Rad * angle);
+
+        return Vector2Int.RoundToInt(new Vector2(newX, newY));
+    }
 }

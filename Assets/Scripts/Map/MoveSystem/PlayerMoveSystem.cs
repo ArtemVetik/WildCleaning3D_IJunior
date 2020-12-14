@@ -8,7 +8,11 @@ public class PlayerMoveSystem
     private MoveSystem _moveSystem;
     private Vector2Int _nextMoveDirection;
 
+    public Vector2Int CurrentDirection => _moveSystem.Direction;
+
     public event UnityAction<GameCell> MoveEnded;
+    public event UnityAction<GameCell> Stopped;
+    public event UnityAction<GameCell> MarkedCellCrossed;
 
     public PlayerMoveSystem(MoveSystem moveSystem)
     {
@@ -43,7 +47,14 @@ public class PlayerMoveSystem
     {
         GameCell adjacentCell = from.TryGetAdjacent(_nextMoveDirection);
         if (adjacentCell == null)
+        {
+            Stopped?.Invoke(from);
             return;
+        }
+        if (adjacentCell.IsMarked)
+        {
+            MarkedCellCrossed?.Invoke(from);
+        }
 
         _moveSystem.MoveEnded += OnMoveEnded;
         _moveSystem.Move(adjacentCell, _nextMoveDirection);

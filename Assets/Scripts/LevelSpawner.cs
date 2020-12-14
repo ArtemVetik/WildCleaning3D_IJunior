@@ -8,7 +8,7 @@ public class LevelSpawner : MonoBehaviour
 {
     [SerializeField] private LevelDataBase _levelDataBase;
     [SerializeField] private GameCell _floor;
-    [SerializeField] private SwipeInput _swipeInput;
+    [SerializeField] private PlayerInitializer _playerInitializer;
 
     private List<GameCell> _instCells;
     private int _currentLevel;
@@ -37,8 +37,7 @@ public class LevelSpawner : MonoBehaviour
         cellData.Parameters?.Apply(inst);
 
         if (inst.TryGetComponent(out Player player))
-            _swipeInput.Init(player);
-       
+            _playerInitializer.SetPlayer(player);
     }
 
     private GameCell SpawnCell(Vector2Int cell, GameCell template)

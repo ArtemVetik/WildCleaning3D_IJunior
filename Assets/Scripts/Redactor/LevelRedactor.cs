@@ -8,7 +8,7 @@ namespace CustomRedactor
 {
     public enum EditType
     {
-        Add, Remove
+        Add, Remove, None
     }
 
     [ExecuteInEditMode]
@@ -17,10 +17,10 @@ namespace CustomRedactor
     {
         [SerializeField] private LevelDataBase _levelDateBase;
         [SerializeField] private LevelObject[] _levelObjects;
-        [SerializeField] private EditType _editType;
         [SerializeField] private ObjectParameters _parameter;
 
         [HideInInspector] public int CurrentLevelIndex;
+        [HideInInspector] public EditType EditType;
 
         private LevelObject _currentObject;
         private BoxCollider _collider;
@@ -56,9 +56,9 @@ namespace CustomRedactor
             int y = Mathf.RoundToInt(hitInfo.point.z);
             Vector2Int cell = new Vector2Int(x, y);
 
-            if (_editType == EditType.Add)
+            if (EditType == EditType.Add)
                 _currentObject.Place(_levelDateBase[CurrentLevelIndex], cell, _parameter);
-            else if (_editType == EditType.Remove)
+            else if (EditType == EditType.Remove)
                 _currentObject.Remove(LevelDataBase[CurrentLevelIndex], cell, _parameter);
         }
 
