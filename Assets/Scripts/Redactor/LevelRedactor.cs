@@ -49,12 +49,8 @@ namespace CustomRedactor
             _currentObject = data;
         }
 
-        public void LeftMouseHandler(RaycastHit hitInfo)
+        public void LeftMouseHandler(Vector2Int cell)
         {
-            int x = Mathf.RoundToInt(hitInfo.point.x);
-            int y = Mathf.RoundToInt(hitInfo.point.z);
-            Vector2Int cell = new Vector2Int(x, y);
-
             if (EditType == EditType.Add)
                 _currentObject.LevelObject.Place(_levelDateBase[CurrentLevelIndex], cell, _currentObject.ObjectParameters);
             else if (EditType == EditType.Remove)

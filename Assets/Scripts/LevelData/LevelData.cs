@@ -33,4 +33,5 @@ public class LevelData
 {
     [SerializeField, HideInInspector] public Vector2Int Size;
     [SerializeField, HideInInspector] public LevelDictionary Map = new LevelDictionary();
+    [SerializeField, HideInInspector] public List<Vector2Int> KeyStagesPoint = new List<Vector2Int>() { new Vector2Int(2,1), new Vector2Int(123,-123) };
 }

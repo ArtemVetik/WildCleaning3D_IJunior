@@ -320,6 +320,7 @@ MonoBehaviour:
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
+    KeyStagesPoint: []
   - Size: {x: 8, y: 5}
     Map:
       m_keys:
@@ -327,7 +328,6 @@ MonoBehaviour:
       - {x: 5, y: 2}
       - {x: 4, y: 2}
       - {x: 3, y: 2}
-      - {x: 2, y: 3}
       - {x: 2, y: 2}
       - {x: 1, y: 3}
       - {x: 1, y: 2}
@@ -363,27 +363,26 @@ MonoBehaviour:
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 11400000, guid: 2df3c9b9b80530243b7d26e76908da45, type: 2}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 11400000, guid: 2df3c9b9b80530243b7d26e76908da45, type: 2}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
       - _levelObject: {fileID: 11400000, guid: 8542ae36e3c7ad34094f0cef95e3bfa2, type: 2}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 11400000, guid: 2df3c9b9b80530243b7d26e76908da45, type: 2}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 11400000, guid: 2df3c9b9b80530243b7d26e76908da45, type: 2}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 11400000, guid: f496fc44d4bf12f44a304135ee6b5b09, type: 2}
         _parameters: {fileID: 0}
+    KeyStagesPoint: []

@@ -6,6 +6,11 @@ using UnityEngine.Events;
 using CustomRedactor;
 using System.Reflection;
 
+public enum EditorMode
+{
+    PlaceObject, SetStages,
+}
+
 [CustomEditor(typeof(LevelRedactor))]
 public class RedactorEditor : Editor
 {
@@ -14,6 +19,8 @@ public class RedactorEditor : Editor
     private bool _mapSizeFoldout;
     private GameObject _previewGameObject;
     private Editor _previewGameObjectEditor;
+    private EditorMode _editorMode;
+    private int _setStagesIndex;
 
     private void OnEnable()
     {
@@ -22,6 +29,7 @@ public class RedactorEditor : Editor
         _currentObjectIndex = 0;
         _mapSizeFoldout = true;
         _levelRedactor.EditType = EditType.Add;
+        _editorMode = EditorMode.PlaceObject;
     }
 
     private void OnSceneGUI()
@@ -61,8 +69,21 @@ public class RedactorEditor : Editor
     private void Raycast()
     {
         Ray ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
+
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
-            _levelRedactor.LeftMouseHandler(hitInfo);
+        {
+            int x = Mathf.RoundToInt(hitInfo.point.x);
+            int y = Mathf.RoundToInt(hitInfo.point.z);
+            Vector2Int cell = new Vector2Int(x, y);
+
+            if (_editorMode == EditorMode.PlaceObject)
+                _levelRedactor.LeftMouseHandler(cell);
+            else if (_editorMode == EditorMode.SetStages)
+            {
+                _levelRedactor.CurrentLevelData.KeyStagesPoint[_setStagesIndex] = cell;
+                _editorMode = EditorMode.PlaceObject;
+            }
+        }
     }
 
     public override void OnInspectorGUI()
@@ -91,6 +112,51 @@ public class RedactorEditor : Editor
             EditorGUILayout.HelpBox("Значение Level Object не должно быть пустым", MessageType.Error);
         else
             ShowGameObjectPreview(_levelRedactor.EditorObjects[_currentObjectIndex].LevelObject.Prefab.gameObject);
+
+        EditorGUILayout.Space(10);
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.LabelField("Добавить ключевую точку стадии");
+        if (GUILayout.Button("+", GUILayout.Width(50)))
+            _levelRedactor.CurrentLevelData.KeyStagesPoint.Add(new Vector2Int());
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.Space(10);
+
+        var vectorFieldStyle = new GUIStyle(GUI.skin.label);
+        for (int pointIndex = 0; pointIndex < _levelRedactor.CurrentLevelData.KeyStagesPoint.Count; pointIndex++)
+        {
+            string labelText = (pointIndex+1).ToString() + " стадия";
+            if (_levelRedactor.CurrentLevelData.Map.Contains(_levelRedactor.CurrentLevelData.KeyStagesPoint[pointIndex]))
+                vectorFieldStyle.normal.textColor = Color.black;
+            else
+                vectorFieldStyle.normal.textColor = Color.red;
+
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.Label(labelText, vectorFieldStyle);
+            GUILayout.FlexibleSpace();
+
+            var newPoint = EditorGUILayout.Vector2IntField("", _levelRedactor.CurrentLevelData.KeyStagesPoint[pointIndex], GUILayout.Width(200));
+            _levelRedactor.CurrentLevelData.KeyStagesPoint[pointIndex] = newPoint;
+
+            Color savedColor = GUI.backgroundColor;
+            if (_editorMode == EditorMode.SetStages && _setStagesIndex == pointIndex)
+                GUI.backgroundColor = Color.blue;
+
+            if (GUILayout.Button("set", GUILayout.Width(50)))
+            {
+                _editorMode = EditorMode.SetStages;
+                _setStagesIndex = pointIndex;
+            }
+            GUI.backgroundColor = savedColor;
+
+            if (GUILayout.Button("-", GUILayout.Width(50)))
+                _levelRedactor.CurrentLevelData.KeyStagesPoint.RemoveAt(pointIndex);
+            GUILayout.FlexibleSpace();
+            EditorGUILayout.EndHorizontal();
+        }
 
         serializedObject.ApplyModifiedProperties();
         if (GUI.changed)
@@ -122,6 +188,7 @@ public class RedactorEditor : Editor
         {
             _currentObjectIndex = _levelRedactor.EditorObjects.IndexOf(data);
             _levelRedactor.SetCurrentObject(data);
+            _editorMode = EditorMode.PlaceObject;
         }
 
         GUI.backgroundColor = savedColor;
