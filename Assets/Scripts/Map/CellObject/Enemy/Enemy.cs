@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(MoveSystem))]
 public abstract class Enemy : CellObject
 {
+    protected EnemyContainer Container;
+    
     private MovePattern _movePattern;
     private PatternMoveSystem _patternMoveSystem;
+
+    public abstract event UnityAction<Enemy> Died;
 
     private void OnEnable()
     {
@@ -17,11 +22,12 @@ public abstract class Enemy : CellObject
     private void OnDisable()
     {
         _patternMoveSystem.MoveStarted -= OnMoveStarted;
-        CurrentCell.Marked -= OnCellMarked;    }
+        CurrentCell.Marked -= OnStepToMarkedCell;
+    }
 
     private void Start()
     {
-        CurrentCell.Marked += OnCellMarked;
+        CurrentCell.Marked += OnStepToMarkedCell;
         _patternMoveSystem.StartMove(CurrentCell, _movePattern);
     }
 
@@ -30,22 +36,24 @@ public abstract class Enemy : CellObject
         _movePattern = movePattern;
     }
 
+    public void InitContainer(EnemyContainer container)
+    {
+        Container = container;
+    }
+
     private void OnMoveStarted(GameCell nextCell)
     {
         if (nextCell.IsMarked)
         {
-            Destroy(gameObject);
+            OnStepToMarkedCell(nextCell);
             return;
         }
 
-        CurrentCell.Marked -= OnCellMarked;
+        CurrentCell.Marked -= OnStepToMarkedCell;
 
         CurrentCell = nextCell;
-        CurrentCell.Marked += OnCellMarked;
+        CurrentCell.Marked += OnStepToMarkedCell;
     }
 
-    private void OnCellMarked(GameCell markedCell)
-    {
-        Destroy(gameObject);
-    }
+    protected abstract void OnStepToMarkedCell(GameCell markedCell);
 }

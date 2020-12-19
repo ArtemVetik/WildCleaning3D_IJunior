@@ -24,6 +24,9 @@ public class LevelStages : MonoBehaviour
     {
         _spawner.SpawnCompleted -= OnSpawnComplete;
         StageCompeted -= OnStageComplete;
+
+        foreach (var cell in _stageCells)
+            cell.Marked -= OnCellMarked;
     }
 
     private void Start()

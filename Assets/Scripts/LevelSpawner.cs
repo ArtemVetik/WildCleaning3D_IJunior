@@ -11,15 +11,14 @@ public class LevelSpawner : MonoBehaviour
     [SerializeField] private GameCell _floor;
     [SerializeField] private PlayerInitializer _playerInitializer;
 
-    private List<GameCell> _instCells;
-
+    public event UnityAction<CellObject> CellObjectSpawned;
     public event UnityAction SpawnCompleted;
 
-    public List<GameCell> InstCells => _instCells;
+    public List<GameCell> InstCells { get; private set; }
 
     private void Start()
     {
-        _instCells = new List<GameCell>();
+        InstCells = new List<GameCell>();
 
         foreach (Vector2Int cell in _levelLoader.CurrentLevel.Map.Keys)
         {
@@ -27,7 +26,7 @@ public class LevelSpawner : MonoBehaviour
             SpawnLevelObject(_levelLoader.CurrentLevel.Map[cell], gameCell);
         }
 
-        InitAdjacentCells(_instCells);
+        InitAdjacentCells(InstCells);
         SpawnCompleted?.Invoke();
     }
 
@@ -39,6 +38,7 @@ public class LevelSpawner : MonoBehaviour
         var inst = Instantiate(cellData.LevelObject.Prefab, targetCell.Position.ToVector3(0.5f), Quaternion.identity);
         inst.Init(targetCell);
         cellData.Parameters?.Apply(inst);
+        CellObjectSpawned?.Invoke(inst);
 
         if (inst.TryGetComponent(out Player player))
             _playerInitializer.SetPlayer(player);
@@ -48,7 +48,7 @@ public class LevelSpawner : MonoBehaviour
     {
         GameCell gameCell = Instantiate(template, cell.ToVector3(), Quaternion.identity);
         gameCell.Init(cell);
-        _instCells.Add(gameCell);
+        InstCells.Add(gameCell);
         return gameCell;
     }
 
@@ -68,7 +68,7 @@ public class LevelSpawner : MonoBehaviour
 
         foreach (Vector2Int direction in adjacentDirections)
         {
-            GameCell adjacentCell = _instCells.Find((cell) => cell.Position == fromPosition + direction);
+            GameCell adjacentCell = InstCells.Find((cell) => cell.Position == fromPosition + direction);
             if (adjacentCell != null)
                 adjacentCells.Add(direction, adjacentCell);
         }

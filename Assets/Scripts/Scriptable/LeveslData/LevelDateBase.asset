@@ -418,7 +418,7 @@ MonoBehaviour:
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
-      - _levelObject: {fileID: 11400000, guid: f496fc44d4bf12f44a304135ee6b5b09, type: 2}
+      - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
@@ -436,23 +436,7 @@ MonoBehaviour:
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
+      - _levelObject: {fileID: 11400000, guid: f496fc44d4bf12f44a304135ee6b5b09, type: 2}
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
@@ -494,11 +478,9 @@ MonoBehaviour:
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
-      - _levelObject: {fileID: 11400000, guid: 2df3c9b9b80530243b7d26e76908da45, type: 2}
+      - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
-      - _levelObject: {fileID: 11400000, guid: 2df3c9b9b80530243b7d26e76908da45, type: 2}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 11400000, guid: 2df3c9b9b80530243b7d26e76908da45, type: 2}
+      - _levelObject: {fileID: 11400000, guid: f496fc44d4bf12f44a304135ee6b5b09, type: 2}
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
@@ -513,6 +495,24 @@ MonoBehaviour:
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 11400000, guid: 2df3c9b9b80530243b7d26e76908da45, type: 2}
+        _parameters: {fileID: 11400000, guid: e1d9c8a57a7a62745a1a425b44892558, type: 2}
+      - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 11400000, guid: 2df3c9b9b80530243b7d26e76908da45, type: 2}
+        _parameters: {fileID: 11400000, guid: e1d9c8a57a7a62745a1a425b44892558, type: 2}
     KeyStagesPoint:
     - {x: 4, y: 0}

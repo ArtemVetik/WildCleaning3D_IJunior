@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -55,5 +56,11 @@ public class GameCell : MonoBehaviour
         IsMarked = true;
         _cellMarker.Mark();
         Marked?.Invoke(this);
+    }
+
+    public void Unmark()
+    {
+        IsMarked = false;
+        _cellMarker.Unmark();
     }
 }
