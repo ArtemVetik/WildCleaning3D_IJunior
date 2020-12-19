@@ -10,7 +10,7 @@ public class GameCell : MonoBehaviour
     private Dictionary<Vector2Int, GameCell> _adjacentCells;
     private CellMarker _cellMarker;
 
-    public event UnityAction Marked;
+    public event UnityAction<GameCell> Marked;
 
     public bool IsMarked { get; private set; }
     public Vector2Int Position => _position;
@@ -38,10 +38,22 @@ public class GameCell : MonoBehaviour
         return null;
     }
 
+    public bool TryGetAdjacent(out GameCell adjacentCell, Vector2Int adjacentDirection)
+    {
+        if (_adjacentCells.ContainsKey(adjacentDirection))
+        {
+            adjacentCell = _adjacentCells[adjacentDirection];
+            return true;
+        }
+
+        adjacentCell = null;
+        return false;
+    }
+
     public void Mark()
     {
         IsMarked = true;
         _cellMarker.Mark();
-        Marked?.Invoke();
+        Marked?.Invoke(this);
     }
 }

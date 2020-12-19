@@ -17,14 +17,11 @@ public abstract class Enemy : CellObject
     private void OnDisable()
     {
         _patternMoveSystem.MoveStarted -= OnMoveStarted;
-        CurrentCell.Marked -= OnCellMarked;
-        Debug.Log("-1 " + name);
-    }
+        CurrentCell.Marked -= OnCellMarked;    }
 
     private void Start()
     {
         CurrentCell.Marked += OnCellMarked;
-        Debug.Log("+1 " + name);
         _patternMoveSystem.StartMove(CurrentCell, _movePattern);
     }
 
@@ -47,7 +44,7 @@ public abstract class Enemy : CellObject
         CurrentCell.Marked += OnCellMarked;
     }
 
-    private void OnCellMarked()
+    private void OnCellMarked(GameCell markedCell)
     {
         Destroy(gameObject);
     }

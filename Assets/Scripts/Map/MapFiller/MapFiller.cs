@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class MapFiller : MonoBehaviour
 {
-    [SerializeField] private LevelDataBase _levelDataBase;
-
-    private LevelData _levelData;
-
-    private void Start()
-    {
-        _levelData = _levelDataBase[0];
-    }
+    [SerializeField] private CurrentLevelLoader _levelLoader;
 
     public void TryFill(PlayerTail tail)
     {
-        int[,] mapTemplate = new int[_levelData.Size.y, _levelData.Size.x];
+        Vector2Int levelSize = _levelLoader.CurrentLevel.Size;
+        int[,] mapTemplate = new int[levelSize.y, levelSize.x];
 
         FillData leftFillData = new FillData(new List<GameCell>(), true);
         FillData rightFillData = new FillData(new List<GameCell>(), true);

@@ -3,28 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using UnityEngine.Events;
 
 public class LevelSpawner : MonoBehaviour
 {
-    [SerializeField] private LevelDataBase _levelDataBase;
+    [SerializeField] private CurrentLevelLoader _levelLoader;
     [SerializeField] private GameCell _floor;
     [SerializeField] private PlayerInitializer _playerInitializer;
 
     private List<GameCell> _instCells;
-    private int _currentLevel;
+
+    public event UnityAction SpawnCompleted;
+
+    public List<GameCell> InstCells => _instCells;
 
     private void Start()
     {
-        _currentLevel = 0;
         _instCells = new List<GameCell>();
 
-        foreach (Vector2Int cell in _levelDataBase[_currentLevel].Map.Keys)
+        foreach (Vector2Int cell in _levelLoader.CurrentLevel.Map.Keys)
         {
             GameCell gameCell = SpawnCell(cell, _floor);
-            SpawnLevelObject(_levelDataBase[_currentLevel].Map[cell], gameCell);
+            SpawnLevelObject(_levelLoader.CurrentLevel.Map[cell], gameCell);
         }
 
         InitAdjacentCells(_instCells);
+        SpawnCompleted?.Invoke();
     }
 
     private void SpawnLevelObject(CellData cellData, GameCell targetCell)
@@ -63,7 +67,11 @@ public class LevelSpawner : MonoBehaviour
         var adjacentCells = new Dictionary<Vector2Int, GameCell>();
 
         foreach (Vector2Int direction in adjacentDirections)
-            adjacentCells.Add(direction, _instCells.Find((cell) => cell.Position == fromPosition + direction));
+        {
+            GameCell adjacentCell = _instCells.Find((cell) => cell.Position == fromPosition + direction);
+            if (adjacentCell != null)
+                adjacentCells.Add(direction, adjacentCell);
+        }
 
         return adjacentCells;
     }
