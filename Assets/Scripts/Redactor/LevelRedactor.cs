@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using CustomRedactor;
 
 namespace CustomRedactor
 {
     public enum EditType
     {
-        Add, Remove, None
+        Add, Remove,
     }
 
     [ExecuteInEditMode]
@@ -16,13 +17,18 @@ namespace CustomRedactor
     public class LevelRedactor : MonoBehaviour
     {
         [SerializeField] private LevelDataBase _levelDateBase;
-        [SerializeField] private LevelObject[] _levelObjects;
-        [SerializeField] private ObjectParameters _parameter;
-
+        [SerializeField] private EditorObjectData _currentObject;
+        
+        [SerializeField] public List<EditorObjectData> EditorObjects = new List<EditorObjectData>()
+        {
+            new EditorObjectData("Пол"),
+            new EditorObjectData("Вирус"),
+            new EditorObjectData("Микроб"),
+            new EditorObjectData("Игрок"),
+        };
         [HideInInspector] public int CurrentLevelIndex;
         [HideInInspector] public EditType EditType;
 
-        private LevelObject _currentObject;
         private BoxCollider _collider;
 
         public LevelDataBase LevelDataBase => _levelDateBase;
@@ -35,19 +41,12 @@ namespace CustomRedactor
 
             InitCollider(_levelDateBase[CurrentLevelIndex].Size);
             DrawGrid(_levelDateBase[CurrentLevelIndex].Size, Color.gray);
-            DrawObjects();
+            DrawObjects(_levelDateBase[CurrentLevelIndex].Map);
         }
 
-        public void SetCurrentObject<T>() where T : LevelObject
+        public void SetCurrentObject(EditorObjectData data)
         {
-            foreach (LevelObject levelObject in _levelObjects)
-            {
-                if (levelObject is T)
-                {
-                    _currentObject = levelObject;
-                    return;
-                }
-            }
+            _currentObject = data;
         }
 
         public void LeftMouseHandler(RaycastHit hitInfo)
@@ -57,9 +56,9 @@ namespace CustomRedactor
             Vector2Int cell = new Vector2Int(x, y);
 
             if (EditType == EditType.Add)
-                _currentObject.Place(_levelDateBase[CurrentLevelIndex], cell, _parameter);
+                _currentObject.LevelObject.Place(_levelDateBase[CurrentLevelIndex], cell, _currentObject.ObjectParameters);
             else if (EditType == EditType.Remove)
-                _currentObject.Remove(LevelDataBase[CurrentLevelIndex], cell, _parameter);
+                _currentObject.LevelObject.Remove(LevelDataBase[CurrentLevelIndex], cell, _currentObject.ObjectParameters);
         }
 
         private void InitCollider(Vector2Int size)
@@ -87,21 +86,21 @@ namespace CustomRedactor
             Gizmos.color = startColor;
         }
 
-        private void DrawObjects()
+        private void DrawObjects(LevelDictionary map)
         {
             if (_levelDateBase[CurrentLevelIndex].Map == null)
                 return;
 
             Gizmos.color = Color.white;
-            foreach (Vector2Int cell in _levelDateBase[CurrentLevelIndex].Map.Keys)
+            foreach (Vector2Int cell in map.Keys)
             {
                 Gizmos.DrawCube(cell.ToVector3(), new Vector3(0.9f, 0, 0.9f));
             }
 
             LevelObject levelObject;
-            foreach (Vector2Int cell in _levelDateBase[CurrentLevelIndex].Map.Keys)
+            foreach (Vector2Int cell in map.Keys)
             {
-                levelObject = _levelDateBase[CurrentLevelIndex].Map[cell].LevelObject;
+                levelObject = map[cell].LevelObject;
                 if (levelObject is Player)
                 {
                     Gizmos.color = Color.green;

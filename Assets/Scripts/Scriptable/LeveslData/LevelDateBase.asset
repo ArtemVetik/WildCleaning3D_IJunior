@@ -320,62 +320,32 @@ MonoBehaviour:
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
-  - Size: {x: 10, y: 10}
+  - Size: {x: 8, y: 5}
     Map:
       m_keys:
-      - {x: 3, y: 1}
-      - {x: 2, y: 1}
-      - {x: 2, y: 2}
-      - {x: 1, y: 2}
-      - {x: 1, y: 3}
-      - {x: 1, y: 4}
-      - {x: 2, y: 4}
-      - {x: 2, y: 5}
-      - {x: 3, y: 5}
-      - {x: 4, y: 4}
-      - {x: 5, y: 4}
-      - {x: 6, y: 4}
-      - {x: 7, y: 4}
-      - {x: 7, y: 3}
-      - {x: 8, y: 3}
-      - {x: 8, y: 2}
-      - {x: 7, y: 2}
-      - {x: 7, y: 1}
-      - {x: 6, y: 1}
-      - {x: 5, y: 0}
-      - {x: 4, y: 0}
-      - {x: 3, y: 2}
-      - {x: 4, y: 3}
-      - {x: 5, y: 3}
-      - {x: 6, y: 3}
-      - {x: 6, y: 2}
       - {x: 5, y: 1}
-      - {x: 3, y: 0}
-      - {x: 2, y: 0}
-      - {x: 4, y: 1}
-      - {x: 4, y: 2}
       - {x: 5, y: 2}
-      - {x: 3, y: 3}
-      - {x: 3, y: 4}
-      - {x: 2, y: 7}
-      - {x: 2, y: 8}
-      - {x: 1, y: 9}
-      - {x: 4, y: 9}
-      - {x: 4, y: 8}
-      - {x: 4, y: 7}
-      - {x: 4, y: 6}
-      - {x: 4, y: 5}
-      - {x: 5, y: 5}
-      - {x: 6, y: 5}
-      - {x: 5, y: 6}
-      - {x: 6, y: 6}
-      - {x: 5, y: 7}
-      - {x: 3, y: 7}
-      - {x: 2, y: 6}
-      - {x: 1, y: 5}
+      - {x: 4, y: 2}
+      - {x: 3, y: 2}
       - {x: 2, y: 3}
+      - {x: 2, y: 2}
+      - {x: 1, y: 3}
+      - {x: 1, y: 2}
+      - {x: 1, y: 1}
+      - {x: 2, y: 1}
+      - {x: 2, y: 0}
+      - {x: 3, y: 0}
+      - {x: 4, y: 0}
+      - {x: 5, y: 0}
+      - {x: 6, y: 0}
+      - {x: 7, y: 0}
+      - {x: 7, y: 1}
+      - {x: 7, y: 2}
+      - {x: 6, y: 2}
+      - {x: 3, y: 1}
+      - {x: 4, y: 1}
       m_values:
-      - _levelObject: {fileID: 0}
+      - _levelObject: {fileID: 11400000, guid: f496fc44d4bf12f44a304135ee6b5b09, type: 2}
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
@@ -393,7 +363,15 @@ MonoBehaviour:
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
+      - _levelObject: {fileID: 11400000, guid: 8542ae36e3c7ad34094f0cef95e3bfa2, type: 2}
+        _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 11400000, guid: 2df3c9b9b80530243b7d26e76908da45, type: 2}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 11400000, guid: 2df3c9b9b80530243b7d26e76908da45, type: 2}
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
@@ -407,73 +385,5 @@ MonoBehaviour:
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
-        _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
+      - _levelObject: {fileID: 11400000, guid: f496fc44d4bf12f44a304135ee6b5b09, type: 2}
         _parameters: {fileID: 0}

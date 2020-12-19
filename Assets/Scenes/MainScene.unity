@@ -211,14 +211,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelDateBase: {fileID: 11400000, guid: 6dc3acf16df26ae44918668e40433850, type: 2}
-  _levelObjects:
-  - {fileID: 11400000, guid: 5be41b8d7833aa24184309ee96bec5a2, type: 2}
-  - {fileID: 11400000, guid: f496fc44d4bf12f44a304135ee6b5b09, type: 2}
-  - {fileID: 11400000, guid: 8542ae36e3c7ad34094f0cef95e3bfa2, type: 2}
-  - {fileID: 11400000, guid: 2df3c9b9b80530243b7d26e76908da45, type: 2}
-  _parameter: {fileID: 11400000, guid: 174d4318b445af641b239780a1d5f062, type: 2}
-  CurrentLevelIndex: 0
-  EditType: 1
+  _currentObject:
+    _name: "\u0418\u0433\u0440\u043E\u043A"
+    _levelObject: {fileID: 0}
+    _objectParameter: {fileID: 0}
+  EditorObjects:
+  - _name: "\u041F\u043E\u043B"
+    _levelObject: {fileID: 11400000, guid: 5be41b8d7833aa24184309ee96bec5a2, type: 2}
+    _objectParameter: {fileID: 0}
+  - _name: "\u0412\u0438\u0440\u0443\u0441"
+    _levelObject: {fileID: 11400000, guid: 2df3c9b9b80530243b7d26e76908da45, type: 2}
+    _objectParameter: {fileID: 0}
+  - _name: "\u041C\u0438\u043A\u0440\u043E\u0431"
+    _levelObject: {fileID: 11400000, guid: f496fc44d4bf12f44a304135ee6b5b09, type: 2}
+    _objectParameter: {fileID: 0}
+  - _name: "\u0418\u0433\u0440\u043E\u043A"
+    _levelObject: {fileID: 11400000, guid: 8542ae36e3c7ad34094f0cef95e3bfa2, type: 2}
+    _objectParameter: {fileID: 0}
+  CurrentLevelIndex: 1
+  EditType: 0
 --- !u!65 &125215685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -230,8 +241,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11, y: 0, z: 11}
-  m_Center: {x: 5, y: 0, z: 5}
+  m_Size: {x: 8, y: 0, z: 5}
+  m_Center: {x: 3.5, y: 0, z: 2}
 --- !u!1 &293520189
 GameObject:
   m_ObjectHideFlags: 0

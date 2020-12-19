@@ -4,25 +4,28 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using CustomRedactor;
+using System.Reflection;
 
 [CustomEditor(typeof(LevelRedactor))]
 public class RedactorEditor : Editor
 {
     private LevelRedactor _levelRedactor;
-    private SerializedProperty _levelObjects;
-    private SerializedProperty _property;
-    private UnityAction _setObjectAction;
+    private int _currentObjectIndex;
+    private bool _mapSizeFoldout;
+    private GameObject _previewGameObject;
+    private Editor _previewGameObjectEditor;
 
     private void OnEnable()
     {
         _levelRedactor = (LevelRedactor)target;
 
-        _property = serializedObject.FindProperty("_parameter");
+        _currentObjectIndex = 0;
+        _mapSizeFoldout = true;
+        _levelRedactor.EditType = EditType.Add;
     }
 
     private void OnSceneGUI()
     {
-
         Event e = Event.current;
         if (e.isMouse && e.button != 0)
             return;
@@ -42,6 +45,16 @@ public class RedactorEditor : Editor
                 e.Use();
                 EditorUtility.SetDirty(_levelRedactor.LevelDataBase);
                 break;
+            case EventType.KeyDown:
+                GUIUtility.keyboardControl = controlID;
+                if (Event.current.keyCode == KeyCode.LeftShift)
+                    _levelRedactor.EditType = EditType.Remove;
+                break;
+            case EventType.KeyUp:
+                GUIUtility.keyboardControl = controlID;
+                if (Event.current.keyCode == KeyCode.LeftShift)
+                    _levelRedactor.EditType = EditType.Add;
+                break;
         }
     }
 
@@ -54,86 +67,148 @@ public class RedactorEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        //serializedObject.Update();
-
-        //_levelObjects = serializedObject.FindProperty("_levelObjects");
-        //while (true)
-        //{
-        //    var myRect = GUILayoutUtility.GetRect(0f, 16f);
-        //    var showChildren = EditorGUI.PropertyField(myRect, _levelObjects);
-        //    if (_levelObjects.NextVisible(showChildren) == false)
-        //        break;
-        //}
-
-
-        //serializedObject.ApplyModifiedProperties();
-
-        //base.OnInspectorGUI();
+        serializedObject.Update();
 
         ShowTitle();
 
         if (_levelRedactor.CurrentLevelData == null)
             return;
 
-        int newWidth = EditorGUILayout.IntField("width", _levelRedactor.CurrentLevelData.Size.x, GUILayout.Width(0.5f * Screen.width));
-        int newHeight = EditorGUILayout.IntField("height", _levelRedactor.CurrentLevelData.Size.y, GUILayout.Width(0.5f * Screen.width));
+        SetMapSize();
 
-        _levelRedactor.CurrentLevelData.Size = new Vector2Int(newWidth, newHeight);
+        EditorGUILayout.HelpBox("ЛКМ->добавить объект\nShift + ЛКМ -> удалить объект", MessageType.Info);
+        ShowCentralLabel("Выбор текущего игрового объекта", 16);
+        EditorGUILayout.Space(10);
+        ShowObjectButtons(70);
+        EditorGUILayout.Space(10);
 
-        GUILayout.Label("Выбор текущего игрового объекта");
+        var currentEditorObject = serializedObject.FindProperty("EditorObjects").GetArrayElementAtIndex(_currentObjectIndex);
+        ShowPropertyRelative(currentEditorObject, "_name");
+        ShowPropertyRelative(currentEditorObject, "_levelObject");
+        ShowPropertyRelative(currentEditorObject, "_objectParameter");
 
-        EditorGUILayout.BeginHorizontal();
-        GUILevelObjectButton<CustomRedactor.Empty>("Пол", 0.1f * Screen.width);
-        GUILevelObjectButton<CustomRedactor.Player>("Игрок", 0.1f * Screen.width);
-        GUILevelObjectButton<CustomRedactor.Microbe>("Микроб", 0.1f * Screen.width);
-        GUILevelObjectButton<CustomRedactor.Virus>("Вирус", 0.1f * Screen.width);
-        EditorGUILayout.EndHorizontal();
+        if (_levelRedactor.EditorObjects[_currentObjectIndex].LevelObject == null)
+            EditorGUILayout.HelpBox("Значение Level Object не должно быть пустым", MessageType.Error);
+        else
+            ShowGameObjectPreview(_levelRedactor.EditorObjects[_currentObjectIndex].LevelObject.Prefab.gameObject);
 
-        EditorGUILayout.LabelField("ПОЛ");
-
-        EditorGUILayout.PropertyField(_property, new GUIContent("Parameter"));
-
-        EditorGUILayout.BeginHorizontal();
-        if (GUILayout.Button("Добавить", GUILayout.Width(0.1f * Screen.width)))
-        {
-            _setObjectAction?.Invoke();
-            _levelRedactor.EditType = EditType.Add;
-        }
-        if (GUILayout.Button("Удалить", GUILayout.Width(0.1f * Screen.width)))
-        {
-            _setObjectAction?.Invoke();
-            _levelRedactor.EditType = EditType.Remove;
-        }
-        EditorGUILayout.EndHorizontal();
-
+        serializedObject.ApplyModifiedProperties();
         if (GUI.changed)
             EditorUtility.SetDirty(_levelRedactor.LevelDataBase);
     }
 
-    private void GUILevelObjectButton<T>(string name, float width) where T : LevelObject
+    private void DrawHorizontalLize(int height, Color color)
     {
-        if (GUILayout.Button(name, GUILayout.Width(width)))
+        Rect rect = EditorGUILayout.GetControlRect(false, height);
+        rect.height = height;
+        EditorGUI.DrawRect(rect, color);
+    }
+
+    private void ShowCentralLabel(string text, int fontSize = 12)
+    {
+        var style = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter };
+        style.fontSize = fontSize;
+        GUILayout.Label(text, style);
+    }
+
+    private void ShowLevelObjectButton(EditorObjectData data, float width)
+    {
+        Color savedColor = GUI.backgroundColor;
+
+        if (_levelRedactor.EditorObjects[_currentObjectIndex].Equals(data))
+            GUI.backgroundColor = Color.green;
+
+        if (GUILayout.Button(data.Name, GUILayout.Width(width)))
         {
-            _setObjectAction = delegate { _levelRedactor.SetCurrentObject<T>(); };
-            _levelRedactor.EditType = EditType.None;
+            _currentObjectIndex = _levelRedactor.EditorObjects.IndexOf(data);
+            _levelRedactor.SetCurrentObject(data);
         }
+
+        GUI.backgroundColor = savedColor;
     }
 
     private void ShowTitle()
     {
-        GUILayout.Label("Total levels: " + _levelRedactor.LevelDataBase.Count + " | Current level: " + (_levelRedactor.CurrentLevelIndex + 1).ToString());
+        EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+
+        string labelText = $"Total levels: {_levelRedactor.LevelDataBase.Count} | Current level: {(_levelRedactor.CurrentLevelIndex + 1).ToString()}";
+        ShowCentralLabel(labelText, 14);
 
         EditorGUILayout.BeginHorizontal();
-        if (GUILayout.Button("<-", GUILayout.Width(0.1f * Screen.width)))
+        GUILayout.FlexibleSpace();
+        if (GUILayout.Button(new GUIContent("<-", "На уровень назад"), GUILayout.Width(50)))
             _levelRedactor.CurrentLevelIndex--;
-        if (GUILayout.Button("->", GUILayout.Width(0.1f * Screen.width)))
+        if (GUILayout.Button(new GUIContent("->", "На уровень вперед"), GUILayout.Width(50)))
             _levelRedactor.CurrentLevelIndex++;
-        if (GUILayout.Button("+", GUILayout.Width(0.1f * Screen.width)))
+        if (GUILayout.Button(new GUIContent("+", "Добавить уровень"), GUILayout.Width(50)))
             _levelRedactor.LevelDataBase.Add();
-        if (GUILayout.Button("-", GUILayout.Width(0.1f * Screen.width)))
-            _levelRedactor.LevelDataBase.Remove(_levelRedactor.CurrentLevelData);
+        if (GUILayout.Button(new GUIContent("-", "Удалить текущий уровень"), GUILayout.Width(50)))
+        {
+            bool delete = EditorUtility.DisplayDialog("Удалить текущий уровень?",
+                "Текущий уровень будет полностью удален без возможности восстановления. Вы уверены?", "Удалить", "Не удалять");
+
+            if (delete == true)
+                _levelRedactor.LevelDataBase.Remove(_levelRedactor.CurrentLevelData);
+            GUIUtility.ExitGUI();
+        }
+        GUILayout.FlexibleSpace();
         EditorGUILayout.EndHorizontal();
+        EditorGUILayout.EndVertical();
 
         _levelRedactor.CurrentLevelIndex = Mathf.Clamp(_levelRedactor.CurrentLevelIndex, 0, _levelRedactor.LevelDataBase.Count - 1);
+    }
+
+    private void SetMapSize()
+    {
+        EditorGUILayout.BeginVertical();
+
+        var foldoutStyle = new GUIStyle(EditorStyles.foldout);
+        foldoutStyle.fontStyle = FontStyle.Bold;
+        foldoutStyle.normal.textColor = Color.black;
+        foldoutStyle.onNormal.textColor = Color.blue;
+
+        _mapSizeFoldout = EditorGUILayout.Foldout(_mapSizeFoldout, "Размер карты", true, foldoutStyle);
+        if (_mapSizeFoldout)
+        {
+            var saveIndentLevel = EditorGUI.indentLevel;
+            EditorGUI.indentLevel++;
+            int newWidth = EditorGUILayout.IntSlider("ширина", _levelRedactor.CurrentLevelData.Size.x, 5, 100);
+            int newHeight = EditorGUILayout.IntSlider("высота", _levelRedactor.CurrentLevelData.Size.y, 5, 100);
+            EditorGUI.indentLevel = saveIndentLevel;
+
+            _levelRedactor.CurrentLevelData.Size = new Vector2Int(newWidth, newHeight);
+        }
+
+        EditorGUILayout.EndVertical();
+    }
+
+    private void ShowObjectButtons(float width)
+    {
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+
+        foreach (var item in _levelRedactor.EditorObjects)
+            ShowLevelObjectButton(item, width);
+
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+    }
+
+    private bool ShowPropertyRelative(SerializedProperty property, string propertyName)
+    {
+        var nesterProperty = property.FindPropertyRelative(propertyName);
+        return EditorGUILayout.PropertyField(nesterProperty, true);
+    }
+
+    private void ShowGameObjectPreview(GameObject gameObject)
+    {
+        var nextObject = gameObject;
+        if (_previewGameObject == null || nextObject.Equals(_previewGameObject) == false)
+            _previewGameObjectEditor = Editor.CreateEditor(nextObject);
+
+        _previewGameObject = nextObject;
+
+        if (_previewGameObject != null)
+            _previewGameObjectEditor.OnInteractivePreviewGUI(GUILayoutUtility.GetRect(128, 128), GUIStyle.none);
     }
 }
