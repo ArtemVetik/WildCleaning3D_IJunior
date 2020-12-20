@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyContainer : MonoBehaviour
 {
     [SerializeField] private LevelSpawner _spawner;
 
     private List<Enemy> _enemies;
-    
+
+    public event UnityAction<Enemy> EnemyDied;
+
+    public IEnumerable<Enemy> Enemies => _enemies;
     public int MicrobeCount { get; private set; }
 
     private void OnEnable()
@@ -49,5 +53,7 @@ public class EnemyContainer : MonoBehaviour
 
         _enemies.Remove(enemy);
         enemy.Died -= OnEnemyDied;
+        
+        EnemyDied?.Invoke(enemy);
     }
 }

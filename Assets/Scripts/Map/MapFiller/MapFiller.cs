@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MapFiller : MonoBehaviour
 {
     [SerializeField] private CurrentLevelLoader _levelLoader;
+
+    public event UnityAction<FillData> StartFilled;
 
     public void TryFill(PlayerTail tail)
     {
@@ -18,22 +21,27 @@ public class MapFiller : MonoBehaviour
             leftFillData = SetFillData(leftTail, leftFillData, mapTemplate);
         foreach (var rightTail in tail.GetFromRightSide())
             rightFillData = SetFillData(rightTail, rightFillData, mapTemplate);
-            
+
 
         if (leftFillData.FilledCells.Count == 0 || rightFillData.FilledCells.Count == 0)
             return;
 
+        FillData targetFillData;
+
         if (leftFillData.IsClosed != rightFillData.IsClosed)
         {
-            StartCoroutine(Fill(leftFillData.IsClosed ? leftFillData : rightFillData));
-            return;
+            targetFillData = leftFillData.IsClosed ? leftFillData : rightFillData;
+        }
+        else
+        {
+            if (leftFillData.FilledCells.Count < rightFillData.FilledCells.Count)
+                targetFillData = leftFillData;
+            else
+                targetFillData = rightFillData;
         }
 
-        if (leftFillData.FilledCells.Count < rightFillData.FilledCells.Count)
-            StartCoroutine(Fill(leftFillData));
-        else
-            StartCoroutine(Fill(rightFillData));
-
+        StartFilled?.Invoke(targetFillData);
+        StartCoroutine(Fill(targetFillData));
     }
 
     private IEnumerator Fill(FillData fillData)

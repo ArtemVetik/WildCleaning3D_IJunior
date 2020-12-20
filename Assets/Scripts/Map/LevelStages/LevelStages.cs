@@ -8,7 +8,6 @@ public class LevelStages : MonoBehaviour
     [SerializeField] private CurrentLevelLoader _levelNumber;
 
     private HashSet<GameCell> _stageCells;
-    private LevelData _currentLevel;
     private int _currentStage;
 
     public event UnityAction<int> StageCompeted;
@@ -29,11 +28,6 @@ public class LevelStages : MonoBehaviour
             cell.Marked -= OnCellMarked;
     }
 
-    private void Start()
-    {
-        _currentLevel = _levelNumber.CurrentLevel;
-    }
-
     private void OnSpawnComplete()
     {
         _currentStage = 0;
@@ -42,7 +36,7 @@ public class LevelStages : MonoBehaviour
 
     private void InitStage(int stage)
     {
-        Vector2Int keyStageCell = _currentLevel.KeyStagesPoint[stage];
+        Vector2Int keyStageCell = _levelNumber.CurrentLevel.KeyStagesPoint[stage];
 
         _stageCells = new HashSet<GameCell>();
         InitStageCells(_spawner.InstCells.Find((cell) => cell.Position == keyStageCell));
@@ -77,7 +71,7 @@ public class LevelStages : MonoBehaviour
     {
         stage++;
 
-        if (stage < _currentLevel.KeyStagesPoint.Count)
+        if (stage < _levelNumber.CurrentLevel.KeyStagesPoint.Count)
             InitStage(++_currentStage);
         else
             AllStageCompeted?.Invoke();
