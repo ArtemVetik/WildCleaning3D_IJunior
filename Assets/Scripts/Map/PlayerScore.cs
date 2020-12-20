@@ -3,12 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+public struct EnemyInContour
+{
+    private FillData _fillData;
+    private HashSet<Enemy> _enemies;
+
+    public EnemyInContour(FillData fillData, EnemyContainer _enemyContainer)
+    {
+        _fillData = fillData;
+        _enemies = new HashSet<Enemy>();
+
+        foreach (var enemy in _enemyContainer.Enemies)
+        {
+            if (fillData.FilledCells.Find((cell) => cell.Position == enemy.CurrentCell.Position))
+                _enemies.Add(enemy);
+        }
+    }
+
+    public FillData FillData => _fillData;
+    public int EnemyCount => _enemies.Count;
+
+    public bool Has(Enemy enemy)
+    {
+        return _enemies.Contains(enemy);
+    }
+}
+
 public class PlayerScore : MonoBehaviour
 {
     [SerializeField] private EnemyContainer _enemyContainer;
     [SerializeField] private MapFiller _mapFiller;
 
-    private Dictionary<Enemy, int> _comboKilledEnemy = new Dictionary<Enemy, int>();
+    private List<EnemyInContour> _enemyInContours = new List<EnemyInContour>();
 
     public event UnityAction<int> ScoreChanged;
 
@@ -18,6 +44,7 @@ public class PlayerScore : MonoBehaviour
     {
         _enemyContainer.EnemyDied += OnEnemyDied;
         _mapFiller.StartFilled += OnStartFilled;
+        _mapFiller.EndFilled += OnEndFilled;
     }
 
     private void OnDisable()
@@ -28,33 +55,29 @@ public class PlayerScore : MonoBehaviour
 
     private void OnStartFilled(FillData fillData)
     {
-        List<Enemy> enemiesInСontour = new List<Enemy>();
+        _enemyInContours.Add(new EnemyInContour(fillData, _enemyContainer));
+    }
 
-        foreach (var enemy in _enemyContainer.Enemies)
-        {
-            if (enemy is Virus)
-                continue;
-
-            if (fillData.FilledCells.Find((cell) => cell.Position == enemy.CurrentCell.Position))
-                enemiesInСontour.Add(enemy);
-        }
-
-        int newScore = enemiesInСontour.Count / 10 + 1;
-        foreach (var enemy in enemiesInСontour)
-            _comboKilledEnemy.Add(enemy, newScore);
+    private void OnEndFilled(FillData fillData)
+    {
+        var findData = _enemyInContours.Find((data) => data.FillData.Equals(fillData));
+        _enemyInContours.Remove(findData);
     }
 
     private void OnEnemyDied(Enemy enemy)
     {
-        if (_comboKilledEnemy.ContainsKey(enemy))
-        {
-            Score += _comboKilledEnemy[enemy];
-            _comboKilledEnemy.Remove(enemy);
-        }
-        else
-        {
-            Score += 1;
-        }
+        Score += CalculateScore(enemy);
         ScoreChanged?.Invoke(Score);
+    }
+
+    private int CalculateScore(Enemy enemy)
+    {
+        int score = 1;
+
+        foreach (var contourData in _enemyInContours)
+            if (contourData.Has(enemy))
+                score = contourData.EnemyCount / 10 + 1;
+
+        return score;
     }
 }

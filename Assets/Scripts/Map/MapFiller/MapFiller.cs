@@ -8,6 +8,7 @@ public class MapFiller : MonoBehaviour
     [SerializeField] private CurrentLevelLoader _levelLoader;
 
     public event UnityAction<FillData> StartFilled;
+    public event UnityAction<FillData> EndFilled;
 
     public void TryFill(PlayerTail tail)
     {
@@ -53,6 +54,8 @@ public class MapFiller : MonoBehaviour
             cell.Mark();
             yield return delay;
         }
+
+        EndFilled?.Invoke(fillData);
     }
 
     private FillData SetFillData(GameCell currentCell, FillData data, int[,] mapTemplate)
