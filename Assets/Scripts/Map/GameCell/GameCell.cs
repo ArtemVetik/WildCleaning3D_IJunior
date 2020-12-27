@@ -12,6 +12,7 @@ public class GameCell : MonoBehaviour
     private CellMarker _cellMarker;
 
     public event UnityAction<GameCell> Marked;
+    public event UnityAction<GameCell> Unmarked;
 
     public bool IsMarked { get; private set; }
     public Vector2Int Position => _position;
@@ -62,5 +63,6 @@ public class GameCell : MonoBehaviour
     {
         IsMarked = false;
         _cellMarker.Unmark();
+        Unmarked?.Invoke(this);
     }
 }

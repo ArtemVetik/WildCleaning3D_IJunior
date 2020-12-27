@@ -32,6 +32,7 @@ public class PlayerMoveSystem
 
     public void ForceStop()
     {
+        _nextMoveDirection = Vector2Int.zero;
         _moveSystem.ForceStop();
     }
 

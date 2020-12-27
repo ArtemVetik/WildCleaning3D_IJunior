@@ -12,7 +12,6 @@ public class EnemyContainer : MonoBehaviour
     public event UnityAction<Enemy> EnemyDied;
 
     public IEnumerable<Enemy> Enemies => _enemies;
-    public int MicrobeCount { get; private set; }
 
     private void OnEnable()
     {
@@ -27,7 +26,6 @@ public class EnemyContainer : MonoBehaviour
     private void Start()
     {
         _enemies = new List<Enemy>();
-        MicrobeCount = 0;
     }
 
     private void OnCellObjectSpawned(CellObject cellObject)
@@ -39,18 +37,11 @@ public class EnemyContainer : MonoBehaviour
     private void AddEnemy(Enemy enemy)
     {
         _enemies.Add(enemy);
-        enemy.InitContainer(this);
         enemy.Died += OnEnemyDied;
-
-        if (enemy is Microbe)
-            MicrobeCount++;
     }
 
     private void OnEnemyDied(Enemy enemy)
     {
-        if (enemy is Microbe)
-            MicrobeCount--;
-
         _enemies.Remove(enemy);
         enemy.Died -= OnEnemyDied;
         

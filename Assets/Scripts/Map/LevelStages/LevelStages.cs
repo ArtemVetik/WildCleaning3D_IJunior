@@ -5,10 +5,10 @@ using UnityEngine.Events;
 public class LevelStages : MonoBehaviour
 {
     [SerializeField] private LevelSpawner _spawner;
+    [SerializeField] private EnemyContainer _enemyContainer;
     [SerializeField] private CurrentLevelLoader _levelNumber;
 
-    private HashSet<GameCell> _stageCells;
-    private int _currentStage;
+    private StageInfo _currentStage;
 
     public event UnityAction<int> StageCompeted;
     public event UnityAction AllStageCompeted;
@@ -16,63 +16,35 @@ public class LevelStages : MonoBehaviour
     private void OnEnable()
     {
         _spawner.SpawnCompleted += OnSpawnComplete;
-        StageCompeted += OnStageComplete;
     }
 
     private void OnDisable()
     {
         _spawner.SpawnCompleted -= OnSpawnComplete;
-        StageCompeted -= OnStageComplete;
-
-        foreach (var cell in _stageCells)
-            cell.Marked -= OnCellMarked;
     }
 
     private void OnSpawnComplete()
     {
-        _currentStage = 0;
-        InitStage(_currentStage);
+        InitStage(0);
     }
 
     private void InitStage(int stage)
     {
         Vector2Int keyStageCell = _levelNumber.CurrentLevel.KeyStagesPoint[stage];
+        GameCell checkpointCell = _spawner.InstCells.Find((cell) => cell.Position == keyStageCell);
 
-        _stageCells = new HashSet<GameCell>();
-        InitStageCells(_spawner.InstCells.Find((cell) => cell.Position == keyStageCell));
-    }
-
-    private void InitStageCells(GameCell currentCell)
-    {
-        _stageCells.Add(currentCell);
-        currentCell.Marked += OnCellMarked;
-
-        GameCell adjacentCell = null;
-        if (currentCell.TryGetAdjacent(out adjacentCell, Vector2Int.left) && _stageCells.Contains(adjacentCell) == false)
-            InitStageCells(adjacentCell);
-        if (currentCell.TryGetAdjacent(out adjacentCell, Vector2Int.right) && _stageCells.Contains(adjacentCell) == false)
-            InitStageCells(adjacentCell);
-        if (currentCell.TryGetAdjacent(out adjacentCell, Vector2Int.up) && _stageCells.Contains(adjacentCell) == false)
-            InitStageCells(adjacentCell);
-        if (currentCell.TryGetAdjacent(out adjacentCell, Vector2Int.down) && _stageCells.Contains(adjacentCell) == false)
-            InitStageCells(adjacentCell);
-    }
-
-    private void OnCellMarked(GameCell markedCell)
-    {
-        markedCell.Marked -= OnCellMarked;
-        _stageCells.Remove(markedCell);
-
-        if (_stageCells.Count == 0)
-            StageCompeted?.Invoke(_currentStage);
+        _currentStage = new StageInfo(stage, checkpointCell, _enemyContainer.Enemies);
+        _currentStage.StageCompleted += OnStageComplete;
     }
 
     private void OnStageComplete(int stage)
     {
-        stage++;
+        StageCompeted?.Invoke(stage);
+        _currentStage.StageCompleted -= OnStageComplete;
 
+        stage++;
         if (stage < _levelNumber.CurrentLevel.KeyStagesPoint.Count)
-            InitStage(++_currentStage);
+            InitStage(stage);
         else
             AllStageCompeted?.Invoke();
     }

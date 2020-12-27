@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(MoveSystem))]
 public abstract class Enemy : CellObject
-{
-    protected EnemyContainer Container;
+{    
+    protected StageInfo CurrentStage;
     
     private MovePattern _movePattern;
     private PatternMoveSystem _patternMoveSystem;
@@ -36,9 +36,9 @@ public abstract class Enemy : CellObject
         _movePattern = movePattern;
     }
 
-    public void InitContainer(EnemyContainer container)
+    public void InitStage(StageInfo currentStage)
     {
-        Container = container;
+        CurrentStage = currentStage;
     }
 
     private void OnMoveStarted(GameCell nextCell)

@@ -9,7 +9,7 @@ public class Virus : Enemy
 
     protected override void OnStepToMarkedCell(GameCell markedCell)
     {
-        if (Container.MicrobeCount == 0)
+        if (CurrentStage.Microbes == 0)
         {
             Died?.Invoke(this);
             Destroy(gameObject);

@@ -33,6 +33,13 @@ public class Player : CellObject, IMoveable
         _playerMoveSystem.Move(CurrentCell, direction);
     }
 
+    public void Replace(GameCell cell)
+    {
+        _playerMoveSystem.ForceStop();
+        CurrentCell = cell;
+        transform.position = cell.transform.position;
+    }
+
     private void OnMarkedCellCrossed(GameCell cell)
     {
         _filler.TryFill(_tail);
