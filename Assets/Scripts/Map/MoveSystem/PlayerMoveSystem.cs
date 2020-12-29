@@ -19,15 +19,17 @@ public class PlayerMoveSystem
         _moveSystem = moveSystem;
     }
 
-    public void Move(GameCell fromCell, Vector2Int direction)
+    public bool Move(GameCell fromCell, Vector2Int direction)
     {
         if (direction == _moveSystem.Direction * -1)
-            return;
+            return false;
 
         _nextMoveDirection = direction;
 
         if (_moveSystem.IsMoving == false)
-            MoveNext(fromCell);
+            return MoveNext(fromCell);
+
+        return false;
     }
 
     public void ForceStop()
@@ -44,13 +46,13 @@ public class PlayerMoveSystem
         MoveNext(finishCell);
     }
 
-    private void MoveNext(GameCell from)
+    private bool MoveNext(GameCell from)
     {
         GameCell adjacentCell = from.TryGetAdjacent(_nextMoveDirection);
         if (adjacentCell == null)
         {
             Stopped?.Invoke(from);
-            return;
+            return false;
         }
         if (adjacentCell.IsMarked)
         {
@@ -59,5 +61,6 @@ public class PlayerMoveSystem
 
         _moveSystem.MoveEnded += OnMoveEnded;
         _moveSystem.Move(adjacentCell, _nextMoveDirection);
+        return true;
     }
 }

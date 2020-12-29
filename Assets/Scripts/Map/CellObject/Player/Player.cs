@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(MoveSystem))]
 public class Player : CellObject, IMoveable
@@ -8,6 +9,8 @@ public class Player : CellObject, IMoveable
     private PlayerMoveSystem _playerMoveSystem;
     private MapFiller _filler;
     private PlayerTail _tail;
+
+    public event UnityAction MoveStarted;
 
     private void Awake()
     {
@@ -30,7 +33,10 @@ public class Player : CellObject, IMoveable
 
     public void Move(Vector2Int direction)
     {
-        _playerMoveSystem.Move(CurrentCell, direction);
+        bool move = _playerMoveSystem.Move(CurrentCell, direction);
+
+        if (move)
+            MoveStarted?.Invoke();
     }
 
     public void Replace(GameCell cell)
