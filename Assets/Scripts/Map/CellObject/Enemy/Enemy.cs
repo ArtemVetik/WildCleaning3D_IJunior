@@ -4,18 +4,23 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(MoveSystem))]
-public abstract class Enemy : CellObject
+public abstract class Enemy : CellObject, ISpeedyObject
 {    
     protected StageInfo CurrentStage;
     
     private MovePattern _movePattern;
     private PatternMoveSystem _patternMoveSystem;
 
+    public float Speed => 2f;
+
     public abstract event UnityAction<Enemy> Died;
 
     private void OnEnable()
     {
-        _patternMoveSystem = new PatternMoveSystem(GetComponent<MoveSystem>());
+        var moveSystem = GetComponent<MoveSystem>();
+        moveSystem.Init(this);
+
+        _patternMoveSystem = new PatternMoveSystem(moveSystem);
         _patternMoveSystem.MoveStarted += OnMoveStarted;
     }
 

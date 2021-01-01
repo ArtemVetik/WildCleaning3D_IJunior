@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class PlayerMoveSystem
 {
     private MoveSystem _moveSystem;
+    private Player _player;
     private Vector2Int _nextMoveDirection;
 
     public Vector2Int CurrentDirection => _moveSystem.Direction;

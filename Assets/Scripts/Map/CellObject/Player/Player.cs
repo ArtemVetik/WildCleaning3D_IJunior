@@ -4,23 +4,36 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(MoveSystem))]
-public class Player : CellObject, IMoveable
+public class Player : CellObject, IMoveable, ISpeedyObject
 {
     private PlayerMoveSystem _playerMoveSystem;
     private MapFiller _filler;
     private PlayerTail _tail;
 
+    public PlayerData Characteristics { get; private set; }
+
+    public float Speed => Characteristics.Speed;
+
     public event UnityAction MoveStarted;
 
     private void Awake()
     {
-        _playerMoveSystem = new PlayerMoveSystem(GetComponent<MoveSystem>());
+        var moveSystem = GetComponent<MoveSystem>();
+        moveSystem.Init(this);
+
+        _playerMoveSystem = new PlayerMoveSystem(moveSystem);
         _tail = new PlayerTail();
+        Characteristics = new PlayerData();
     }
 
     public void Init(MapFiller filler)
     {
         _filler = filler;
+    }
+
+    public void ModifiedCharacteristics(PlayerData newCharacteristics)
+    {
+        Characteristics = newCharacteristics;
     }
 
     private void OnMoveEnded(GameCell finishCell)

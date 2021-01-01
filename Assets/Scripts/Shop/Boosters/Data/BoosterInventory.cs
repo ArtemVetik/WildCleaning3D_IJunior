@@ -21,12 +21,9 @@ public class BoosterInventory : ISavedObject
 
     public void Load(ISaveLoadVisiter saveLoadVisiter)
     {
-        var saved = saveLoadVisiter.Load();
+        var saved = saveLoadVisiter.Load(this);
 
-        if (saved == null)
-            _buyedBoosters = new List<BoosterData>();
-        else
-            _buyedBoosters = saved._buyedBoosters;
+        _buyedBoosters = saved._buyedBoosters;
     }
 
     public void Save(ISaveLoadVisiter saveLoadVisiter)

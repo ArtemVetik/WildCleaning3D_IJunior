@@ -10,6 +10,9 @@ public class Speedboost : Booster
 
     public override void Use()
     {
+        Player player = FindObjectOfType<Player>();
+        player.ModifiedCharacteristics(new SpeedBoostPlayer(player.Characteristics));
+
         Used?.Invoke(this);
     }
 }
