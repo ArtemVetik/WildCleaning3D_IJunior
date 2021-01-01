@@ -15,14 +15,11 @@ public class BoosterMenuSlotsList : MonoBehaviour
     private List<BoosterMenuSlot> _slots;
     private BoosterMenuSlot _currentSlot;
     private BoosterInventory _inventory;
-    private bool _applySaved;
 
     private void OnEnable()
     {
         _inventory = new BoosterInventory();
         _inventory.Load(new JsonSaveLoad());
-
-        _applySaved = false;
 
         _slots = new List<BoosterMenuSlot>();
         _currentSlot = null;
@@ -58,11 +55,6 @@ public class BoosterMenuSlotsList : MonoBehaviour
         _inventory.Save(new JsonSaveLoad());
     }
 
-    public void Apply()
-    {
-        _applySaved = true;
-    }
-
     private void OnDisable()
     {
         List<BoosterData> boosters = new List<BoosterData>();
@@ -71,21 +63,24 @@ public class BoosterMenuSlotsList : MonoBehaviour
             slot.AddButtonClicked -= OnSlotAddButtonClicked;
             slot.RemoveButtonClicked -= OnSlotRemoveButtonClicked;
 
-            if (_applySaved == false && slot.Data != null)
-                _inventory.Add(slot.Data.Value);
             if (slot.Data != null)
                 boosters.Add(slot.Data.Value);
-        }
 
-        foreach (var slot in _slots)
             Destroy(slot.gameObject);
+        }
 
         _selectPanel.SelectButtonClicked -= OnBoosterSelected;
 
         _inventory.Save(new JsonSaveLoad());
-        if (_applySaved)
-        {
-            _gameSlots.SetBoosters(boosters);
-        }
+        _gameSlots.SetBoosters(boosters);
+    }
+
+    private void OnApplicationQuit()
+    {
+        foreach (var slot in _slots)
+            if (slot.Data != null)
+                _inventory.Add(slot.Data.Value);
+
+        _inventory.Save(new JsonSaveLoad());
     }
 }
