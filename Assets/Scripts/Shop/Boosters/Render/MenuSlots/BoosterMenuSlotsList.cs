@@ -70,6 +70,7 @@ public class BoosterMenuSlotsList : MonoBehaviour
         {
             slot.AddButtonClicked -= OnSlotAddButtonClicked;
             slot.RemoveButtonClicked -= OnSlotRemoveButtonClicked;
+
             if (_applySaved == false && slot.Data != null)
                 _inventory.Add(slot.Data.Value);
             if (slot.Data != null)
@@ -81,9 +82,9 @@ public class BoosterMenuSlotsList : MonoBehaviour
 
         _selectPanel.SelectButtonClicked -= OnBoosterSelected;
 
+        _inventory.Save(new JsonSaveLoad());
         if (_applySaved)
         {
-            _inventory.Save(new JsonSaveLoad());
             _gameSlots.SetBoosters(boosters);
         }
     }

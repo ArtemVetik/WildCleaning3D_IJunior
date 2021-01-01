@@ -55,5 +55,6 @@ public abstract class Enemy : CellObject
         CurrentCell.Marked += OnStepToMarkedCell;
     }
 
+    public abstract void Die();
     protected abstract void OnStepToMarkedCell(GameCell markedCell);
 }

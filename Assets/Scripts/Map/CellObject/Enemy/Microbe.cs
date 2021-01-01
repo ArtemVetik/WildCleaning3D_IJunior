@@ -7,9 +7,14 @@ public class Microbe : Enemy
 {
     public override event UnityAction<Enemy> Died;
 
-    protected override void OnStepToMarkedCell(GameCell markedCell)
+    public override void Die()
     {
         Died?.Invoke(this);
         Destroy(gameObject);
+    }
+
+    protected override void OnStepToMarkedCell(GameCell markedCell)
+    {
+        Die();
     }
 }
