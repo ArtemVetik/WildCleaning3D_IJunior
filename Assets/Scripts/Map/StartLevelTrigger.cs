@@ -6,6 +6,7 @@ public class StartLevelTrigger : MonoBehaviour
 {
     [SerializeField] private PlayerInitializer _playerInitializer;
     [SerializeField] private UICanvas _uiCanvas;
+    [SerializeField] private GameCanvas _gameCanvas;
 
     private Player _player;
 
@@ -31,6 +32,7 @@ public class StartLevelTrigger : MonoBehaviour
     private void OnPlayerMoveStarted()
     {
         _uiCanvas.Hide();
+        _gameCanvas.Show();
 
         _player.MoveStarted -= OnPlayerMoveStarted;
         _player = null;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UICanvas : MonoBehaviour
 {
-    [SerializeField] private BoosterSlotsList _boosterSlots;
+    [SerializeField] private BoosterMenuSlotsList _boosterSlots;
 
     public void Hide()
     {

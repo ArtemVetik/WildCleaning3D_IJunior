@@ -1,17 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
-public class BoosterSlotsList : MonoBehaviour
+public class BoosterMenuSlotsList : MonoBehaviour
 {
     [SerializeField] private BoosterSelectPanel _selectPanel;
-    [SerializeField] private BoosterSlot _template;
+    [SerializeField] private BoosterGameSlots _gameSlots;
+    [SerializeField] private BoosterMenuSlot _template;
     [SerializeField] private Transform _container;
 
     public readonly int MaxCount = 3;
 
-    private List<BoosterSlot> _slots;
-    private BoosterSlot _currentSlot;
+    private List<BoosterMenuSlot> _slots;
+    private BoosterMenuSlot _currentSlot;
     private BoosterInventory _inventory;
     private bool _applySaved;
 
@@ -19,9 +21,10 @@ public class BoosterSlotsList : MonoBehaviour
     {
         _inventory = new BoosterInventory();
         _inventory.Load(new JsonSaveLoad());
+
         _applySaved = false;
 
-        _slots = new List<BoosterSlot>();
+        _slots = new List<BoosterMenuSlot>();
         _currentSlot = null;
 
         for (int i = 0; i < MaxCount; i++)
@@ -35,14 +38,14 @@ public class BoosterSlotsList : MonoBehaviour
         _selectPanel.SelectButtonClicked += OnBoosterSelected;
     }
 
-    private void OnSlotAddButtonClicked(BoosterSlot slot)
+    private void OnSlotAddButtonClicked(BoosterMenuSlot slot)
     {
         _currentSlot = slot;
         _inventory.Load(new JsonSaveLoad());
         _selectPanel.OpenPanel(_inventory.Data);
     }
 
-    private void OnSlotRemoveButtonClicked(BoosterSlot slot, BoosterData data)
+    private void OnSlotRemoveButtonClicked(BoosterMenuSlot slot, BoosterData data)
     {
         _inventory.Add(data);
         _inventory.Save(new JsonSaveLoad());
@@ -62,12 +65,15 @@ public class BoosterSlotsList : MonoBehaviour
 
     private void OnDisable()
     {
+        List<BoosterData> boosters = new List<BoosterData>();
         foreach (var slot in _slots)
         {
             slot.AddButtonClicked -= OnSlotAddButtonClicked;
             slot.RemoveButtonClicked -= OnSlotRemoveButtonClicked;
             if (_applySaved == false && slot.Data != null)
                 _inventory.Add(slot.Data.Value);
+            if (slot.Data != null)
+                boosters.Add(slot.Data.Value);
         }
 
         foreach (var slot in _slots)
@@ -76,6 +82,9 @@ public class BoosterSlotsList : MonoBehaviour
         _selectPanel.SelectButtonClicked -= OnBoosterSelected;
 
         if (_applySaved)
+        {
             _inventory.Save(new JsonSaveLoad());
+            _gameSlots.SetBoosters(boosters);
+        }
     }
 }

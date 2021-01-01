@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d628e3e6748c53748b007f98e3f43508, type: 3}
   m_Name: Antiseptic
   m_EditorClassIdentifier: 
+  _guid: 563c9038ce8fbae4385e552cfb209eb4

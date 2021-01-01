@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896d77eefef0bac48b44f11fca7b05f6, type: 3}
   m_Name: Speedboost
   m_EditorClassIdentifier: 
+  _guid: 42a80f8ce0cc1da45a6240c5bd6f7f9c

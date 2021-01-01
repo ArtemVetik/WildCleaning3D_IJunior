@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class BoosterSlot : MonoBehaviour
+public class BoosterMenuSlot : MonoBehaviour
 {
     [SerializeField] private Image _preview;
     [SerializeField] private Text _name;
@@ -13,8 +13,8 @@ public class BoosterSlot : MonoBehaviour
 
     public BoosterData? Data { get; private set; }
 
-    public event UnityAction<BoosterSlot> AddButtonClicked;
-    public event UnityAction<BoosterSlot, BoosterData> RemoveButtonClicked;
+    public event UnityAction<BoosterMenuSlot> AddButtonClicked;
+    public event UnityAction<BoosterMenuSlot, BoosterData> RemoveButtonClicked;
 
     private void OnEnable()
     {
