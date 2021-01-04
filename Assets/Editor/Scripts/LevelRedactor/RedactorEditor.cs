@@ -98,20 +98,37 @@ public class RedactorEditor : Editor
         SetMapSize();
 
         EditorGUILayout.HelpBox("ЛКМ->добавить объект\nShift + ЛКМ -> удалить объект", MessageType.Info);
+
         ShowCentralLabel("Выбор текущего игрового объекта", 16);
         EditorGUILayout.Space(10);
-        ShowObjectButtons(70);
+        ShowObjectButtons(100);
         EditorGUILayout.Space(10);
 
-        var currentEditorObject = serializedObject.FindProperty("EditorObjectss").GetArrayElementAtIndex(_currentObjectIndex);
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        if (GUILayout.Button(new GUIContent("+", "Добавить"), GUILayout.Width(50)))
+            _levelRedactor.EditorObjects.Add(new EditorObjectData());
+        if (GUILayout.Button(new GUIContent("-", "Удалить"), GUILayout.Width(50)))
+        {
+            if (_levelRedactor.EditorObjects.Count > 1)
+            {
+                _levelRedactor.EditorObjects.RemoveAt(_currentObjectIndex);
+                _currentObjectIndex = 0;
+            }
+        }
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.Space(10);
+
+        var currentEditorObject = serializedObject.FindProperty("EditorObjects").GetArrayElementAtIndex(_currentObjectIndex);
         ShowPropertyRelative(currentEditorObject, "_name");
         ShowPropertyRelative(currentEditorObject, "_levelObject");
         ShowPropertyRelative(currentEditorObject, "_objectParameter");
 
-        if (_levelRedactor.EditorObjectss[_currentObjectIndex].LevelObject == null)
+        if (_levelRedactor.EditorObjects[_currentObjectIndex].LevelObject == null)
             EditorGUILayout.HelpBox("Значение Level Object не должно быть пустым", MessageType.Error);
         else
-            ShowGameObjectPreview(_levelRedactor.EditorObjectss[_currentObjectIndex].LevelObject.Prefab.gameObject);
+            ShowGameObjectPreview(_levelRedactor.EditorObjects[_currentObjectIndex].LevelObject.Prefab.gameObject);
 
         EditorGUILayout.Space(10);
 
@@ -128,7 +145,7 @@ public class RedactorEditor : Editor
         var vectorFieldStyle = new GUIStyle(GUI.skin.label);
         for (int pointIndex = 0; pointIndex < _levelRedactor.CurrentLevelData.KeyStagesPoint.Count; pointIndex++)
         {
-            string labelText = (pointIndex+1).ToString() + " стадия";
+            string labelText = (pointIndex + 1).ToString() + " стадия";
             if (_levelRedactor.CurrentLevelData.Map.Contains(_levelRedactor.CurrentLevelData.KeyStagesPoint[pointIndex]))
                 vectorFieldStyle.normal.textColor = Color.black;
             else
@@ -181,12 +198,12 @@ public class RedactorEditor : Editor
     {
         Color savedColor = GUI.backgroundColor;
 
-        if (_levelRedactor.EditorObjectss[_currentObjectIndex].Equals(data))
+        if (_levelRedactor.EditorObjects[_currentObjectIndex].Equals(data))
             GUI.backgroundColor = Color.green;
 
         if (GUILayout.Button(data.Name, GUILayout.Width(width)))
         {
-            _currentObjectIndex = _levelRedactor.EditorObjectss.IndexOf(data);
+            _currentObjectIndex = _levelRedactor.EditorObjects.IndexOf(data);
             _levelRedactor.SetCurrentObject(data);
             _editorMode = EditorMode.PlaceObject;
         }
@@ -254,8 +271,17 @@ public class RedactorEditor : Editor
         EditorGUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
 
-        foreach (var item in _levelRedactor.EditorObjectss)
-            ShowLevelObjectButton(item, width);
+        for (int i = 0; i < _levelRedactor.EditorObjects.Count; i++)
+        {
+            ShowLevelObjectButton(_levelRedactor.EditorObjects[i], width);
+            if ((i + 1) % 3 == 0)
+            {
+                GUILayout.FlexibleSpace();
+                EditorGUILayout.EndHorizontal();
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.FlexibleSpace();
+            }
+        }
 
         GUILayout.FlexibleSpace();
         EditorGUILayout.EndHorizontal();

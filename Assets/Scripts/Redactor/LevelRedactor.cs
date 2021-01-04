@@ -18,18 +18,8 @@ namespace CustomRedactor
     {
         [SerializeField] private LevelDataBase _levelDateBase;
         [SerializeField] private EditorObjectData _currentObject;
-        
-        [SerializeField] public List<EditorObjectData> EditorObjectss = new List<EditorObjectData>()
-        {
-            new EditorObjectData("Пол"),
-            new EditorObjectData("Вирус"),
-            new EditorObjectData("Микроб"),
-            new EditorObjectData("Игрок"),
 
-            new EditorObjectData("Антисептик"),
-            new EditorObjectData("Шарик с водой"),
-            new EditorObjectData("Спидбуст"),
-        };
+        [SerializeField] public List<EditorObjectData> EditorObjects = new List<EditorObjectData>();
 
         [HideInInspector] public int CurrentLevelIndex;
         [HideInInspector] public EditType EditType;
@@ -120,17 +110,17 @@ namespace CustomRedactor
                 else if (levelObject is Antiseptic)
                 {
                     Gizmos.color = Color.cyan;
-                    Gizmos.DrawCube(cell.ToVector3(0.4f), Vector3.one * 0.4f);
+                    Gizmos.DrawSphere(cell.ToVector3(0.4f), 0.25f);
                 }
                 else if (levelObject is Speedboost)
                 {
                     Gizmos.color = Color.magenta;
-                    Gizmos.DrawCube(cell.ToVector3(0.4f), Vector3.one * 0.4f);
+                    Gizmos.DrawSphere(cell.ToVector3(0.4f), 0.25f);
                 }
                 else if (levelObject is WatersBall)
                 {
                     Gizmos.color = Color.blue;
-                    Gizmos.DrawCube(cell.ToVector3(0.4f), Vector3.one * 0.4f);
+                    Gizmos.DrawSphere(cell.ToVector3(0.4f), 0.25f);
                 }
             }
         }
