@@ -658,11 +658,11 @@ MonoBehaviour:
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
+      - _levelObject: {fileID: 11400000, guid: 5d1816637de42fb4395f25fe6121e681, type: 2}
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
-      - _levelObject: {fileID: 0}
+      - _levelObject: {fileID: 11400000, guid: 5d1816637de42fb4395f25fe6121e681, type: 2}
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}

@@ -103,15 +103,15 @@ public class RedactorEditor : Editor
         ShowObjectButtons(70);
         EditorGUILayout.Space(10);
 
-        var currentEditorObject = serializedObject.FindProperty("EditorObjects").GetArrayElementAtIndex(_currentObjectIndex);
+        var currentEditorObject = serializedObject.FindProperty("EditorObjectss").GetArrayElementAtIndex(_currentObjectIndex);
         ShowPropertyRelative(currentEditorObject, "_name");
         ShowPropertyRelative(currentEditorObject, "_levelObject");
         ShowPropertyRelative(currentEditorObject, "_objectParameter");
 
-        if (_levelRedactor.EditorObjects[_currentObjectIndex].LevelObject == null)
+        if (_levelRedactor.EditorObjectss[_currentObjectIndex].LevelObject == null)
             EditorGUILayout.HelpBox("Значение Level Object не должно быть пустым", MessageType.Error);
         else
-            ShowGameObjectPreview(_levelRedactor.EditorObjects[_currentObjectIndex].LevelObject.Prefab.gameObject);
+            ShowGameObjectPreview(_levelRedactor.EditorObjectss[_currentObjectIndex].LevelObject.Prefab.gameObject);
 
         EditorGUILayout.Space(10);
 
@@ -181,12 +181,12 @@ public class RedactorEditor : Editor
     {
         Color savedColor = GUI.backgroundColor;
 
-        if (_levelRedactor.EditorObjects[_currentObjectIndex].Equals(data))
+        if (_levelRedactor.EditorObjectss[_currentObjectIndex].Equals(data))
             GUI.backgroundColor = Color.green;
 
         if (GUILayout.Button(data.Name, GUILayout.Width(width)))
         {
-            _currentObjectIndex = _levelRedactor.EditorObjects.IndexOf(data);
+            _currentObjectIndex = _levelRedactor.EditorObjectss.IndexOf(data);
             _levelRedactor.SetCurrentObject(data);
             _editorMode = EditorMode.PlaceObject;
         }
@@ -254,7 +254,7 @@ public class RedactorEditor : Editor
         EditorGUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
 
-        foreach (var item in _levelRedactor.EditorObjects)
+        foreach (var item in _levelRedactor.EditorObjectss)
             ShowLevelObjectButton(item, width);
 
         GUILayout.FlexibleSpace();
