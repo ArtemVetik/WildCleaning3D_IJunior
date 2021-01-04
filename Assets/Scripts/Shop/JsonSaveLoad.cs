@@ -5,15 +5,13 @@ public class JsonSaveLoad : ISaveLoadVisiter
     private const string SkinSavedKey = "BoosterInventory";
     private const string PlayerDataKey = "PlayerData";
 
-    public BoosterInventory Load(BoosterInventory skinSaved)
-    {
-        if (PlayerPrefs.HasKey(SkinSavedKey))
-        {
-            string saveJson = PlayerPrefs.GetString(SkinSavedKey);
-            return JsonUtility.FromJson<BoosterInventory>(saveJson);
-        }
+    #region PlayerData
 
-        return new BoosterInventory();
+    public void Save(PlayerData playerData)
+    {
+        string saveJson = JsonUtility.ToJson(playerData);
+        PlayerPrefs.SetString(SkinSavedKey, saveJson);
+        PlayerPrefs.Save();
     }
 
     public PlayerData Load(PlayerData playerData)
@@ -27,6 +25,9 @@ public class JsonSaveLoad : ISaveLoadVisiter
         return new PlayerData();
     }
 
+    #endregion
+
+    #region BoosterInventory
     public void Save(BoosterInventory skinSaved)
     {
         string saveJson = JsonUtility.ToJson(skinSaved);
@@ -34,10 +35,15 @@ public class JsonSaveLoad : ISaveLoadVisiter
         PlayerPrefs.Save();
     }
 
-    public void Save(PlayerData playerData)
+    public BoosterInventory Load(BoosterInventory skinSaved)
     {
-        string saveJson = JsonUtility.ToJson(playerData);
-        PlayerPrefs.SetString(SkinSavedKey, saveJson);
-        PlayerPrefs.Save();
+        if (PlayerPrefs.HasKey(SkinSavedKey))
+        {
+            string saveJson = PlayerPrefs.GetString(SkinSavedKey);
+            return JsonUtility.FromJson<BoosterInventory>(saveJson);
+        }
+
+        return new BoosterInventory();
     }
+    #endregion
 }

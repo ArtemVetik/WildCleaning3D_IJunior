@@ -19,7 +19,6 @@ public class BoosterMenuSlotsList : MonoBehaviour
     private void OnEnable()
     {
         _inventory = new BoosterInventory();
-        _inventory.Load(new JsonSaveLoad());
 
         _slots = new List<BoosterMenuSlot>();
         _currentSlot = null;
@@ -44,6 +43,7 @@ public class BoosterMenuSlotsList : MonoBehaviour
 
     private void OnSlotRemoveButtonClicked(BoosterMenuSlot slot, BoosterData data)
     {
+        _inventory.Load(new JsonSaveLoad());
         _inventory.Add(data);
         _inventory.Save(new JsonSaveLoad());
     }
@@ -71,12 +71,12 @@ public class BoosterMenuSlotsList : MonoBehaviour
 
         _selectPanel.SelectButtonClicked -= OnBoosterSelected;
 
-        _inventory.Save(new JsonSaveLoad());
         _gameSlots.SetBoosters(boosters);
     }
 
     private void OnApplicationQuit()
     {
+        _inventory.Load(new JsonSaveLoad());
         foreach (var slot in _slots)
             if (slot.Data != null)
                 _inventory.Add(slot.Data.Value);

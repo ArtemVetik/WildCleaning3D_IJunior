@@ -658,9 +658,9 @@ MonoBehaviour:
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
-      - _levelObject: {fileID: 11400000, guid: 6f8599257500fc74fb3746b5bcb28484, type: 2}
+      - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
-      - _levelObject: {fileID: 11400000, guid: f752f8461ef95e34a8a612353b2040e7, type: 2}
+      - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 11400000, guid: 5d1816637de42fb4395f25fe6121e681, type: 2}
         _parameters: {fileID: 0}

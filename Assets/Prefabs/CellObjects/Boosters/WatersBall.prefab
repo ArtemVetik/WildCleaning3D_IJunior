@@ -108,3 +108,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a4a698e06db104ea30dd82a9d476a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boostersDataBase: {fileID: 11400000, guid: 75f3341af809ff74cbf08a61a313c18d, type: 2}
+  _booster: {fileID: 11400000, guid: 48b911eebd7908740ab6c3d5769a7a99, type: 2}
