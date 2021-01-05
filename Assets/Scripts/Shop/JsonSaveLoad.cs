@@ -3,28 +3,25 @@
 public class JsonSaveLoad : ISaveLoadVisiter
 {
     private const string SkinSavedKey = "BoosterInventory";
-    private const string PlayerDataKey = "PlayerData";
 
     #region PlayerData
-
     public void Save(PlayerData playerData)
     {
         string saveJson = JsonUtility.ToJson(playerData);
-        PlayerPrefs.SetString(SkinSavedKey, saveJson);
+        PlayerPrefs.SetString(playerData.ID, saveJson);
         PlayerPrefs.Save();
     }
 
     public PlayerData Load(PlayerData playerData)
     {
-        if (PlayerPrefs.HasKey(PlayerDataKey))
+        if (PlayerPrefs.HasKey(playerData.ID))
         {
             string saveJson = PlayerPrefs.GetString(SkinSavedKey);
             return JsonUtility.FromJson<PlayerData>(saveJson);
         }
 
-        return new PlayerData();
+        return null;
     }
-
     #endregion
 
     #region BoosterInventory

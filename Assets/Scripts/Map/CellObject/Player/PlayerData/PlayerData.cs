@@ -1,22 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public class PlayerData : IPlayerData, ISavedObject
 {
     [SerializeField] private float _speed;
+    [SerializeField, ReadOnly] private string _id;
 
-    public PlayerData()
-    {
-        _speed = 2f;
-    }
+    public string ID => _id;
 
     public virtual float Speed => _speed;
 
     public void Load(ISaveLoadVisiter saveLoadVisiter)
     {
-        saveLoadVisiter.Load(this);
+        PlayerData savedData = saveLoadVisiter.Load(this);
+        if (savedData == null)
+            return;
+
+        _speed = savedData._speed;
     }
 
     public void Save(ISaveLoadVisiter saveLoadVisiter)

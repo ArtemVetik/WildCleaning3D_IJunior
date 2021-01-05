@@ -6,12 +6,13 @@ using UnityEngine.Events;
 [RequireComponent(typeof(MoveSystem))]
 public class Player : CellObject, IMoveable, ISpeedyObject
 {
+    [SerializeField] private PlayerCharacteristics _defaultCharacteristics;
+
     private PlayerMoveSystem _playerMoveSystem;
     private MapFiller _filler;
     private PlayerTail _tail;
 
     public PlayerData Characteristics { get; private set; }
-
     public float Speed => Characteristics.Speed;
 
     public event UnityAction MoveStarted;
@@ -23,7 +24,9 @@ public class Player : CellObject, IMoveable, ISpeedyObject
 
         _playerMoveSystem = new PlayerMoveSystem(moveSystem);
         _tail = new PlayerTail();
-        Characteristics = new PlayerData();
+
+        Characteristics = _defaultCharacteristics.Characteristic;
+        Characteristics.Load(new JsonSaveLoad());
     }
 
     public void Init(MapFiller filler)
