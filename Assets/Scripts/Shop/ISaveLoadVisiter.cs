@@ -5,4 +5,7 @@
 
     void Save(PlayerData playerData);
     PlayerData Load(PlayerData playerData);
+
+    void Save(CleanerInventory cleanerData);
+    CleanerInventory Load(CleanerInventory cleanerData);
 }

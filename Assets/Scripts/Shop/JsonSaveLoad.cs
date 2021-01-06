@@ -2,7 +2,8 @@
 
 public class JsonSaveLoad : ISaveLoadVisiter
 {
-    private const string SkinSavedKey = "BoosterInventory";
+    private const string BoosterInventoryKey = "BoosterInventory";
+    private const string CleanerInventoryKey = "CleanerInventory";
 
     #region PlayerData
     public void Save(PlayerData playerData)
@@ -16,7 +17,7 @@ public class JsonSaveLoad : ISaveLoadVisiter
     {
         if (PlayerPrefs.HasKey(playerData.ID))
         {
-            string saveJson = PlayerPrefs.GetString(SkinSavedKey);
+            string saveJson = PlayerPrefs.GetString(playerData.ID);
             return JsonUtility.FromJson<PlayerData>(saveJson);
         }
 
@@ -28,19 +29,41 @@ public class JsonSaveLoad : ISaveLoadVisiter
     public void Save(BoosterInventory skinSaved)
     {
         string saveJson = JsonUtility.ToJson(skinSaved);
-        PlayerPrefs.SetString(SkinSavedKey, saveJson);
+        PlayerPrefs.SetString(BoosterInventoryKey, saveJson);
         PlayerPrefs.Save();
     }
 
     public BoosterInventory Load(BoosterInventory skinSaved)
     {
-        if (PlayerPrefs.HasKey(SkinSavedKey))
+        if (PlayerPrefs.HasKey(BoosterInventoryKey))
         {
-            string saveJson = PlayerPrefs.GetString(SkinSavedKey);
+            string saveJson = PlayerPrefs.GetString(BoosterInventoryKey);
             return JsonUtility.FromJson<BoosterInventory>(saveJson);
         }
 
         return new BoosterInventory();
     }
+
+    #endregion
+
+    #region CleanerInventory
+    public void Save(CleanerInventory cleanerData)
+    {
+        string saveJson = JsonUtility.ToJson(cleanerData);
+        PlayerPrefs.SetString(CleanerInventoryKey, saveJson);
+        PlayerPrefs.Save();
+    }
+
+    public CleanerInventory Load(CleanerInventory cleanerData)
+    {
+        if (PlayerPrefs.HasKey(CleanerInventoryKey))
+        {
+            string saveJson = PlayerPrefs.GetString(CleanerInventoryKey);
+            return JsonUtility.FromJson<CleanerInventory>(saveJson);
+        }
+
+        return new CleanerInventory();
+    }
+
     #endregion
 }
