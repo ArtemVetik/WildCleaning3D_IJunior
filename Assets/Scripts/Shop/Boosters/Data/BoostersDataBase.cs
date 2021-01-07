@@ -8,4 +8,14 @@ public class BoostersDataBase : ScriptableObject
     [SerializeField] private List<BoosterData> _dataBase = new List<BoosterData>();
 
     public IEnumerable<BoosterData> Data => _dataBase;
+
+    public void Add(BoosterData data)
+    {
+        _dataBase.Add(data);
+    }
+
+    public void RemoveAt(int index)
+    {
+        _dataBase.RemoveAt(index);
+    }
 }

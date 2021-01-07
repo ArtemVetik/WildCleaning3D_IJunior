@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d628e3e6748c53748b007f98e3f43508, type: 3}
-  m_Name: Antiseptic
+  m_Script: {fileID: 11500000, guid: e0678c3648ffa774795a9441d1049b5e, type: 3}
+  m_Name: Cleaner2
   m_EditorClassIdentifier: 
-  _guid: 5c53ed08-ad2d-40ed-94fc-8b1304f7397a
-  instanceID: 14954
+  _cleaner: {fileID: 7805305602378251141, guid: 823c1c64199be684eb397496dc71491a, type: 3}

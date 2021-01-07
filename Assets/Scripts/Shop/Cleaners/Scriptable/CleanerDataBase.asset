@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574873f2bd301bd429fe15d7f73a6390, type: 3}
+  m_Name: CleanerDataBase
+  m_EditorClassIdentifier: 
+  _defaultCleanerIndex: 0
+  _cleaners:
+  - _guid: 5ee543ea-956d-408f-89a2-b0cffac15057
+    _preview: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+    _name: Player 1
+    _description: 111111111111111111111
+    _prefab: {fileID: 11400000, guid: b8f03b39d96224742b139ee7e165c825, type: 2}
+  - _guid: f1b750d2-b24c-4441-a4b1-6b207cc53fba
+    _preview: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+    _name: Player 2
+    _description: 2222222222222222222222
+    _prefab: {fileID: 11400000, guid: 10e50554a1e330f49a5bdb825fc7ee21, type: 2}
+  - _guid: 8b5d9cb1-a903-44b3-a899-d3d114cb0d75
+    _preview: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+    _name: Player 3
+    _description: 333333333333333333333333
+    _prefab: {fileID: 11400000, guid: 934189966108f3c4ba3ec40e19a4ce3b, type: 2}

@@ -1,8 +1,10 @@
-﻿using System;
-using UnityEditor;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class BaseScriptableObject : ScriptableObject
+[Serializable]
+public class GUIDData
 {
     [ObjectId]
     [SerializeField]

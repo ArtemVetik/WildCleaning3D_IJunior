@@ -64,7 +64,7 @@ public class BoosterMenuSlotsList : MonoBehaviour
             slot.RemoveButtonClicked -= OnSlotRemoveButtonClicked;
 
             if (slot.Data != null)
-                boosters.Add(slot.Data.Value);
+                boosters.Add(slot.Data);
 
             Destroy(slot.gameObject);
         }
@@ -79,7 +79,7 @@ public class BoosterMenuSlotsList : MonoBehaviour
         _inventory.Load(new JsonSaveLoad());
         foreach (var slot in _slots)
             if (slot.Data != null)
-                _inventory.Add(slot.Data.Value);
+                _inventory.Add(slot.Data);
 
         _inventory.Save(new JsonSaveLoad());
     }

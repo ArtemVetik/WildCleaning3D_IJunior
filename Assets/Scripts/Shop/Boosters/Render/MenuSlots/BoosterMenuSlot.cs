@@ -11,7 +11,7 @@ public class BoosterMenuSlot : MonoBehaviour
     [SerializeField] private Button _addButton;
     [SerializeField] private Button _removeButton;
 
-    public BoosterData? Data { get; private set; }
+    public BoosterData Data { get; private set; }
 
     public event UnityAction<BoosterMenuSlot> AddButtonClicked;
     public event UnityAction<BoosterMenuSlot, BoosterData> RemoveButtonClicked;
@@ -51,7 +51,7 @@ public class BoosterMenuSlot : MonoBehaviour
         if (Data == null)
             return;
 
-        RemoveButtonClicked?.Invoke(this, Data.Value);
+        RemoveButtonClicked?.Invoke(this, Data);
 
         Data = null;
         SetDefaultView();

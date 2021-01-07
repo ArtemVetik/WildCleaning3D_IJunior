@@ -13,7 +13,6 @@ public class WatersBall : Booster
 
     public override event UnityAction<Booster> Used;
 
-
     public override void Use()
     {
         if (_instSelector)
