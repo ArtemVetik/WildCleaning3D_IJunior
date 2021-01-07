@@ -1,29 +1,38 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public class BoosterInventory : ISavedObject
 {
-    [SerializeField] private List<BoosterData> _buyedBoosters = new List<BoosterData>();
+    [SerializeField] private List<string> _buyedGUID = new List<string>();
 
-    public IEnumerable<BoosterData> Data => _buyedBoosters;
+    private BoostersDataBase _dataBase;
+
+    public IEnumerable<BoosterData> Data => from guid in _buyedGUID
+                                            select _dataBase.Data.First((data) => data.GUID == guid);
+
+    public BoosterInventory(BoostersDataBase dataBase)
+    {
+        _dataBase = dataBase;
+    }
 
     public void Add(BoosterData data)
     {
-        _buyedBoosters.Add(data);
+        _buyedGUID.Add(data.GUID);
     }
 
     public bool Remove(BoosterData data)
     {
-        return _buyedBoosters.Remove(data);
+        return _buyedGUID.Remove(data.GUID);
     }
 
     public void Load(ISaveLoadVisiter saveLoadVisiter)
     {
         var saved = saveLoadVisiter.Load(this);
 
-        _buyedBoosters = saved._buyedBoosters;
+        _buyedGUID = saved._buyedGUID;
     }
 
     public void Save(ISaveLoadVisiter saveLoadVisiter)

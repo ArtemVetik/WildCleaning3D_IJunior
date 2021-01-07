@@ -9,7 +9,7 @@ public class AntisepticObject : BoosterObject
         if (cellObject is Player == false)
             return;
 
-        BoosterInventory inventory = new BoosterInventory();
+        BoosterInventory inventory = new BoosterInventory(BoostersDataBase);
         inventory.Load(new JsonSaveLoad());
 
         foreach (var data in BoostersDataBase.Data)

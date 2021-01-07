@@ -29,8 +29,6 @@ public class JsonSaveLoad : ISaveLoadVisiter
     public void Save(BoosterInventory skinSaved)
     {
         string saveJson = JsonUtility.ToJson(skinSaved, true);
-        Debug.Log("SAVE: " + saveJson);
-
         PlayerPrefs.SetString(BoosterInventoryKey, saveJson);
         PlayerPrefs.Save();
     }
@@ -43,7 +41,7 @@ public class JsonSaveLoad : ISaveLoadVisiter
             return JsonUtility.FromJson<BoosterInventory>(saveJson);
         }
 
-        return new BoosterInventory();
+        return skinSaved;
     }
 
     #endregion
@@ -52,7 +50,6 @@ public class JsonSaveLoad : ISaveLoadVisiter
     public void Save(CleanerInventory cleanerData)
     {
         string saveJson = JsonUtility.ToJson(cleanerData, true);
-        Debug.Log("SAVE: " + saveJson);
         PlayerPrefs.SetString(CleanerInventoryKey, saveJson);
         PlayerPrefs.Save();
     }
@@ -65,7 +62,7 @@ public class JsonSaveLoad : ISaveLoadVisiter
             return JsonUtility.FromJson<CleanerInventory>(saveJson);
         }
 
-        return new CleanerInventory();
+        return cleanerData;
     }
 
     #endregion

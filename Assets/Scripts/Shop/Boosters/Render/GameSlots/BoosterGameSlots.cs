@@ -6,16 +6,25 @@ public class BoosterGameSlots : MonoBehaviour
 {
     [SerializeField] private BoosterGameSlotsListView _gameSlots;
 
+    private IEnumerable<BoosterData> _boosters;
     private IEnumerable<BoosterGameSlotPresenter> _presenters;
     private BoosterGameSlotPresenter _currentUse;
 
     public void SetBoosters(IEnumerable<BoosterData> boosters)
     {
-        _presenters = _gameSlots.Render(boosters);
-        foreach (var presenter in _presenters)
+        _boosters = boosters;
+    }
+
+    private void OnEnable()
+    {
+        if (_boosters != null)
         {
-            presenter.UseButtonClicked += OnUseButtonClicked;
-            presenter.Data.Booster.Used += OnBoosterUsed;
+            _presenters = _gameSlots.Render(_boosters);
+            foreach (var presenter in _presenters)
+            {
+                presenter.UseButtonClicked += OnUseButtonClicked;
+                presenter.Data.Booster.Used += OnBoosterUsed;
+            }
         }
     }
 

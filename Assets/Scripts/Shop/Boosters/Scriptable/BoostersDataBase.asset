@@ -28,7 +28,7 @@ MonoBehaviour:
       \u0432\u0441\u0435 \u043A\u043B\u0435\u0442\u043A\u0438 \u0432 \u0440\u0430\u0434\u0438\u0443\u0441\u0435
       N"
     _booster: {fileID: 11400000, guid: 48b911eebd7908740ab6c3d5769a7a99, type: 2}
-  - _guid: deda5c3d-6f17-47dc-8e7d-302859571f0a
+  - _guid: de8ea5f7-eac0-4ca0-a29f-0be6cd2aac87
     _preview: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     _name: "\u0410\u043D\u0442\u0438\u0441\u0435\u043F\u0442\u0438\u043A"
     _description: "\u041F\u043E\u0441\u043B\u0435 \u0430\u043A\u0442\u0438\u0432\u0430\u0446\u0438\u0438

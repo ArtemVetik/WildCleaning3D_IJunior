@@ -12,7 +12,7 @@ public class BoosterShop : MonoBehaviour
 
     private void OnEnable()
     {
-        _inventory = new BoosterInventory();
+        _inventory = new BoosterInventory(_boosterDataBase);
         _inventory.Load(new JsonSaveLoad());
 
         _boosterPresenters = _boostersListView.Render(_boosterDataBase.Data);

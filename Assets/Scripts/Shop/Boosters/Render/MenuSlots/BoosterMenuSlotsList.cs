@@ -5,6 +5,7 @@ using System.Linq;
 
 public class BoosterMenuSlotsList : MonoBehaviour
 {
+    [SerializeField] private BoostersDataBase _dataBase;
     [SerializeField] private BoosterSelectPanel _selectPanel;
     [SerializeField] private BoosterGameSlots _gameSlots;
     [SerializeField] private BoosterMenuSlot _template;
@@ -18,7 +19,7 @@ public class BoosterMenuSlotsList : MonoBehaviour
 
     private void OnEnable()
     {
-        _inventory = new BoosterInventory();
+        _inventory = new BoosterInventory(_dataBase);
 
         _slots = new List<BoosterMenuSlot>();
         _currentSlot = null;

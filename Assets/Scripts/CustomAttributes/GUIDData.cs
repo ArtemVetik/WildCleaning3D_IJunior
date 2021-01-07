@@ -6,9 +6,14 @@ using UnityEngine;
 [Serializable]
 public class GUIDData
 {
-    [ObjectId]
+    [ReadOnly]
     [SerializeField]
     private string _guid;
 
     public string GUID => _guid;
+
+    public GUIDData()
+    {
+        _guid = Guid.NewGuid().ToString();
+    }
 }

@@ -12,7 +12,7 @@ public class CleanerShop : MonoBehaviour
 
     private void OnEnable()
     {
-        _inventory = new CleanerInventory();
+        _inventory = new CleanerInventory(_dataBase);
         _inventory.Load(new JsonSaveLoad());
 
         if (_inventory.Contains(_dataBase.DefaultData) == false)

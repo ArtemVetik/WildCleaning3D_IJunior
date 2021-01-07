@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoosterInventoryRender : MonoBehaviour
 {
+    [SerializeField] private BoostersDataBase _dataBase;
     [SerializeField] private BoosterInventoryListView _boosterListView;
 
     private BoosterInventory _inventory;
@@ -11,7 +12,7 @@ public class BoosterInventoryRender : MonoBehaviour
 
     private void OnEnable()
     {
-        _inventory = new BoosterInventory();
+        _inventory = new BoosterInventory(_dataBase);
         _inventory.Load(new JsonSaveLoad());
 
         var groupsData = GroupBoosters(_inventory.Data);
