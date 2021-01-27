@@ -11,8 +11,9 @@ public class CameraFolowing : MonoBehaviour
     [SerializeField] private PlayerInitializer _playerInitializer;
 
 
-    private Transform _player;
+    private Player _player;
     private Vector3 _cameraShift;
+    private Vector3 _playerDirection;
 
     private void OnEnable()
     {
@@ -26,10 +27,10 @@ public class CameraFolowing : MonoBehaviour
 
     private void OnPlayerInitialize(Player player)
     {
-        _player = player.transform;
+        _player = player;
         _cameraShift = CalculateCameraShift();
 
-        transform.position = _player.position + _cameraShift;
+        transform.position = _player.transform.position + _cameraShift;
         transform.eulerAngles = CalculateCameraEulerAngles();
     }
 
@@ -38,7 +39,11 @@ public class CameraFolowing : MonoBehaviour
         if (_player == null)
             return;
 
-        transform.position = Vector3.Lerp(transform.position, _player.position + _cameraShift, _speed * Time.deltaTime);
+        Vector3 nextPlayerDirection = new Vector3(_player.Direction.x, 0, _player.Direction.y) * 2.5f;
+        _playerDirection = Vector3.Lerp(_playerDirection, nextPlayerDirection, _speed * Time.deltaTime);
+
+        Vector3 targetPosition = _player.transform.position + _cameraShift + _playerDirection;
+        transform.position = Vector3.Lerp(transform.position, targetPosition, _speed * Time.deltaTime);
     }
 
     private Vector3 CalculateCameraShift()

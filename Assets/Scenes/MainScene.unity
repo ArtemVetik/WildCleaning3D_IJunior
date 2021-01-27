@@ -750,9 +750,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelDateBase: {fileID: 11400000, guid: 6dc3acf16df26ae44918668e40433850, type: 2}
   _currentObject:
-    _name: "\u041C\u0438\u043A\u0440\u043E\u0431"
-    _levelObject: {fileID: 11400000, guid: f496fc44d4bf12f44a304135ee6b5b09, type: 2}
-    _objectParameter: {fileID: 11400000, guid: e1d9c8a57a7a62745a1a425b44892558, type: 2}
+    _name: "\u0412\u0438\u0440\u0443\u0441"
+    _levelObject: {fileID: 11400000, guid: 2df3c9b9b80530243b7d26e76908da45, type: 2}
+    _objectParameter: {fileID: 0}
   EditorObjects:
   - _name: "\u041F\u043E\u043B"
     _levelObject: {fileID: 11400000, guid: 5be41b8d7833aa24184309ee96bec5a2, type: 2}
@@ -3277,7 +3277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aed93bb5be1143479a145ee2648d89d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 3
   _yAngle: 0
   _topDownAngle: 50
   _distanceToPlayer: 15
