@@ -2,24 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MeshRenderer))]
 public class CellMarker : MonoBehaviour
 {
-    private Material _material;
-    private Color _startColor;
+    [SerializeField] private Material _cleanMaterial;
+    [SerializeField] private Material _dirtyMaterial;
+
+    private MeshRenderer _meshRenderer;
 
     private void Awake()
     {
-        _material = GetComponent<Renderer>().material;
-        _startColor = _material.color;
+        _meshRenderer = GetComponent<MeshRenderer>();
+    }
+
+    private void Start()
+    {
+        _meshRenderer.material = _dirtyMaterial;
     }
 
     public void Mark()
     {
-        _material.color = Color.white;
+        _meshRenderer.material = _cleanMaterial;
     }
 
     public void Unmark()
     {
-        _material.color = _startColor;
+        _meshRenderer.material = _dirtyMaterial;
     }
 }

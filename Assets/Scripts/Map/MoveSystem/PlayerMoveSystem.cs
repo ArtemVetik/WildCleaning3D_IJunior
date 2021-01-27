@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class PlayerMoveSystem
 {
-    private MoveSystem _moveSystem;
+    private PlaneMoveSystem _moveSystem;
     private Player _player;
     private Vector2Int _nextMoveDirection;
 
@@ -15,7 +15,7 @@ public class PlayerMoveSystem
     public event UnityAction<GameCell> Stopped;
     public event UnityAction<GameCell> MarkedCellCrossed;
 
-    public PlayerMoveSystem(MoveSystem moveSystem)
+    public PlayerMoveSystem(PlaneMoveSystem moveSystem)
     {
         _moveSystem = moveSystem;
     }

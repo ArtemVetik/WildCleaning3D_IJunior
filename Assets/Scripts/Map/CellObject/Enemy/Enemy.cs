@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(MoveSystem))]
+[RequireComponent(typeof(PlaneMoveSystem))]
 public abstract class Enemy : CellObject, ISpeedyObject
 {    
     protected StageInfo CurrentStage;
@@ -17,7 +17,7 @@ public abstract class Enemy : CellObject, ISpeedyObject
 
     private void OnEnable()
     {
-        var moveSystem = GetComponent<MoveSystem>();
+        var moveSystem = GetComponent<PlaneMoveSystem>();
         moveSystem.Init(this);
 
         _patternMoveSystem = new PatternMoveSystem(moveSystem);

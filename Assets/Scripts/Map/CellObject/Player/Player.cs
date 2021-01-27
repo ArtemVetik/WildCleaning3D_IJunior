@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(MoveSystem))]
+[RequireComponent(typeof(PlaneMoveSystem))]
 public class Player : CellObject, IMoveable, ISpeedyObject
 {
     [SerializeField] private PlayerCharacteristics _defaultCharacteristics;
@@ -19,7 +19,7 @@ public class Player : CellObject, IMoveable, ISpeedyObject
 
     private void Awake()
     {
-        var moveSystem = GetComponent<MoveSystem>();
+        var moveSystem = GetComponent<PlaneMoveSystem>();
         moveSystem.Init(this);
 
         _playerMoveSystem = new PlayerMoveSystem(moveSystem);

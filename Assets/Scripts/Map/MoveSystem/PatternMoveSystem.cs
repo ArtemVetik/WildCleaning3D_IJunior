@@ -5,13 +5,13 @@ using UnityEngine.Events;
 
 public class PatternMoveSystem 
 {
-	private MoveSystem _moveSystem;
+	private PlaneMoveSystem _moveSystem;
 	private MovePattern _pattern;
 	private int _patternIndex;
 
 	public event UnityAction<GameCell> MoveStarted;
 
-	public PatternMoveSystem(MoveSystem moveSystem)
+	public PatternMoveSystem(PlaneMoveSystem moveSystem)
 	{
 		_moveSystem = moveSystem;
 	}
