@@ -47,7 +47,7 @@ public class MapFiller : MonoBehaviour
 
     private IEnumerator Fill(FillData fillData)
     {
-        WaitForSeconds delay = new WaitForSeconds(0.1f);
+        WaitForSeconds delay = new WaitForSeconds(0.01f);
 
         foreach (var cell in fillData.FilledCells)
         {
