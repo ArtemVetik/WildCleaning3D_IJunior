@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameCanvas : MonoBehaviour
+public class EndOfGameCanvas : MonoBehaviour
 {
     public void Show()
     {
