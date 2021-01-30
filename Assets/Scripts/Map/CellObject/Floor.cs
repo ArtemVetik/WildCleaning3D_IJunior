@@ -29,7 +29,7 @@ public class Floor : CellObject
     private void OnMarked()
     {
         if (IsMarked == false)
-            Instantiate(_cleanEffectTemplate, transform.position, _cleanEffectTemplate.transform.rotation);
+            Instantiate(_cleanEffectTemplate, transform.position + Vector3.up * transform.localScale.y / 2, _cleanEffectTemplate.transform.rotation);
         
         IsMarked = true;
     }

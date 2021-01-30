@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class EndOfGameCanvas : MonoBehaviour
 {
-    public void Show()
+    [SerializeField] private WinPanel _winPanel;
+    [SerializeField] private LoosePanel _loosePanel;
+
+    public void ShowWin()
     {
         gameObject.SetActive(true);
+        _loosePanel.Hide();
+        _winPanel.Show();
+    }
+
+    public void ShowLoose()
+    {
+        gameObject.SetActive(true);
+        _winPanel.Hide();
+        _loosePanel.Show();
     }
 
     public void Hide()

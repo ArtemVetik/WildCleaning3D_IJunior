@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class Player : CellObject, IMoveable, ISpeedyObject
 {
     [SerializeField] private PlayerCharacteristics _defaultCharacteristics;
+    [SerializeField] private ParticleSystem _diedEffectTemplate;
 
     private PlayerMoveSystem _playerMoveSystem;
     private MapFiller _filler;
@@ -17,6 +18,7 @@ public class Player : CellObject, IMoveable, ISpeedyObject
     public Vector2Int Direction => _playerMoveSystem.CurrentDirection;
 
     public event UnityAction MoveStarted;
+    public event UnityAction Died;
 
     private void Awake()
     {
@@ -80,7 +82,14 @@ public class Player : CellObject, IMoveable, ISpeedyObject
         if (other.TryGetComponent(out Enemy enemy))
         {
             _playerMoveSystem.ForceStop();
+            Died?.Invoke();
         }
+    }
+
+    private void OnDied()
+    {
+        Vector3 spawnPosition = transform.position + Vector3.up * transform.localScale.y;
+        Instantiate(_diedEffectTemplate, spawnPosition, _diedEffectTemplate.transform.rotation);
     }
 
     private void OnEnable()
@@ -88,6 +97,7 @@ public class Player : CellObject, IMoveable, ISpeedyObject
         _playerMoveSystem.MoveEnded += OnMoveEnded;
         _playerMoveSystem.Stopped += OnPlayerStopped;
         _playerMoveSystem.MarkedCellCrossed += OnMarkedCellCrossed;
+        Died += OnDied;
     }
 
     private void OnDisable()
@@ -95,5 +105,6 @@ public class Player : CellObject, IMoveable, ISpeedyObject
         _playerMoveSystem.MoveEnded -= OnMoveEnded;
         _playerMoveSystem.Stopped -= OnPlayerStopped;
         _playerMoveSystem.MarkedCellCrossed -= OnMarkedCellCrossed;
+        Died -= OnDied;
     }
 }

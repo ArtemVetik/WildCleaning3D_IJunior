@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76f33c48e44a8042a4c83f30d1bf663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _diedEffectTemplate: {fileID: 19800000, guid: c5eaab12d1954214c8f06840c833f036, type: 3}
 --- !u!114 &3647002774183511411
 MonoBehaviour:
   m_ObjectHideFlags: 0
