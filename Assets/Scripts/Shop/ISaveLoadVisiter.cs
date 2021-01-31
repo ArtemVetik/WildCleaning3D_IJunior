@@ -8,4 +8,7 @@
 
     void Save(CleanerInventory cleanerData);
     CleanerInventory Load(CleanerInventory cleanerData);
+
+    void Save(ChestInventory chestInventory);
+    ChestInventory Load(ChestInventory chestInventory);
 }
