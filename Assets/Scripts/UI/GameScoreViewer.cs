@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
-public class ScoreViewer : MonoBehaviour
+public class GameScoreViewer : MonoBehaviour
 {
     [SerializeField] private PlayerScore _playerScore;
     

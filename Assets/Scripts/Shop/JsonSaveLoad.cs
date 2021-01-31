@@ -5,6 +5,7 @@ public class JsonSaveLoad : ISaveLoadVisiter
     private const string BoosterInventoryKey = "BoosterInventory";
     private const string CleanerInventoryKey = "CleanerInventory";
     private const string ChestsInventoryKey = "ChestsInventory";
+    private const string ScoreBalanceKey = "ScoreBalance";
 
     #region PlayerData
     public void Save(PlayerData playerData)
@@ -85,6 +86,27 @@ public class JsonSaveLoad : ISaveLoadVisiter
         }
 
         return chestInventory;
+    }
+
+    #endregion
+
+    #region ScoreBalance
+    public void Save(ScoreBalance scoreBalance)
+    {
+        string saveJson = JsonUtility.ToJson(scoreBalance, true);
+        PlayerPrefs.SetString(ScoreBalanceKey, saveJson);
+        PlayerPrefs.Save();
+    }
+
+    public ScoreBalance Load(ScoreBalance scoreBalance)
+    {
+        if (PlayerPrefs.HasKey(ScoreBalanceKey))
+        {
+            string saveJson = PlayerPrefs.GetString(ScoreBalanceKey);
+            return JsonUtility.FromJson<ScoreBalance>(saveJson);
+        }
+
+        return scoreBalance;
     }
 
     #endregion

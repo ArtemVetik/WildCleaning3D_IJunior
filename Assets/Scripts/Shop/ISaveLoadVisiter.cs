@@ -11,4 +11,7 @@
 
     void Save(ChestInventory chestInventory);
     ChestInventory Load(ChestInventory chestInventory);
+
+    void Save(ScoreBalance scoreBalance);
+    ScoreBalance Load(ScoreBalance scoreBalance);
 }
