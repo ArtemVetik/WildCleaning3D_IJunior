@@ -18,4 +18,13 @@ public class BoostersDataBase : ScriptableObject
     {
         _dataBase.RemoveAt(index);
     }
+
+    public BoosterData FindFirst(Booster booster)
+    {
+        foreach (var item in _dataBase)
+            if (item.Booster.Equals(booster))
+                return item;
+
+        return null;
+    }
 }

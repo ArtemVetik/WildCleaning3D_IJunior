@@ -21,7 +21,6 @@ public class MenuScoreViewer : MonoBehaviour
     {
         ScoreBalance balance = new ScoreBalance();
         balance.Load(new JsonSaveLoad());
-
         _score.text = balance.Balance.ToString();
     }
 

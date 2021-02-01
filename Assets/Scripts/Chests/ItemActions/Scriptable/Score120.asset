@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5db6d2d17c4c44b634d5cc6cdd1e2, type: 3}
   m_Name: Score120
   m_EditorClassIdentifier: 
+  _showEffect: {fileID: 5941211966282450722, guid: 2a7c48adce970e5439a56988b67887ea, type: 3}
   _rewardedInfo: +120 score
+  _scoreValue: 120

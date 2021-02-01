@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
+using UnityEngine;
 using UnityEngine.Events;
 
+[Serializable]
 public class ScoreBalance : ISavedObject
 {
-    public int Balance { get; private set; }
+    [SerializeField] private int _balance;
+
+    public int Balance => _balance;
 
     public static event UnityAction<int> ScoreChanged;
 
     public void AddScore(int value)
     {
-        Balance += value;
+        _balance += value;
         ScoreChanged?.Invoke(Balance);
     }
 
@@ -19,7 +24,7 @@ public class ScoreBalance : ISavedObject
         if (Balance < value)
             return false;
 
-        Balance -= value;
+        _balance -= value;
         ScoreChanged?.Invoke(Balance);
         return true;
     }
@@ -28,7 +33,7 @@ public class ScoreBalance : ISavedObject
     {
         var saved = saveLoadVisiter.Load(this);
 
-        Balance = saved.Balance;
+        _balance = saved.Balance;
     }
 
     public void Save(ISaveLoadVisiter saveLoadVisiter)
