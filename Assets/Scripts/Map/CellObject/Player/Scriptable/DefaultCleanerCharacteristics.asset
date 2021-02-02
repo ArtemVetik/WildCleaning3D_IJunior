@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6bb1938e57160845bbb3159666c8ed9, type: 3}
-  m_Name: Player3
+  m_Name: DefaultCleanerCharacteristics
   m_EditorClassIdentifier: 
-  _guid: 78a3e7a74427f344abf39b4dfe336c53
+  _guid: 35bfc002a36f0e5478b0524510f6342a
   _characteristic:
-    _speed: 0.5
-    _id: 78a3e7a74427f344abf39b4dfe336c53
+    _speed: 2
+    _id: 35bfc002a36f0e5478b0524510f6342a

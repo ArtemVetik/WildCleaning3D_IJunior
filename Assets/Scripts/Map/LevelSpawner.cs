@@ -34,8 +34,8 @@ public class LevelSpawner : MonoBehaviour
     {
         if (cellData.LevelObject == null)
             return;
-
-        var inst = Instantiate(cellData.LevelObject.Prefab, targetCell.Position.ToVector3(0.5f), Quaternion.identity);
+        
+        var inst = Instantiate(cellData.LevelObject.Prefab, targetCell.Position.ToVector3(0.5f), cellData.LevelObject.Prefab.transform.rotation);
         inst.Init(targetCell);
         cellData.Parameters?.Apply(inst);
         CellObjectSpawned?.Invoke(inst);

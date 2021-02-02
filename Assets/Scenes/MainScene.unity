@@ -210,8 +210,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 17, y: 0, z: 18}
-  m_Center: {x: 8, y: 0, z: 8.5}
+  m_Size: {x: 20, y: 0, z: 18}
+  m_Center: {x: 9.5, y: 0, z: 8.5}
 --- !u!114 &28190792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelDateBase: {fileID: 11400000, guid: 6dc3acf16df26ae44918668e40433850, type: 2}
   _currentObject:
-    _name: "\u041C\u0438\u043A\u0440\u043E\u0431"
-    _levelObject: {fileID: 11400000, guid: f496fc44d4bf12f44a304135ee6b5b09, type: 2}
+    _name: "\u0418\u0433\u0440\u043E\u043A"
+    _levelObject: {fileID: 11400000, guid: 8542ae36e3c7ad34094f0cef95e3bfa2, type: 2}
     _objectParameter: {fileID: 0}
   EditorObjects:
   - _name: "\u041F\u043E\u043B"
@@ -261,7 +261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28190790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.5, y: 0, z: -5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -16429,6 +16429,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerScore: {fileID: 2075679696}
+--- !u!1 &1462532863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1462532864}
+  m_Layer: 0
+  m_Name: PlayerContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1462532864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462532863}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.2428586, y: 1.466852, z: 3.5488496}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1468110151
 GameObject:
   m_ObjectHideFlags: 0

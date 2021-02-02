@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerData : IPlayerData, ISavedObject
 {
     [SerializeField] private float _speed;
-    [SerializeField, ReadOnly] private string _id;
+#if UNITY_EDITOR
+    [ReadOnly]
+#endif
+    [SerializeField] private string _id;
 
     public string ID => _id;
 

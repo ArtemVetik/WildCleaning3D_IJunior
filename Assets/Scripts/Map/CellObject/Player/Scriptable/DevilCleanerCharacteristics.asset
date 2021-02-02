@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0678c3648ffa774795a9441d1049b5e, type: 3}
-  m_Name: Cleaner3
+  m_Script: {fileID: 11500000, guid: a6bb1938e57160845bbb3159666c8ed9, type: 3}
+  m_Name: DevilCleanerCharacteristics
   m_EditorClassIdentifier: 
-  _cleaner: {fileID: 7805305602378251141, guid: 17f10fe9dc848d2429f1f6443c4f52c6, type: 3}
+  _guid: 78a3e7a74427f344abf39b4dfe336c53
+  _characteristic:
+    _speed: 4
+    _id: 78a3e7a74427f344abf39b4dfe336c53

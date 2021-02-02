@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6bb1938e57160845bbb3159666c8ed9, type: 3}
-  m_Name: Player2
+  m_Script: {fileID: 11500000, guid: e0678c3648ffa774795a9441d1049b5e, type: 3}
+  m_Name: HolyCleaner
   m_EditorClassIdentifier: 
-  _guid: 01d07a5c0f9f4bd4183d597f15115c03
-  _characteristic:
-    _speed: 4
-    _id: 01d07a5c0f9f4bd4183d597f15115c03
+  _cleaner: {fileID: 7805305602378251141, guid: 823c1c64199be684eb397496dc71491a, type: 3}

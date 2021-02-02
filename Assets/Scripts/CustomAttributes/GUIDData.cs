@@ -6,7 +6,9 @@ using UnityEngine;
 [Serializable]
 public class GUIDData
 {
+#if UNITY_EDITOR
     [ReadOnly]
+#endif
     [SerializeField]
     private string _guid;
 

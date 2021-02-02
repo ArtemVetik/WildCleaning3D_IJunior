@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6bb1938e57160845bbb3159666c8ed9, type: 3}
-  m_Name: Player1
+  m_Name: HolyCleanerCharacteristics
   m_EditorClassIdentifier: 
-  _guid: 35bfc002a36f0e5478b0524510f6342a
+  _guid: 01d07a5c0f9f4bd4183d597f15115c03
   _characteristic:
     _speed: 4
-    _id: 35bfc002a36f0e5478b0524510f6342a
+    _id: 01d07a5c0f9f4bd4183d597f15115c03

@@ -16,6 +16,7 @@ public class Player : CellObject, IMoveable, ISpeedyObject
     public PlayerData Characteristics { get; private set; }
     public float Speed => Characteristics.Speed;
     public Vector2Int Direction => _playerMoveSystem.CurrentDirection;
+    public bool IsMoving => _playerMoveSystem.IsMoving;
 
     public event UnityAction MoveStarted;
     public event UnityAction Died;
