@@ -30,27 +30,32 @@ public class WatersBall : Booster
 
     private void OnSelectorRaycaster(GameCell cell)
     {
-        FillInRadius(cell, cell, _radius);
+        FillInRadius(cell, cell, _radius, new HashSet<GameCell>());
 
         Used?.Invoke(this);
         ClearSelector();
     }
 
-    private void FillInRadius(GameCell  currentCell, GameCell center, float radius)
+    private void FillInRadius(GameCell currentCell, GameCell center, float radius, HashSet<GameCell> markedCells)
     {
         if (Vector2Int.Distance(currentCell.Position, center.Position) > radius)
             return;
+        if (markedCells.Contains(currentCell))
+            return;
 
         currentCell.Mark();
+        markedCells.Add(currentCell);
+
         GameCell adjacent = null;
+
         if (currentCell.TryGetAdjacent(out adjacent, Vector2Int.left) && adjacent.IsMarked == false)
-            FillInRadius(adjacent, center, radius);
+            FillInRadius(adjacent, center, radius, markedCells);
         if (currentCell.TryGetAdjacent(out adjacent, Vector2Int.right) && adjacent.IsMarked == false)
-            FillInRadius(adjacent, center, radius);
+            FillInRadius(adjacent, center, radius, markedCells);
         if (currentCell.TryGetAdjacent(out adjacent, Vector2Int.up) && adjacent.IsMarked == false)
-            FillInRadius(adjacent, center, radius);
+            FillInRadius(adjacent, center, radius, markedCells);
         if (currentCell.TryGetAdjacent(out adjacent, Vector2Int.down) && adjacent.IsMarked == false)
-            FillInRadius(adjacent, center, radius);
+            FillInRadius(adjacent, center, radius, markedCells);
     }
 
     private void ClearSelector()

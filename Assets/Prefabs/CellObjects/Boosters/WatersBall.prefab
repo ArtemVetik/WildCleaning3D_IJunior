@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 8956808382472997815}
   - component: {fileID: 8956808382472997800}
   - component: {fileID: 8956808382472997812}
+  - component: {fileID: 7263427957184664512}
   m_Layer: 0
   m_Name: WatersBall
   m_TagString: Untagged
@@ -224,3 +225,22 @@ MonoBehaviour:
   _boostersDataBase: {fileID: 11400000, guid: 75f3341af809ff74cbf08a61a313c18d, type: 2}
   _booster: {fileID: 11400000, guid: 48b911eebd7908740ab6c3d5769a7a99, type: 2}
   _collectedEffect: {fileID: 115149276060866536, guid: 2d8e301f3722da24f8240bcbdddf8866, type: 3}
+--- !u!95 &7263427957184664512
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956808382472997803}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b74690b497e9a334b90edd8f2204e4d6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

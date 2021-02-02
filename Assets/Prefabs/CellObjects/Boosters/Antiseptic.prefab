@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 6426543402278844539}
   - component: {fileID: 6426543402278844542}
   - component: {fileID: 6426543402278844538}
+  - component: {fileID: 4211570510948385472}
   m_Layer: 0
   m_Name: Antiseptic
   m_TagString: Untagged
@@ -226,6 +227,25 @@ MonoBehaviour:
   _boostersDataBase: {fileID: 11400000, guid: 75f3341af809ff74cbf08a61a313c18d, type: 2}
   _booster: {fileID: 11400000, guid: 563c9038ce8fbae4385e552cfb209eb4, type: 2}
   _collectedEffect: {fileID: 115149276060866536, guid: 9b0d6cc9e5cd5c24ea8e0f2e922dd11a, type: 3}
+--- !u!95 &4211570510948385472
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6426543402278844543}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c471a2af97812f64b801e1fbf85b2434, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6689990632633149191
 GameObject:
   m_ObjectHideFlags: 0

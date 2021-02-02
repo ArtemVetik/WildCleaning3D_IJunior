@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 3563220117382720216}
   - component: {fileID: 3563220117382720197}
   - component: {fileID: 3563220117382720217}
+  - component: {fileID: 7107980569815095517}
   m_Layer: 0
   m_Name: Speedboost
   m_TagString: Untagged
@@ -142,3 +143,22 @@ MonoBehaviour:
   _boostersDataBase: {fileID: 11400000, guid: 75f3341af809ff74cbf08a61a313c18d, type: 2}
   _booster: {fileID: 11400000, guid: 42a80f8ce0cc1da45a6240c5bd6f7f9c, type: 2}
   _collectedEffect: {fileID: 115149276060866536, guid: 6d4747a470712c841bcd833c643e0d9f, type: 3}
+--- !u!95 &7107980569815095517
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563220117382720196}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 625d1fabbc3a25846bb0948dda242bcb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
