@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d554a2c353f524789b098719501c4a, type: 3}
   m_Name: AddWaterBall
   m_EditorClassIdentifier: 
-  _showEffect: {fileID: 5941211966282450722, guid: 0bcd65ea7374c764d9e99eceda901e62, type: 3}
+  _showEffect: {fileID: 5575784305515026212, guid: 0bcd65ea7374c764d9e99eceda901e62, type: 3}
   _rewardedInfo: + water ball
   _dataBase: {fileID: 11400000, guid: 75f3341af809ff74cbf08a61a313c18d, type: 2}
   _booster: {fileID: 11400000, guid: 48b911eebd7908740ab6c3d5769a7a99, type: 2}

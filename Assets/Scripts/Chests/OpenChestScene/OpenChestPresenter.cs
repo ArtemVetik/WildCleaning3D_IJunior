@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class OpenChestPresenter : MonoBehaviour
 {
-    [SerializeField] private OpenChestSceneLoad _sceneLoader;
+    [SerializeField] private OpenChestSceneStartPoint _sceneLoader;
     [SerializeField] private ChestDataBase _dataBase;
     [SerializeField] private Animator _chestAnimator;
+    [SerializeField] private FromToTransformLerp _camera;
+    [SerializeField] private GameObject _fireworks;
     [SerializeField] private Button _openButton;
 
     private ChestItem _item;
@@ -37,10 +39,19 @@ public class OpenChestPresenter : MonoBehaviour
         inventory.Save(new JsonSaveLoad());
 
         _chestAnimator.SetTrigger("Open");
+        _camera.StartLerp();
     }
 
     private void OnChestOpened()
     {
-        Instantiate(_item.Action.ShowEffect, transform.position, _item.Action.ShowEffect.transform.rotation);
+        var effect = Instantiate(_item.Action.ShowEffect, transform.position, _item.Action.ShowEffect.transform.rotation);
+
+        effect.RewardShown += OnRewardedShown;
+    }
+
+    private void OnRewardedShown(ShowRewardAnimation effect)
+    {
+        _fireworks.SetActive(true);
+        effect.RewardShown -= OnRewardedShown;
     }
 }

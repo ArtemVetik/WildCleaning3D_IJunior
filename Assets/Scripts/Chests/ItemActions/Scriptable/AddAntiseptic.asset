@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d554a2c353f524789b098719501c4a, type: 3}
   m_Name: AddAntiseptic
   m_EditorClassIdentifier: 
-  _showEffect: {fileID: 5941211966282450722, guid: 849bd0c6a1ea9de4490823e4fb06094b, type: 3}
+  _showEffect: {fileID: 6053659635172446666, guid: 849bd0c6a1ea9de4490823e4fb06094b, type: 3}
   _rewardedInfo: + antiseptic
   _dataBase: {fileID: 11400000, guid: 75f3341af809ff74cbf08a61a313c18d, type: 2}
   _booster: {fileID: 11400000, guid: 563c9038ce8fbae4385e552cfb209eb4, type: 2}

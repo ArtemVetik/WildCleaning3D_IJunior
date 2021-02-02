@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab5db6d2d17c4c44b634d5cc6cdd1e2, type: 3}
   m_Name: Score50
   m_EditorClassIdentifier: 
-  _showEffect: {fileID: 5941211966282450722, guid: 45d37ef0942a39c44b6633368baac849, type: 3}
+  _showEffect: {fileID: -2960168292768945148, guid: 45d37ef0942a39c44b6633368baac849, type: 3}
   _rewardedInfo: +50 score
   _scoreValue: 50
