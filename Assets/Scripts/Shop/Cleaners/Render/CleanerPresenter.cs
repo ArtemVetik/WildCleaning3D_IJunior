@@ -3,63 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 public class CleanerPresenter : MonoBehaviour
 {
-    [SerializeField] private Image _preview;
-    [SerializeField] private Text _name;
-    [SerializeField] private Text _description;
-    [SerializeField] private Button _cellButton;
-    [SerializeField] private Button _selectButton;
+    [SerializeField] private TMP_Text _name;
+    [SerializeField] private TMP_Text _description;
+    [SerializeField] private TMP_FontAsset _lockAsset;
+    [SerializeField] private TMP_FontAsset _unlockAsset;
+    [SerializeField] private TMP_FontAsset _selectedAsset;
+
+    private GameObject _model;
 
     public CleanerData Data { get; private set; }
 
     public event UnityAction<CleanerPresenter> CellButtonClicked;
     public event UnityAction<CleanerPresenter> SelectButtonClicked;
 
-    private void OnEnable()
+    public void InitButtonsEvent(Button cellButton, Button selectButton)
     {
-        _cellButton.onClick.AddListener(OnCellButtonClick);
-        _selectButton.onClick.AddListener(OnSelectButtonClick);
+        cellButton.onClick.AddListener(OnCellButtonClick);
+        selectButton.onClick.AddListener(OnSelectButtonClick);
+    }
+
+    public void RemoveButtonsEvent(Button cellButton, Button selectButton)
+    {
+        cellButton.onClick.RemoveListener(OnCellButtonClick);
+        selectButton.onClick.RemoveListener(OnSelectButtonClick);
     }
 
     public void Render(CleanerData data)
     {
         Data = data;
 
-        _preview.sprite = data.Preview;
-        _preview.color = Color.white;
+        if (_model == null)
+            _model = Instantiate(data.Prefab.Cleaner.gameObject, transform.position, Quaternion.Euler(0, 180, 0), transform);
+
         _name.text = data.Name;
         _description.text = data.Description;
 
-        _cellButton.gameObject.SetActive(true);
-        _selectButton.gameObject.SetActive(false);
+        _name.font = _lockAsset;
     }
 
     public void RenderBuyed(CleanerData data)
     {
         Data = data;
 
-        _preview.sprite = data.Preview;
-        _preview.color = Color.white;
         _name.text = data.Name;
         _description.text = data.Description;
 
-        _cellButton.gameObject.SetActive(false);
-        _selectButton.gameObject.SetActive(true);
+        _name.font = _unlockAsset;
     }
 
     public void RenderSelected(CleanerData data)
     {
         Data = data;
 
-        _preview.sprite = data.Preview;
-        _preview.color = Color.green;
         _name.text = data.Name;
         _description.text = data.Description;
 
-        _cellButton.gameObject.SetActive(false);
-        _selectButton.gameObject.SetActive(true);
+        _name.font = _selectedAsset;
     }
 
     private void OnCellButtonClick()
@@ -70,11 +73,5 @@ public class CleanerPresenter : MonoBehaviour
     private void OnSelectButtonClick()
     {
         SelectButtonClicked?.Invoke(this);
-    }
-
-    private void OnDisable()
-    {
-        _cellButton.onClick.RemoveListener(OnCellButtonClick);
-        _selectButton.onClick.RemoveListener(OnSelectButtonClick);
     }
 }

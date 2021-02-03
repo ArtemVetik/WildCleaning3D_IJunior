@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CleanerShop : MonoBehaviour
 {
     [SerializeField] private CleanersDataBase _dataBase;
     [SerializeField] private CleanerListView _cleanerListView;
+    [SerializeField] private CleanerViewer _cleanerViewer;
 
     private IEnumerable<CleanerPresenter> _presenters;
     private CleanerInventory _inventory;
@@ -23,12 +25,13 @@ public class CleanerShop : MonoBehaviour
         }
 
         _presenters = _cleanerListView.Render(_dataBase.Data);
+        _cleanerViewer.InitPresenters(_presenters);
 
         UpdateView();
-        InitPResenterEvents();
+        InitPresenterEvents();
     }
 
-    private void InitPResenterEvents()
+    private void InitPresenterEvents()
     {
         foreach (var presenter in _presenters)
         {
