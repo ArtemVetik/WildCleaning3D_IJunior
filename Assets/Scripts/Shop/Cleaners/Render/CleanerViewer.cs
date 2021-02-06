@@ -28,19 +28,18 @@ public class CleanerViewer : MonoBehaviour
         _previousButton.onClick.RemoveListener(OnPreviousButtonClicked);
     }
 
-    private void Start()
-    {
-        _inventory = new CleanerInventory(_dataBase);
-        _inventory.Load(new JsonSaveLoad());
-    }
-
     public void InitPresenters(IEnumerable<CleanerPresenter> presenters)
     {
         _presenters = new List<CleanerPresenter>(presenters);
-        SetPresenter(_presenters[0], true);
+
+        _inventory = new CleanerInventory(_dataBase);
+        _inventory.Load(new JsonSaveLoad());
+        var selectedPresenter = _presenters.Find(presenter => presenter.Data.Equals(_inventory.SelectedCleaner));
+
+        SetPresenter(selectedPresenter);
     }
 
-    private void SetPresenter(CleanerPresenter presenter, bool isPurchased)
+    private void SetPresenter(CleanerPresenter presenter)
     {
         if (_currentPresenter)
             _currentPresenter.RemoveButtonsEvent(_cellButton, _selectButton);
@@ -49,8 +48,20 @@ public class CleanerViewer : MonoBehaviour
         _currentPresenter = presenter;
         _currentPresenter.InitButtonsEvent(_cellButton, _selectButton);
 
-        _cellButton.gameObject.SetActive(!isPurchased);
-        _selectButton.gameObject.SetActive(isPurchased);
+        UpdateAnimations();
+
+        _inventory.Load(new JsonSaveLoad());
+        bool purchased = _inventory.Contains(_currentPresenter.Data);
+        _cellButton.gameObject.SetActive(!purchased);
+        _selectButton.gameObject.SetActive(purchased);
+    }
+
+    private void UpdateAnimations()
+    {
+        foreach (var presenter in _presenters)
+            presenter.Animation.StopAnimation(CleanerPresenterAnimation.Parameters.Present);
+
+        _currentPresenter.Animation.PlayAnimation(CleanerPresenterAnimation.Parameters.Present);
     }
 
     private void OnNextButtonClicked()
@@ -59,8 +70,7 @@ public class CleanerViewer : MonoBehaviour
         if (currentIndex >= _presenters.Count - 1)
             return;
 
-        bool purchased = _inventory.Contains(_currentPresenter.Data);
-        SetPresenter(_presenters[currentIndex + 1], purchased);
+        SetPresenter(_presenters[currentIndex + 1]);
     }
 
     private void OnPreviousButtonClicked()
@@ -69,7 +79,6 @@ public class CleanerViewer : MonoBehaviour
         if (currentIndex <= 0)
             return;
 
-        bool purchased = _inventory.Contains(_currentPresenter.Data);
-        SetPresenter(_presenters[currentIndex - 1], purchased);
+        SetPresenter(_presenters[currentIndex - 1]);
     }
 }

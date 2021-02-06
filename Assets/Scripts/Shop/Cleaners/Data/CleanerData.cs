@@ -11,9 +11,11 @@ public class CleanerData : GUIDData
     [SerializeField] private string _name;
     [SerializeField] private string _description;
     [SerializeField] private CleanerPrefab _prefab;
+    [SerializeField] private GameObject _emptyModel;
 
     public Sprite Preview => _preview;
     public string Name => _name;
     public string Description => _description;
     public CleanerPrefab Prefab => _prefab;
+    public GameObject EmptyModel => _emptyModel;
 }

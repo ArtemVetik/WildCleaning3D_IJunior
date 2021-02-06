@@ -16,16 +16,19 @@ MonoBehaviour:
   _cleaners:
   - _guid: 5ee543ea-956d-408f-89a2-b0cffac15057
     _preview: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-    _name: Player 1
-    _description: 111111111111111111111
+    _name: Default cleaner
+    _description: defaultdefaultdefault
     _prefab: {fileID: 11400000, guid: b8f03b39d96224742b139ee7e165c825, type: 2}
+    _emptyModel: {fileID: 5206035691834104484, guid: f6bdfade4228f9c48afda65aa7b9f11d, type: 3}
   - _guid: f1b750d2-b24c-4441-a4b1-6b207cc53fba
     _preview: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-    _name: Player 2
-    _description: 2222222222222222222222
+    _name: Holy Cleaner
+    _description: HolyHolyHolyHoly
     _prefab: {fileID: 11400000, guid: 10e50554a1e330f49a5bdb825fc7ee21, type: 2}
+    _emptyModel: {fileID: 2601990514882863208, guid: 5ae845a1b5b27ad4b9174ab72a38dd02, type: 3}
   - _guid: 8b5d9cb1-a903-44b3-a899-d3d114cb0d75
     _preview: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-    _name: Player 3
-    _description: 333333333333333333333333
+    _name: DevilCleaner
+    _description: DevilDevilDevilDevil
     _prefab: {fileID: 11400000, guid: 934189966108f3c4ba3ec40e19a4ce3b, type: 2}
+    _emptyModel: {fileID: 96402860526629668, guid: 94dbcc0c1ba134a42969c77391ec317a, type: 3}

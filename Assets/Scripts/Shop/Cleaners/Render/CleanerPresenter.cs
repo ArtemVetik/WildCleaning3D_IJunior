@@ -5,8 +5,10 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 
+[RequireComponent(typeof(CleanerPresenterAnimation))]
 public class CleanerPresenter : MonoBehaviour
 {
+    [SerializeField] private Transform _modelContainer;
     [SerializeField] private TMP_Text _name;
     [SerializeField] private TMP_Text _description;
     [SerializeField] private TMP_FontAsset _lockAsset;
@@ -15,10 +17,16 @@ public class CleanerPresenter : MonoBehaviour
 
     private GameObject _model;
 
+    public CleanerPresenterAnimation Animation { get; private set; }
     public CleanerData Data { get; private set; }
 
     public event UnityAction<CleanerPresenter> CellButtonClicked;
     public event UnityAction<CleanerPresenter> SelectButtonClicked;
+
+    private void Awake()
+    {
+        Animation = GetComponent<CleanerPresenterAnimation>();
+    }
 
     public void InitButtonsEvent(Button cellButton, Button selectButton)
     {
@@ -37,7 +45,11 @@ public class CleanerPresenter : MonoBehaviour
         Data = data;
 
         if (_model == null)
-            _model = Instantiate(data.Prefab.Cleaner.gameObject, transform.position, Quaternion.Euler(0, 180, 0), transform);
+        {
+            _model = Instantiate(data.EmptyModel, _modelContainer);
+            _model.transform.rotation = Quaternion.Euler(0, 90, 0);
+            _model.transform.localPosition = Vector3.zero;
+        }
 
         _name.text = data.Name;
         _description.text = data.Description;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.UI;
 
 public class CleanerListView : MonoBehaviour
@@ -8,18 +9,30 @@ public class CleanerListView : MonoBehaviour
     [SerializeField] private CleanerPresenter _template;
     [SerializeField] private Transform _container;
 
+    private List<CleanerPresenter> _presenters;
+
     public IEnumerable<CleanerPresenter> Render(IEnumerable<CleanerData> cleaners)
     {
-        List<CleanerPresenter> presenters = new List<CleanerPresenter>();
+        _presenters = new List<CleanerPresenter>();
 
         foreach (var cleaner in cleaners)
         {
             var presenter = Instantiate(_template, _container);
             presenter.Render(cleaner);
 
-            presenters.Add(presenter);
+            _presenters.Add(presenter);
         }
 
-        return presenters;
+        return _presenters;
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("Disable list " + _presenters);
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("Destroy list " + _presenters);
     }
 }

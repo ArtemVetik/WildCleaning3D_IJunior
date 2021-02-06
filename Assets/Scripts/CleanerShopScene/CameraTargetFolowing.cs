@@ -8,6 +8,8 @@ public class CameraTargetFolowing : MonoBehaviour
     [SerializeField] private float _yAngle;
     [SerializeField] private float _topDownAngle;
     [SerializeField] private float _distanceToTarget;
+    [Header("Shifts")]
+    [SerializeField] private float yShift;
 
     private Transform _target;
 
@@ -27,6 +29,7 @@ public class CameraTargetFolowing : MonoBehaviour
             return;
 
         var _cameraShift = CalculateCameraShift();
+        _cameraShift.y += yShift;
 
         Vector3 targetPosition = _target.transform.position + _cameraShift;
         transform.position = Vector3.Lerp(transform.position, targetPosition, _speed * Time.deltaTime);
