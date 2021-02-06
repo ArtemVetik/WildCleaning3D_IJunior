@@ -13,11 +13,6 @@ public class CameraTargetFolowing : MonoBehaviour
 
     private Transform _target;
 
-    private void Start()
-    {
-        transform.eulerAngles = CalculateCameraEulerAngles();
-    }
-
     public void SetTarget(Transform target)
     {
         _target = target;
@@ -32,7 +27,10 @@ public class CameraTargetFolowing : MonoBehaviour
         _cameraShift.y += yShift;
 
         Vector3 targetPosition = _target.transform.position + _cameraShift;
-        transform.position = Vector3.Lerp(transform.position, targetPosition, _speed * Time.deltaTime);
+        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, targetPosition, _speed * Time.deltaTime);
+
+        Vector3 targetRotation = CalculateCameraEulerAngles();
+        Camera.main.transform.eulerAngles = Vector3.Lerp(Camera.main.transform.eulerAngles, targetRotation, _speed * Time.deltaTime);
     }
 
     private Vector3 CalculateCameraShift()
@@ -51,6 +49,6 @@ public class CameraTargetFolowing : MonoBehaviour
 
     private Vector3 CalculateCameraEulerAngles()
     {
-        return new Vector3(0.7f * _topDownAngle, _yAngle, transform.eulerAngles.z);
+        return new Vector3(0.7f * _topDownAngle, _yAngle, Camera.main.transform.eulerAngles.z);
     }
 }

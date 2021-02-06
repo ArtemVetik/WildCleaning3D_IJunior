@@ -41,7 +41,7 @@ public class HorizontalLayoutGameObject : MonoBehaviour
         Vector3 nextPosition = new Vector3(startXvalue, 0, 0);
         foreach (var child in allChilds)
         {
-            child.transform.position = nextPosition;
+            child.transform.localPosition = nextPosition;
 
             nextPosition += Vector3.right * _cellSize;
             nextPosition += Vector3.right * _spacing;

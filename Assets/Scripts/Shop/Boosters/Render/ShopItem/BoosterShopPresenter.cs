@@ -3,38 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 public class BoosterShopPresenter : MonoBehaviour
 {
-    [SerializeField] private Image _preview;
-    [SerializeField] private Text _name;
-    [SerializeField] private Text _desctiprion;
-    [SerializeField] private Button _sellButton;
+    [SerializeField] private Transform _modelContainer;
+    [SerializeField] private TMP_Text _name;
+    [SerializeField] private TMP_Text _description;
+
+    private GameObject _model;
 
     public BoosterData Data { get; private set; }
 
     public UnityAction<BoosterShopPresenter> SellButtonClicked;
 
-    private void OnEnable()
+    public void InitButtonsEvent(Button cellButton)
     {
-        _sellButton.onClick.AddListener(OnSellButtonClick);
+        cellButton.onClick.AddListener(OnCellButtonClick);
     }
 
-    private void OnDisable()
+    public void RemoveButtonsEvent(Button cellButton)
     {
-        _sellButton.onClick.RemoveListener(OnSellButtonClick);
+        cellButton.onClick.RemoveListener(OnCellButtonClick);
     }
 
     public void Render(BoosterData data)
     {
         Data = data;
 
-        _preview.sprite = data.Preview;
+        if (_model == null)
+        {
+            _model = Instantiate(data.EmptyModel, _modelContainer);
+            _model.transform.localPosition = Vector3.zero;
+        }
+
         _name.text = data.Name;
-        _desctiprion.text = data.Description;
+        _description.text = data.Description;
     }
 
-    public void OnSellButtonClick()
+    public void OnCellButtonClick()
     {
         SellButtonClicked?.Invoke(this);
     }

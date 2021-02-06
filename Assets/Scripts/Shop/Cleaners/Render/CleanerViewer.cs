@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CleanerViewer : MonoBehaviour
+public class CleanerViewer : ShopViewer
 {
     [SerializeField] private CleanersDataBase _dataBase;
-    [SerializeField] private CameraTargetFolowing _cameraFolowing;
     [SerializeField] private Button _nextButton;
     [SerializeField] private Button _previousButton;
     [SerializeField] private Button _cellButton;
@@ -44,7 +43,7 @@ public class CleanerViewer : MonoBehaviour
         if (_currentPresenter)
             _currentPresenter.RemoveButtonsEvent(_cellButton, _selectButton);
 
-        _cameraFolowing.SetTarget(presenter.transform);
+        SetCameraTarget(presenter.transform);
         _currentPresenter = presenter;
         _currentPresenter.InitButtonsEvent(_cellButton, _selectButton);
 

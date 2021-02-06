@@ -7,6 +7,11 @@ public class Menu : MonoBehaviour
 {
     public void LoadCleanerShop()
     {
-        CleanerShopScene.Load();
+        ShopScene.Load(ShopType.CleanerShop);
+    }
+
+    public void LoadBoosterShop()
+    {
+        ShopScene.Load(ShopType.BoosterShop);
     }
 }

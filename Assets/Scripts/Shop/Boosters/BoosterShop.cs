@@ -6,6 +6,7 @@ public class BoosterShop : MonoBehaviour
 {
     [SerializeField] private BoostersDataBase _boosterDataBase;
     [SerializeField] private BoosterShopListView _boostersListView;
+    [SerializeField] private BoosterViewer _boosterViewer;
 
     private BoosterInventory _inventory;
     private IEnumerable<BoosterShopPresenter> _boosterPresenters;
@@ -17,11 +18,13 @@ public class BoosterShop : MonoBehaviour
 
         _boosterPresenters = _boostersListView.Render(_boosterDataBase.Data);
         InitSellButtons(_boosterPresenters);
+        _boosterViewer.InitPresenters(_boosterPresenters);
     }
 
     private void OnSellButtonClicked(BoosterShopPresenter presenter)
     {
         _inventory.Add(presenter.Data);
+        _inventory.Save(new JsonSaveLoad());
     }
 
     private void InitSellButtons(IEnumerable<BoosterShopPresenter> boosterPresenters)
@@ -42,7 +45,6 @@ public class BoosterShop : MonoBehaviour
 
     private void OnDisable()
     {
-        _inventory.Save(new JsonSaveLoad());
         RemoveSellButtons(_boosterPresenters);
 
         foreach (BoosterShopPresenter presenter in _boosterPresenters)

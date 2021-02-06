@@ -15,22 +15,20 @@ MonoBehaviour:
   _dataBase:
   - _guid: 7bfdb7e1-a686-4150-9ca2-2857e52ec8a0
     _preview: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    _name: "\u041F\u044B\u043B\u0430\u044E\u0449\u0430\u044F \u0437\u0430\u0434\u043D\u0438\u0446\u0430"
-    _description: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F
-      \u04452"
+    _name: Speedboost
+    _description: "Movement speed \u04452"
     _booster: {fileID: 11400000, guid: 42a80f8ce0cc1da45a6240c5bd6f7f9c, type: 2}
+    _emptyModel: {fileID: 7031918314332574455, guid: adc1a6f177a8a374fa798eae94eeb746, type: 3}
   - _guid: deda5c3d-6f17-47dc-8e7d-302859571f0a
     _preview: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    _name: "\u0428\u0430\u0440\u0438\u043A \u0441 \u0432\u043E\u0434\u043E\u0439"
-    _description: "\u041F\u043E\u0441\u043B\u0435 \u0430\u043A\u0442\u0438\u0432\u0430\u0446\u0438\u0438
-      \u043C\u043E\u0436\u043D\u043E \u043A\u043B\u0438\u043A\u043D\u0443\u0442\u044C
-      \u043D\u0430 \u0437\u043E\u043D\u0443 \u0438 \u043E\u0447\u0438\u0449\u0430\u044E\u0442\u0441\u044F
-      \u0432\u0441\u0435 \u043A\u043B\u0435\u0442\u043A\u0438 \u0432 \u0440\u0430\u0434\u0438\u0443\u0441\u0435
-      N"
+    _name: Water ball
+    _description: After activation, you can click on the zone and all cells in a
+      radius of 3 are cleared
     _booster: {fileID: 11400000, guid: 48b911eebd7908740ab6c3d5769a7a99, type: 2}
+    _emptyModel: {fileID: 5639054145307923538, guid: de995d475e7ec8a48821d3501a4468ca, type: 3}
   - _guid: de8ea5f7-eac0-4ca0-a29f-0be6cd2aac87
     _preview: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    _name: "\u0410\u043D\u0442\u0438\u0441\u0435\u043F\u0442\u0438\u043A"
-    _description: "\u041F\u043E\u0441\u043B\u0435 \u0430\u043A\u0442\u0438\u0432\u0430\u0446\u0438\u0438
-      \u0443\u043C\u0438\u0440\u0430\u044E\u0442 \u0432\u0441\u0435 \u043C\u0438\u043A\u0440\u043E\u0431\u044B"
+    _name: Antiseptic
+    _description: After activation, all microbes die
     _booster: {fileID: 11400000, guid: 563c9038ce8fbae4385e552cfb209eb4, type: 2}
+    _emptyModel: {fileID: 2696557504358562424, guid: 3bb4d0e73056a544896ed9a6cefeff12, type: 3}

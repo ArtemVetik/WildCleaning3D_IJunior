@@ -30,6 +30,6 @@ EditorBuildSettings:
     path: Assets/Packs/JMO Assets/Cartoon FX Remaster/CFXR_Demo.unity
     guid: 60d1a3d8356dcb84181372834334ec5c
   - enabled: 1
-    path: Assets/Scenes/CleanerShopScene.unity
+    path: Assets/Scenes/ShopScene.unity
     guid: 2c53fd32b2118e04f8b129e720a156a2
   m_configObjects: {}

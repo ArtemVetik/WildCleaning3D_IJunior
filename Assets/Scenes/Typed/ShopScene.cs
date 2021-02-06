@@ -13,14 +13,14 @@ namespace IJunior.TypedScenes
     using UnityEngine.SceneManagement;
     
     
-    public class CleanerShopScene : TypedScene
+    public class ShopScene : TypedScene
     {
         
-        private const string _sceneName = "CleanerShopScene";
+        private const string _sceneName = "ShopScene";
         
-        public static void Load(LoadSceneMode loadSceneMode = LoadSceneMode.Single)
+        public static void Load(ShopType argument, LoadSceneMode loadSceneMode = LoadSceneMode.Single)
         {
-            LoadScene(_sceneName, loadSceneMode);
+            LoadScene(_sceneName, loadSceneMode, argument);
         }
     }
 }
