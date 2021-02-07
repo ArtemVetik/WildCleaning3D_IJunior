@@ -46,7 +46,10 @@ public class BoosterViewer : ShopViewer
 
     private void UpdateAnimations()
     {
-        
+        foreach (var presenter in _presenters)
+            presenter.Animation.StopAnimation(CleanerPresenterAnimation.Parameters.Present);
+
+        _currentPresenter.Animation.PlayAnimation(CleanerPresenterAnimation.Parameters.Present);
     }
 
     private void OnNextButtonClicked()

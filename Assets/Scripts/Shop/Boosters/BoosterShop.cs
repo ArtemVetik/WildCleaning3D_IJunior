@@ -25,6 +25,9 @@ public class BoosterShop : MonoBehaviour
     {
         _inventory.Add(presenter.Data);
         _inventory.Save(new JsonSaveLoad());
+
+        presenter.UpdateView();
+        presenter.Animation.PlayTrigger(BoosterPresenterAnimation.Parameters.Buyed);
     }
 
     private void InitSellButtons(IEnumerable<BoosterShopPresenter> boosterPresenters)
