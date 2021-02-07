@@ -33,9 +33,17 @@ public class CleanerViewer : ShopViewer
 
         _inventory = new CleanerInventory(_dataBase);
         _inventory.Load(new JsonSaveLoad());
-        var selectedPresenter = _presenters.Find(presenter => presenter.Data.Equals(_inventory.SelectedCleaner));
 
+        var selectedPresenter = _presenters.Find(presenter => presenter.Data.Equals(_inventory.SelectedCleaner));
         SetPresenter(selectedPresenter);
+    }
+
+    public void UpdateUI()
+    {
+        _inventory.Load(new JsonSaveLoad());
+        bool purchased = _inventory.Contains(_currentPresenter.Data);
+        _cellButton.gameObject.SetActive(!purchased);
+        _selectButton.gameObject.SetActive(purchased);
     }
 
     private void SetPresenter(CleanerPresenter presenter)
@@ -48,11 +56,7 @@ public class CleanerViewer : ShopViewer
         _currentPresenter.InitButtonsEvent(_cellButton, _selectButton);
 
         UpdateAnimations();
-
-        _inventory.Load(new JsonSaveLoad());
-        bool purchased = _inventory.Contains(_currentPresenter.Data);
-        _cellButton.gameObject.SetActive(!purchased);
-        _selectButton.gameObject.SetActive(purchased);
+        UpdateUI();
     }
 
     private void UpdateAnimations()
@@ -61,6 +65,10 @@ public class CleanerViewer : ShopViewer
             presenter.Animation.StopAnimation(CleanerPresenterAnimation.Parameters.Present);
 
         _currentPresenter.Animation.PlayAnimation(CleanerPresenterAnimation.Parameters.Present);
+
+        _inventory.Load(new JsonSaveLoad());
+        if (_inventory.Contains(_currentPresenter.Data))
+            _currentPresenter.Animation.PlayAnimation(CleanerPresenterAnimation.Parameters.Buyed);
     }
 
     private void OnNextButtonClicked()

@@ -8,6 +8,8 @@ public class CleanerPresenterAnimation : MonoBehaviour
     public static class Parameters
     {
         public static string Present = nameof(Present);
+        public static string Buyed = nameof(Buyed);
+        public static string Selected = nameof(Selected);
     }
 
     private Animator _animator;
@@ -15,6 +17,11 @@ public class CleanerPresenterAnimation : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+    }
+
+    public void PlayTrigger(string parameter)
+    {
+        _animator.SetTrigger(parameter);
     }
 
     public void PlayAnimation(string parameter)

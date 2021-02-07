@@ -6,6 +6,7 @@ using System.Linq;
 public class CleanerShop : MonoBehaviour
 {
     [SerializeField] private CleanersDataBase _dataBase;
+    [SerializeField] private ParticleSystem _buyedEffect;
     [SerializeField] private CleanerListView _cleanerListView;
     [SerializeField] private CleanerViewer _cleanerViewer;
 
@@ -67,6 +68,7 @@ public class CleanerShop : MonoBehaviour
         _inventory.Save(new JsonSaveLoad());
 
         UpdateView();
+        presenter.Animation.PlayTrigger(CleanerPresenterAnimation.Parameters.Selected);
     }
 
     private void OnCellButtonClicked(CleanerPresenter presenter)
@@ -75,6 +77,9 @@ public class CleanerShop : MonoBehaviour
         _inventory.Save(new JsonSaveLoad());
 
         presenter.RenderBuyed(presenter.Data);
+        Instantiate(_buyedEffect, presenter.EffectsContainer);
+
+        _cleanerViewer.UpdateUI();
     }
 
     private void OnDisable()

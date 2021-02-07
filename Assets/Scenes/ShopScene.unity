@@ -6907,6 +6907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataBase: {fileID: 11400000, guid: 7392941edea65a24e8063bb55488a1b9, type: 2}
+  _buyedEffect: {fileID: 9139305265192252157, guid: 3258f7e4a097c4043bce9e760ab425c1, type: 3}
   _cleanerListView: {fileID: 1822970718}
   _cleanerViewer: {fileID: 286603980}
 --- !u!1001 &2093688286

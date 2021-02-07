@@ -9,6 +9,8 @@ using TMPro;
 public class CleanerPresenter : MonoBehaviour
 {
     [SerializeField] private Transform _modelContainer;
+    [SerializeField] private Transform _effectsContainer;
+    [SerializeField] private GameObject _glassBox;
     [SerializeField] private TMP_Text _name;
     [SerializeField] private TMP_Text _description;
     [SerializeField] private TMP_FontAsset _lockAsset;
@@ -17,6 +19,7 @@ public class CleanerPresenter : MonoBehaviour
 
     private GameObject _model;
 
+    public Transform EffectsContainer => _effectsContainer;
     public CleanerPresenterAnimation Animation { get; private set; }
     public CleanerData Data { get; private set; }
 
@@ -65,6 +68,7 @@ public class CleanerPresenter : MonoBehaviour
         _description.text = data.Description;
 
         _name.font = _unlockAsset;
+        _glassBox.SetActive(false);
     }
 
     public void RenderSelected(CleanerData data)
@@ -75,6 +79,7 @@ public class CleanerPresenter : MonoBehaviour
         _description.text = data.Description;
 
         _name.font = _selectedAsset;
+        _glassBox.SetActive(false);
     }
 
     private void OnCellButtonClick()

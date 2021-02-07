@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ShopScene.unity
     guid: 2c53fd32b2118e04f8b129e720a156a2
+  - enabled: 1
+    path: Assets/Packs/Glass 4 Pack FREE/Demo_Glass4Pack.unity
+    guid: 913b5e8e94b841e49b9cc843aefb05f0
   m_configObjects: {}
