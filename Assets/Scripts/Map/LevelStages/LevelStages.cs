@@ -48,4 +48,9 @@ public class LevelStages : MonoBehaviour
         else
             AllStageCompeted?.Invoke();
     }
+
+    public bool Contains(GameCell cell)
+    {
+        return _currentStage.Contains(cell);
+    }
 }

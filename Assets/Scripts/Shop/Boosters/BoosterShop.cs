@@ -51,6 +51,7 @@ public class BoosterShop : MonoBehaviour
         RemoveSellButtons(_boosterPresenters);
 
         foreach (BoosterShopPresenter presenter in _boosterPresenters)
-            Destroy(presenter.gameObject);
+            if (presenter)
+                Destroy(presenter.gameObject);
     }
 }

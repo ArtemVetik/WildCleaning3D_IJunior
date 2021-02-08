@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: WatersBall
   m_EditorClassIdentifier: 
   _guid: 48b911eebd7908740ab6c3d5769a7a99
+  _useEffect: {fileID: 1211639657851661646, guid: 44d3c822bc7567e4e882caadf0d799e4, type: 3}
   _selectorTemplate: {fileID: 3427167395299757216, guid: 72e7cbb076d4f7d4894e07e943174875, type: 3}
   _radius: 3

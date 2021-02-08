@@ -6,6 +6,7 @@ using System.Linq;
 public class BoosterMenuSlotsList : MonoBehaviour
 {
     [SerializeField] private BoostersDataBase _dataBase;
+    [SerializeField] private StartLevelTrigger _startTrigger;
     [SerializeField] private BoosterSelectPanel _selectPanel;
     [SerializeField] private BoosterGameSlots _gameSlots;
     [SerializeField] private BoosterMenuSlot _template;
@@ -16,6 +17,7 @@ public class BoosterMenuSlotsList : MonoBehaviour
     private List<BoosterMenuSlot> _slots;
     private BoosterMenuSlot _currentSlot;
     private BoosterInventory _inventory;
+    private bool _gameStarted;
 
     private void OnEnable()
     {
@@ -23,6 +25,7 @@ public class BoosterMenuSlotsList : MonoBehaviour
 
         _slots = new List<BoosterMenuSlot>();
         _currentSlot = null;
+        _gameStarted = false;
 
         for (int i = 0; i < MaxCount; i++)
         {
@@ -33,6 +36,7 @@ public class BoosterMenuSlotsList : MonoBehaviour
         }
 
         _selectPanel.SelectButtonClicked += OnBoosterSelected;
+        _startTrigger.GameStarting += OnGameStarting;
     }
 
     private void OnSlotAddButtonClicked(BoosterMenuSlot slot)
@@ -58,21 +62,34 @@ public class BoosterMenuSlotsList : MonoBehaviour
 
     private void OnDisable()
     {
-        List<BoosterData> boosters = new List<BoosterData>();
+        _inventory.Load(new JsonSaveLoad());
         foreach (var slot in _slots)
         {
             slot.AddButtonClicked -= OnSlotAddButtonClicked;
             slot.RemoveButtonClicked -= OnSlotRemoveButtonClicked;
 
-            if (slot.Data != null)
-                boosters.Add(slot.Data);
+            if (_gameStarted == false && slot.Data != null)
+                _inventory.Add(slot.Data);
 
             Destroy(slot.gameObject);
         }
 
         _selectPanel.SelectButtonClicked -= OnBoosterSelected;
+        _startTrigger.GameStarting -= OnGameStarting;
+        _inventory.Save(new JsonSaveLoad());
+    }
+
+    private void OnGameStarting()
+    {
+        List<BoosterData> boosters = new List<BoosterData>();
+        foreach (var slot in _slots)
+        {
+            if (slot.Data != null)
+                boosters.Add(slot.Data);
+        }
 
         _gameSlots.SetBoosters(boosters);
+        _gameStarted = true;
     }
 
     private void OnApplicationQuit()

@@ -46,6 +46,11 @@ public class StageInfo
         }
     }
 
+    public bool Contains(GameCell cell)
+    {
+        return _stageCells.Contains(cell);
+    }
+
     private void OnEnemyDied(Enemy enemy)
     {
         enemy.Died -= OnEnemyDied;

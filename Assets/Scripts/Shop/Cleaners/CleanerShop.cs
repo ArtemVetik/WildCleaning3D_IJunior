@@ -86,6 +86,7 @@ public class CleanerShop : MonoBehaviour
     {
         RemovePresenterEvents();
         foreach (var presenter in _presenters)
-            Destroy(presenter.gameObject);
+            if (presenter)
+                Destroy(presenter.gameObject);
     }
 }

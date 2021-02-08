@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "WatersBall", menuName = "Shop/Boosters/WatersBall", order = 51)]
 public class WatersBall : Booster
 {
+    [SerializeField] private ParticleSystem _useEffect;
     [SerializeField] private CellSelector _selectorTemplate;
     [SerializeField] private int _radius;
 
+    private LevelStages _levelStages;
     private CellSelector _instSelector;
 
     public override event UnityAction<Booster> Used;
@@ -18,6 +21,7 @@ public class WatersBall : Booster
         if (_instSelector)
             return;
 
+        _levelStages = FindObjectOfType<LevelStages>();
         _instSelector = Instantiate(_selectorTemplate);
         _instSelector.Raycasted += OnSelectorRaycaster;
         _instSelector.Canceled += OnCancelButtonClick;
@@ -30,6 +34,10 @@ public class WatersBall : Booster
 
     private void OnSelectorRaycaster(GameCell cell)
     {
+        if (_levelStages.Contains(cell) == false)
+            return;
+
+        Instantiate(_useEffect, cell.transform.position, _useEffect.transform.rotation);
         FillInRadius(cell, cell, _radius, new HashSet<GameCell>());
 
         Used?.Invoke(this);

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StartLevelTrigger : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class StartLevelTrigger : MonoBehaviour
     [SerializeField] private GameCanvas _gameCanvas;
 
     private Player _player;
+
+    public event UnityAction GameStarting;
+    public event UnityAction GameStarted;
 
     private void OnEnable()
     {
@@ -31,10 +35,14 @@ public class StartLevelTrigger : MonoBehaviour
 
     private void OnPlayerMoveStarted()
     {
+        GameStarting?.Invoke();
+
         _uiCanvas.Hide();
         _gameCanvas.Show();
 
         _player.MoveStarted -= OnPlayerMoveStarted;
         _player = null;
+
+        GameStarted?.Invoke();
     }
 }
