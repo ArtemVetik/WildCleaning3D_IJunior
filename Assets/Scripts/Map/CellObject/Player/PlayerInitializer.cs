@@ -16,6 +16,9 @@ public class PlayerInitializer : MonoBehaviour
     {
         _swipeInput.Init(player);
         player.Init(_filler);
+        player.Characteristics.Load(new JsonSaveLoad());
+
+        Debug.Log(player.Characteristics.Speed + " " + player.Characteristics.Cleanliness);
 
         InstPlayer = player;
         PlayerInitialized?.Invoke(InstPlayer);

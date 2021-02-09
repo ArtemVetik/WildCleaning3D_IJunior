@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EndLevelTrigger : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class EndLevelTrigger : MonoBehaviour
     [SerializeField] private EndOfGameCanvas _endOfGameCanvas;
 
     private Player _player;
+
+    public event UnityAction LevelCompleted;
 
     private void OnEnable()
     {
@@ -33,6 +36,8 @@ public class EndLevelTrigger : MonoBehaviour
 
         _gameCanvas.Hide();
         _endOfGameCanvas.ShowWin();
+
+        LevelCompleted?.Invoke();
     }
 
     private void OnPlayerInitialized(Player player)

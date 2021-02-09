@@ -8,17 +8,9 @@ namespace CustomRedactor
     [CreateAssetMenu(fileName = "New Player", menuName = "Redactor/LevelObject/Player", order = 51)]
     public class Player : LevelObject
     {
-        [SerializeField] private CleanersDataBase _dataBase;
+        [SerializeField] private PlayerSelector _playerSelector;
 
-        public override CellObject Prefab
-        {
-            get
-            {
-                CleanerInventory inventory = new CleanerInventory(_dataBase);
-                inventory.Load(new JsonSaveLoad());
-                return inventory.SelectedCleaner.Prefab.Cleaner;
-            }
-        }
+        public override CellObject Prefab => _playerSelector.GetPlayer();
 
         public override void Place(LevelData levelData, Vector2Int position, ObjectParameters parameters)
         {

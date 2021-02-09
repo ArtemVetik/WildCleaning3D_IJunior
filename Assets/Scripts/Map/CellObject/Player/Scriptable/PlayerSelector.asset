@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157858ed9553dd24ba1821d950e9547a, type: 3}
+  m_Name: PlayerSelector
+  m_EditorClassIdentifier: 
+  _dataBase: {fileID: 11400000, guid: 7392941edea65a24e8063bb55488a1b9, type: 2}
+  _players:
+    m_keys: 0500000014000000
+    m_values:
+    - {fileID: 11400000, guid: 10e50554a1e330f49a5bdb825fc7ee21, type: 2}
+    - {fileID: 11400000, guid: 934189966108f3c4ba3ec40e19a4ce3b, type: 2}

@@ -289,8 +289,8 @@ public class RedactorEditor : Editor
 
     private bool ShowPropertyRelative(SerializedProperty property, string propertyName)
     {
-        var nesterProperty = property.FindPropertyRelative(propertyName);
-        return EditorGUILayout.PropertyField(nesterProperty, true);
+        var nestedProperty = property.FindPropertyRelative(propertyName);
+        return EditorGUILayout.PropertyField(nestedProperty, true);
     }
 
     private void ShowGameObjectPreview(GameObject gameObject)

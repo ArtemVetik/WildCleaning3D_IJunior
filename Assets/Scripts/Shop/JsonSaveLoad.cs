@@ -2,6 +2,7 @@
 
 public class JsonSaveLoad : ISaveLoadVisiter
 {
+    private const string PlayerDataKey = "PlayerData_";
     private const string BoosterInventoryKey = "BoosterInventory";
     private const string CleanerInventoryKey = "CleanerInventory";
     private const string ChestsInventoryKey = "ChestsInventory";
@@ -11,19 +12,19 @@ public class JsonSaveLoad : ISaveLoadVisiter
     public void Save(PlayerData playerData)
     {
         string saveJson = JsonUtility.ToJson(playerData);
-        PlayerPrefs.SetString(playerData.ID, saveJson);
+        PlayerPrefs.SetString(PlayerDataKey + playerData.ID, saveJson);
         PlayerPrefs.Save();
     }
 
     public PlayerData Load(PlayerData playerData)
     {
-        if (PlayerPrefs.HasKey(playerData.ID))
+        if (PlayerPrefs.HasKey(PlayerDataKey + playerData.ID))
         {
-            string saveJson = PlayerPrefs.GetString(playerData.ID);
+            string saveJson = PlayerPrefs.GetString(PlayerDataKey + playerData.ID);
             return JsonUtility.FromJson<PlayerData>(saveJson);
         }
 
-        return null;
+        return playerData;
     }
     #endregion
 
