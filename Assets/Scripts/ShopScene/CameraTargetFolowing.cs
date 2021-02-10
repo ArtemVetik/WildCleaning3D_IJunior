@@ -29,8 +29,8 @@ public class CameraTargetFolowing : MonoBehaviour
         Vector3 targetPosition = _target.transform.position + _cameraShift;
         Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, targetPosition, _speed * Time.deltaTime);
 
-        Vector3 targetRotation = CalculateCameraEulerAngles();
-        Camera.main.transform.eulerAngles = Vector3.Lerp(Camera.main.transform.eulerAngles, targetRotation, _speed * Time.deltaTime);
+        var targetRotation = CalculateCameraEulerAngles();
+        Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, targetRotation, _speed * Time.deltaTime);
     }
 
     private Vector3 CalculateCameraShift()
@@ -47,8 +47,8 @@ public class CameraTargetFolowing : MonoBehaviour
         return cameraShift;
     }
 
-    private Vector3 CalculateCameraEulerAngles()
+    private Quaternion CalculateCameraEulerAngles()
     {
-        return new Vector3(0.7f * _topDownAngle, _yAngle, Camera.main.transform.eulerAngles.z);
+        return Quaternion.Euler(0.7f * _topDownAngle, _yAngle, 0);
     }
 }

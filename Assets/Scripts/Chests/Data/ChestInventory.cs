@@ -11,6 +11,7 @@ public class ChestInventory : ISavedObject
 
     private ChestDataBase _dataBase;
 
+    public int Count => _buyedGUID.Count;
     public IEnumerable<Chest> Data => from guid in _buyedGUID
                                             select _dataBase.Data.First((data) => data.GUID == guid);
 
@@ -27,6 +28,11 @@ public class ChestInventory : ISavedObject
     public bool Remove(Chest data)
     {
         return _buyedGUID.Remove(data.GUID);
+    }
+
+    public int GetCount(Chest chest)
+    {
+        return Data.Count(buyedChest => buyedChest.GUID == chest.GUID);
     }
 
     public void Load(ISaveLoadVisiter saveLoadVisiter)

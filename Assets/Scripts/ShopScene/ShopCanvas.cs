@@ -11,12 +11,14 @@ public class ShopCanvas : MonoBehaviour
     [SerializeField] private Button _homeButton;
     [SerializeField] private Button _cleanerShop;
     [SerializeField] private Button _boosterShop;
+    [SerializeField] private Button _chestShop;
 
     private void OnEnable()
     {
         _homeButton.onClick.AddListener(OnHomeButtonClicked);
         _cleanerShop.onClick.AddListener(OnCleanerButtonClicked);
         _boosterShop.onClick.AddListener(OnBoosterButtonClicked);
+        _chestShop.onClick.AddListener(OnChestButtonClicked);
     }
 
     private void OnDisable()
@@ -24,6 +26,7 @@ public class ShopCanvas : MonoBehaviour
         _homeButton.onClick.RemoveListener(OnHomeButtonClicked);
         _cleanerShop.onClick.RemoveListener(OnCleanerButtonClicked);
         _boosterShop.onClick.RemoveListener(OnBoosterButtonClicked);
+        _chestShop.onClick.RemoveListener(OnChestButtonClicked);
     }
 
     private void OnHomeButtonClicked()
@@ -38,5 +41,10 @@ public class ShopCanvas : MonoBehaviour
     private void OnBoosterButtonClicked()
     {
         _switcher.Activate(ShopType.BoosterShop);
+    }
+
+    private void OnChestButtonClicked()
+    {
+        _switcher.Activate(ShopType.ChestShop);
     }
 }

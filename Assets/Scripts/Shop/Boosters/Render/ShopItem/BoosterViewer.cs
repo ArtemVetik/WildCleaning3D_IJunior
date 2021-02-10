@@ -6,7 +6,6 @@ using System.Linq;
 
 public class BoosterViewer : ShopViewer
 {
-    [SerializeField] private BoostersDataBase _dataBase;
     [SerializeField] private Button _nextButton;
     [SerializeField] private Button _previousButton;
     [SerializeField] private Button _cellButton;

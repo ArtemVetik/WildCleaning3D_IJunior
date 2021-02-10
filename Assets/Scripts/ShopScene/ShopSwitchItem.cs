@@ -6,7 +6,7 @@ using System;
 [Serializable]
 public enum ShopType
 {
-    CleanerShop, BoosterShop,
+    CleanerShop, BoosterShop, ChestShop
 }
 
 [Serializable]

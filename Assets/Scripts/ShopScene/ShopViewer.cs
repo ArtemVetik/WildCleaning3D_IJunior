@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopViewer : MonoBehaviour
+public abstract class ShopViewer : MonoBehaviour
 {
     [SerializeField] private CameraTargetFolowing _cameraFolowing;
 
