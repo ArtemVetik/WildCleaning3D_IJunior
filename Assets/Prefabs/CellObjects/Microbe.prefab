@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -6864770122619213581}
   - component: {fileID: 3647002774183511411}
   - component: {fileID: 1270525772061505531}
+  - component: {fileID: 8342268278495519337}
   m_Layer: 0
   m_Name: Microbe
   m_TagString: Untagged
@@ -93,6 +94,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8342268278495519337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443583030638819899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85a41223df50c04b937d5dde35bf1e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8053939572369381763
 GameObject:
   m_ObjectHideFlags: 0

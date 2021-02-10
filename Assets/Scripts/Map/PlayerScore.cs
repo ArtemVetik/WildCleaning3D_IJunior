@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public struct EnemyInContour
+public class EnemyInContour
 {
     private FillData _fillData;
     private HashSet<Enemy> _enemies;
+
+    public event UnityAction<EnemyInContour> ContourFilling;
 
     public EnemyInContour(FillData fillData, EnemyContainer _enemyContainer)
     {
@@ -18,6 +21,18 @@ public struct EnemyInContour
             if (fillData.FilledCells.Find((cell) => cell.Position == enemy.CurrentCell.Position))
                 _enemies.Add(enemy);
         }
+
+        if (_enemies.Count > 0)
+        {
+            var first = _enemies.First();
+            first.Died += OnFirstEnemyDied;
+        }
+    }
+
+    private void OnFirstEnemyDied(Enemy enemy)
+    {
+        ContourFilling?.Invoke(this);
+        enemy.Died -= OnFirstEnemyDied;
     }
 
     public FillData FillData => _fillData;
@@ -37,47 +52,40 @@ public class PlayerScore : MonoBehaviour
     private List<EnemyInContour> _enemyInContours = new List<EnemyInContour>();
 
     public event UnityAction<int> ScoreChanged;
+    public event UnityAction<int> ScoreCombined;
 
     public int Score { get; private set; }
 
     private void OnEnable()
     {
-        _enemyContainer.EnemyDied += OnEnemyDied;
         _mapFiller.StartFilled += OnStartFilled;
-        _mapFiller.EndFilled += OnEndFilled;
     }
 
     private void OnDisable()
     {
-        _enemyContainer.EnemyDied -= OnEnemyDied;
         _mapFiller.StartFilled -= OnStartFilled;
     }
 
     private void OnStartFilled(FillData fillData)
     {
-        _enemyInContours.Add(new EnemyInContour(fillData, _enemyContainer));
+        var newContour = new EnemyInContour(fillData, _enemyContainer);
+        newContour.ContourFilling += OnContourFilling;
+
+        _enemyInContours.Add(newContour);
     }
 
-    private void OnEndFilled(FillData fillData)
+    private void OnContourFilling(EnemyInContour contour)
     {
-        var findData = _enemyInContours.Find((data) => data.FillData.Equals(fillData));
-        _enemyInContours.Remove(findData);
-    }
+        var enemiesInContour = contour.EnemyCount;
+        var scoreBonus = enemiesInContour / 10 + 1;
 
-    private void OnEnemyDied(Enemy enemy)
-    {
-        Score += CalculateScore(enemy);
+        Score += scoreBonus * enemiesInContour;
         ScoreChanged?.Invoke(Score);
-    }
 
-    private int CalculateScore(Enemy enemy)
-    {
-        int score = 1;
+        if (scoreBonus > 1)
+            ScoreCombined?.Invoke(scoreBonus);
 
-        foreach (var contourData in _enemyInContours)
-            if (contourData.Has(enemy))
-                score = contourData.EnemyCount / 10 + 1;
-
-        return score;
+        contour.ContourFilling -= OnContourFilling;
+        _enemyInContours.Remove(contour);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -11,6 +12,17 @@ public class PlayerSelector : ScriptableObject
 {
     [SerializeField] private CleanersDataBase _dataBase;
     [SerializeField] private PlayerOnLevelDictionary _players;
+
+    public bool HasInDictionary(Player player)
+    {
+        foreach (var playerInDictionart in _players.Values)
+        {
+            if (playerInDictionart.Cleaner.DefaultCharacteristics.ID == player.DefaultCharacteristics.ID)
+                return true;
+        }
+
+        return false;
+    }
 
     public Player GetPlayer()
     {

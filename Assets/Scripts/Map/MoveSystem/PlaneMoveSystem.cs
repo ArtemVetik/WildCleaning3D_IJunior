@@ -25,10 +25,10 @@ public class PlaneMoveSystem : MonoBehaviour
         _moveable = moveable;
     }
 
-    public void Move(GameCell toCell, Vector2Int direction)
+    public void Move(GameCell toCell, Vector2Int direction, float height = 1f)
     {
         _targetCell = toCell;
-        _targetPosition = toCell.transform.position + Vector3.up * transform.localScale.y / 2f;
+        _targetPosition = toCell.transform.position + Vector3.up * height / 2f;
         Direction = direction;
         enabled = true;
     }

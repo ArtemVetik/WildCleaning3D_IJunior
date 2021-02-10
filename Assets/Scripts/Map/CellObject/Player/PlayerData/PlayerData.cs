@@ -15,24 +15,26 @@ public class PlayerData : IPlayerData, ISavedObject
     public virtual float Speed => _speed;
     public virtual float Cleanliness => _cleanliness;
 
-    public PlayerData()
-    {
-        _speed = _startSpeed;
-        _cleanliness = _startCleanliness;
-    }
-
     public void Upgrade()
     {
         _speed += 0.05f;
-        _cleanliness = Mathf.Clamp(_cleanliness + 0.08f, 0, 1);
+        _cleanliness = Mathf.Clamp(_cleanliness + 0.01f, 0, 1);
     }
 
     public void Load(ISaveLoadVisiter saveLoadVisiter)
     {
         PlayerData savedData = saveLoadVisiter.Load(this);
 
-        _speed = savedData._speed;
-        _cleanliness = savedData._cleanliness;
+        if (savedData == null)
+        {
+            _speed = _startSpeed;
+            _cleanliness = _startCleanliness;
+        }
+        else
+        {
+            _speed = savedData._speed;
+            _cleanliness = savedData._cleanliness;
+        }
     }
 
     public void Save(ISaveLoadVisiter saveLoadVisiter)

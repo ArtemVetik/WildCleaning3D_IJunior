@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: -8953530835542812769}
   - component: {fileID: 8518520436926968599}
   - component: {fileID: 962510189832699767}
+  - component: {fileID: 5723147199469115659}
   m_Layer: 0
   m_Name: Virus
   m_TagString: Untagged
@@ -255,3 +256,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5723147199469115659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443583030638819899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85a41223df50c04b937d5dde35bf1e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

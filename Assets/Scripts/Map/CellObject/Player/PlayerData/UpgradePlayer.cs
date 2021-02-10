@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class UpgradePlayer : MonoBehaviour
 {
+    [SerializeField] private CleanersDataBase _dataBase;
     [SerializeField] private PlayerInitializer _playerInitializer;
     [SerializeField] private EndLevelTrigger _endTrigger;
-    
+    [SerializeField] private PlayerSelector _playerSelector;
+
     private void OnLevelCompleted()
     {
-        _playerInitializer.InstPlayer.Characteristics.Upgrade();
-        _playerInitializer.InstPlayer.Characteristics.Save(new JsonSaveLoad());
+        CleanerInventory inventory = new CleanerInventory(_dataBase);
+        inventory.Load(new JsonSaveLoad());
+
+        var player = _playerInitializer.InstPlayer;
+
+        if (_playerSelector.HasInDictionary(player) && inventory.Contains(player.DefaultCharacteristics) == false)
+        {
+            Debug.Log("HAS!");
+            return;
+        }
+
+        _playerInitializer.InstPlayer.Upgrade();
     }
 
     private void OnEnable()

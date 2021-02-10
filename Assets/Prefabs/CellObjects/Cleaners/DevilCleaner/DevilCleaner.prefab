@@ -582,6 +582,7 @@ GameObject:
   - component: {fileID: 5260673012888249493}
   - component: {fileID: 7691972216321207381}
   - component: {fileID: 1817089224682461626}
+  - component: {fileID: 2671167201034384228}
   m_Layer: 0
   m_Name: DevilCleaner
   m_TagString: Untagged
@@ -699,6 +700,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2671167201034384228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192504265858284951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85a41223df50c04b937d5dde35bf1e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8993080680967448280
 GameObject:
   m_ObjectHideFlags: 0

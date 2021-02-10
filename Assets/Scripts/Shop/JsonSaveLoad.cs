@@ -24,7 +24,7 @@ public class JsonSaveLoad : ISaveLoadVisiter
             return JsonUtility.FromJson<PlayerData>(saveJson);
         }
 
-        return playerData;
+        return null;
     }
     #endregion
 

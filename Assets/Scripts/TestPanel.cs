@@ -23,6 +23,11 @@ public class TestPanel : MonoBehaviour
         cleanerInventory.SelectCleaner(_cleanerDataBase.DefaultData);
         cleanerInventory.Save(new JsonSaveLoad());
 
+        foreach (var item in _cleanerDataBase.Data)
+        {
+            item.Prefab.Cleaner.DefaultCharacteristics.Load(new JsonSaveLoad());
+            item.Prefab.Cleaner.DefaultCharacteristics.Save(new JsonSaveLoad());
+        }
     }
 
     public void SetScore()

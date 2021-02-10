@@ -7,6 +7,7 @@ public class PlayerMoveSystem
 {
     private PlaneMoveSystem _moveSystem;
     private Vector2Int _nextMoveDirection;
+    private MeshHeight _meshHeight;
 
     public Vector2Int CurrentDirection => _moveSystem.Direction;
     public bool IsMoving => _moveSystem.IsMoving;
@@ -15,9 +16,10 @@ public class PlayerMoveSystem
     public event UnityAction<GameCell> Stopped;
     public event UnityAction<GameCell> MarkedCellCrossed;
 
-    public PlayerMoveSystem(PlaneMoveSystem moveSystem)
+    public PlayerMoveSystem(PlaneMoveSystem moveSystem, MeshHeight meshHeight)
     {
         _moveSystem = moveSystem;
+        _meshHeight = meshHeight;
     }
 
     public bool Move(GameCell fromCell, Vector2Int direction)
@@ -61,7 +63,7 @@ public class PlayerMoveSystem
         }
 
         _moveSystem.MoveEnded += OnMoveEnded;
-        _moveSystem.Move(adjacentCell, _nextMoveDirection);
+        _moveSystem.Move(adjacentCell, _nextMoveDirection, _meshHeight.MaxMeshHeight);
         return true;
     }
 }

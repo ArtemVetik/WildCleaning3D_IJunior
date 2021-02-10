@@ -13,6 +13,8 @@ public class CleanerPresenter : MonoBehaviour
     [SerializeField] private GameObject _glassBox;
     [SerializeField] private TMP_Text _name;
     [SerializeField] private TMP_Text _description;
+    [SerializeField] private TMP_Text _speed;
+    [SerializeField] private TMP_Text _cleanliness;
     [SerializeField] private TMP_FontAsset _lockAsset;
     [SerializeField] private TMP_FontAsset _unlockAsset;
     [SerializeField] private TMP_FontAsset _selectedAsset;
@@ -56,6 +58,12 @@ public class CleanerPresenter : MonoBehaviour
 
         _name.text = data.Name;
         _description.text = data.Description;
+
+        var characteristics = Data.Prefab.Cleaner.DefaultCharacteristics;
+        characteristics.Load(new JsonSaveLoad());
+
+        _speed.text = "Speed: " + string.Format("{0:f2}", characteristics.Speed);
+        _cleanliness.text = "Cleanliness: " + string.Format("{0:P2}", characteristics.Cleanliness);
 
         _name.font = _lockAsset;
     }

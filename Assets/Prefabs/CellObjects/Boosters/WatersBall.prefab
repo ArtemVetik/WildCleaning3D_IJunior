@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 8956808382472997800}
   - component: {fileID: 8956808382472997812}
   - component: {fileID: 7263427957184664512}
+  - component: {fileID: 6153326561742589780}
   m_Layer: 0
   m_Name: WatersBall
   m_TagString: Untagged
@@ -244,3 +245,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6153326561742589780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956808382472997803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85a41223df50c04b937d5dde35bf1e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -10,27 +10,30 @@ public class Player : CellObject, IMoveable, ISpeedyObject
     [SerializeField] private ParticleSystem _diedEffectTemplate;
 
     private PlayerMoveSystem _playerMoveSystem;
+    private PlayerData _characteristics;
     private MapFiller _filler;
     private PlayerTail _tail;
 
-    public PlayerData Characteristics { get; private set; }
-    public float Speed => Characteristics.Speed;
+    public PlayerData DefaultCharacteristics => _defaultCharacteristics.Characteristic;
+    public IPlayerData PlayerData => _characteristics;
+    public float Speed => _characteristics.Speed;
+    public float Cleanliness => _characteristics.Cleanliness;
     public Vector2Int Direction => _playerMoveSystem.CurrentDirection;
     public bool IsMoving => _playerMoveSystem.IsMoving;
 
     public event UnityAction MoveStarted;
     public event UnityAction Died;
 
-    private void Awake()
+    protected override void OnAwake()
     {
         var moveSystem = GetComponent<PlaneMoveSystem>();
         moveSystem.Init(this);
 
-        _playerMoveSystem = new PlayerMoveSystem(moveSystem);
+        _playerMoveSystem = new PlayerMoveSystem(moveSystem, MeshHeight);
         _tail = new PlayerTail();
 
-        Characteristics = _defaultCharacteristics.Characteristic;
-        Characteristics.Load(new JsonSaveLoad());
+        _characteristics = _defaultCharacteristics.Characteristic;
+        _characteristics.Load(new JsonSaveLoad());
     }
 
     public void Init(MapFiller filler)
@@ -40,7 +43,15 @@ public class Player : CellObject, IMoveable, ISpeedyObject
 
     public void ModifiedCharacteristics(PlayerData newCharacteristics)
     {
-        Characteristics = newCharacteristics;
+        _characteristics = newCharacteristics;
+    }
+
+    public void Upgrade()
+    {
+        _characteristics = _defaultCharacteristics.Characteristic;
+        _characteristics.Load(new JsonSaveLoad());
+        _characteristics.Upgrade();
+        _characteristics.Save(new JsonSaveLoad());
     }
 
     private void OnMoveEnded(GameCell finishCell)
@@ -63,7 +74,7 @@ public class Player : CellObject, IMoveable, ISpeedyObject
     {
         _playerMoveSystem.ForceStop();
         CurrentCell = cell;
-        transform.position = cell.transform.position;
+        transform.position = cell.transform.position + Vector3.up * MeshHeight.MaxMeshHeight / 2f;
     }
 
     private void OnMarkedCellCrossed(GameCell cell)

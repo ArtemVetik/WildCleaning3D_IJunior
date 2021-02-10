@@ -10,7 +10,7 @@ public class CleanerInventory : ISavedObject
     [SerializeField] private string _selectedGUID;
 
     private CleanersDataBase _dataBase;
-    
+
     public IEnumerable<CleanerData> Data => from data in _dataBase.Data
                                             where _buyedGUID.Contains(data.GUID)
                                             select data;
@@ -34,6 +34,17 @@ public class CleanerInventory : ISavedObject
     public bool Contains(CleanerData data)
     {
         return _buyedGUID.Contains(data.GUID);
+    }
+
+    public bool Contains(PlayerData playerData)
+    {
+        foreach (var cleanerData in _dataBase.Data)
+        {
+            if (cleanerData.Prefab.Cleaner.DefaultCharacteristics.ID == playerData.ID && Contains(cleanerData))
+                return true;
+        }
+
+        return false;
     }
 
     public void SelectCleaner(CleanerData data)
