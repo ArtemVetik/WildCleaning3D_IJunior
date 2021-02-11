@@ -2396,7 +2396,7 @@ MonoBehaviour:
   _speed: 3
   _yAngle: -90
   _topDownAngle: 12
-  _distanceToTarget: 7
+  _distanceToTarget: 4
   yShift: 0.5
 --- !u!4 &511811852 stripped
 Transform:
@@ -4126,8 +4126,8 @@ MonoBehaviour:
   _speed: 3
   _yAngle: 90
   _topDownAngle: 12
-  _distanceToTarget: 6
-  yShift: 0.2
+  _distanceToTarget: 3
+  yShift: 0.6
 --- !u!1 &956564570
 GameObject:
   m_ObjectHideFlags: 0
@@ -7373,7 +7373,7 @@ MonoBehaviour:
   _speed: 3
   _yAngle: 0
   _topDownAngle: 15
-  _distanceToTarget: 5
+  _distanceToTarget: 2.5
   yShift: 1
 --- !u!1001 &1774869585
 PrefabInstance:
