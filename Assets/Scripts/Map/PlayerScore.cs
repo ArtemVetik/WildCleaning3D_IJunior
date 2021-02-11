@@ -46,6 +46,7 @@ public class EnemyInContour
 
 public class PlayerScore : MonoBehaviour
 {
+    [SerializeField] private EndLevelTrigger _endTrigger;
     [SerializeField] private EnemyContainer _enemyContainer;
     [SerializeField] private MapFiller _mapFiller;
 
@@ -59,11 +60,13 @@ public class PlayerScore : MonoBehaviour
     private void OnEnable()
     {
         _mapFiller.StartFilled += OnStartFilled;
-    }
+        _endTrigger.LevelCompleted += OnLevelCompleted;
+    } 
 
     private void OnDisable()
     {
         _mapFiller.StartFilled -= OnStartFilled;
+        _endTrigger.LevelCompleted -= OnLevelCompleted;
     }
 
     private void OnStartFilled(FillData fillData)
@@ -72,6 +75,14 @@ public class PlayerScore : MonoBehaviour
         newContour.ContourFilling += OnContourFilling;
 
         _enemyInContours.Add(newContour);
+    }
+
+    private void OnLevelCompleted()
+    {
+        ScoreBalance balance = new ScoreBalance();
+        balance.Load(new JsonSaveLoad());
+        balance.AddScore(Score);
+        balance.Save(new JsonSaveLoad());
     }
 
     private void OnContourFilling(EnemyInContour contour)
