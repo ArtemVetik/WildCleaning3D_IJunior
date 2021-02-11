@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82919288b6cba10469fac5c8029fa6c4, type: 3}
+  m_Name: LevelShest
+  m_EditorClassIdentifier: 
+  _guid: 96e8aff8-27cc-4ff8-8322-3676ec6102d2
+  _name: LevelChest
+  _description: '!!!'
+  _preview: {fileID: 21300000, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  _chestAnimation: {fileID: 6373337972126553566, guid: df740f27330bdad4b9dd2388718c8bfa, type: 3}
+  _items:
+  - _action: {fileID: 11400000, guid: 09bc664790393024d8980f428dbd77ea, type: 2}
+    _probability: 0.34
+  - _action: {fileID: 11400000, guid: 3e25a26b0df15ff409e334472e8f3b86, type: 2}
+    _probability: 0.33
+  - _action: {fileID: 11400000, guid: c97be6fbb400a1d4f9283fb6c41a6b49, type: 2}
+    _probability: 0.33

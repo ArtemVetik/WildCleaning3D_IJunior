@@ -7,20 +7,30 @@ public class OpenChestPresenter : MonoBehaviour
 {
     [SerializeField] private OpenChestSceneStartPoint _sceneLoader;
     [SerializeField] private ChestDataBase _dataBase;
-    [SerializeField] private Animator _chestAnimator;
     [SerializeField] private FromToTransformLerp _camera;
     [SerializeField] private GameObject _fireworks;
     [SerializeField] private Button _openButton;
 
+    private ChestAnimation _chestAnimation;
     private ChestItem _item;
 
     private void OnEnable()
     {
+        _sceneLoader.Loaded += OnLoaded;
         _openButton.onClick.AddListener(OnOpenButtonClicked);
+    }
+
+    private void OnLoaded()
+    {
+        _chestAnimation = Instantiate(_sceneLoader.Chest.ChestAnimation, transform);
+        _chestAnimation.ChestOpened += OnChestOpened;
     }
 
     private void OnDisable()
     {
+        _sceneLoader.Loaded += OnLoaded;
+        if (_chestAnimation)
+            _chestAnimation.ChestOpened -= OnChestOpened;
         _openButton.onClick.RemoveListener(OnOpenButtonClicked);
     }
 
@@ -38,7 +48,7 @@ public class OpenChestPresenter : MonoBehaviour
         inventory.Remove(_sceneLoader.Chest);
         inventory.Save(new JsonSaveLoad());
 
-        _chestAnimator.SetTrigger("Open");
+        _chestAnimation.SetTrigger(ChestAnimation.Parameters.Open);
         _camera.StartLerp();
     }
 

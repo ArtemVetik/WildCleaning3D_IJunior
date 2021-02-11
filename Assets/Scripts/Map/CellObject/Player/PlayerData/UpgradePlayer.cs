@@ -16,11 +16,8 @@ public class UpgradePlayer : MonoBehaviour
 
         var player = _playerInitializer.InstPlayer;
 
-        if (_playerSelector.HasInDictionary(player) && inventory.Contains(player.DefaultCharacteristics) == false)
-        {
-            Debug.Log("HAS!");
+        if (_playerSelector.HasInDictionary(player) && inventory.Contains(player.DefaultCharacteristics) == false) 
             return;
-        }
 
         _playerInitializer.InstPlayer.Upgrade();
     }

@@ -16,6 +16,7 @@ MonoBehaviour:
   _name: Score Chest
   _description: Score or boosters drop
   _preview: {fileID: 21300000, guid: 4c72f3c555f96274787f31379fabb6ff, type: 3}
+  _chestAnimation: {fileID: -3007555522485489936, guid: a36705206acb2b94ca0209da506cbc47, type: 3}
   _items:
   - _action: {fileID: 11400000, guid: 09bc664790393024d8980f428dbd77ea, type: 2}
     _probability: 0.3
