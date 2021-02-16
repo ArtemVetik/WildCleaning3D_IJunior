@@ -45,7 +45,8 @@ public class CurrentLevelLoader : MonoBehaviour
         _lastCompletedIndex = LevelIndex;
         PlayerPrefs.SetInt(CompleteLevelKey, _lastCompletedIndex);
 
-        PlayerPrefs.SetInt(LevelNumberKey, LevelIndex + 1);
+        if (LevelIndex + 1 < _levelDataBase.Count)
+            PlayerPrefs.SetInt(LevelNumberKey, LevelIndex + 1);
     }
 
     private void OnEnable()
