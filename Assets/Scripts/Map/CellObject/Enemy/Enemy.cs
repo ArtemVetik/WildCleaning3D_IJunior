@@ -13,6 +13,8 @@ public abstract class Enemy : CellObject, ISpeedyObject
 
     public float Speed => 2f;
 
+    public event UnityAction<GameCell> MoveStarting;
+    public event UnityAction MovePausing;
     public abstract event UnityAction<Enemy> Died;
 
     private void OnEnable()
@@ -22,11 +24,13 @@ public abstract class Enemy : CellObject, ISpeedyObject
 
         _patternMoveSystem = new PatternMoveSystem(moveSystem);
         _patternMoveSystem.MoveStarted += OnMoveStarted;
+        _patternMoveSystem.MovePausing += OnMovePausing;
     }
 
     private void OnDisable()
     {
         _patternMoveSystem.MoveStarted -= OnMoveStarted;
+        _patternMoveSystem.MovePausing -= OnMovePausing;
         CurrentCell.Marked -= OnStepToMarkedCell;
     }
 
@@ -48,6 +52,7 @@ public abstract class Enemy : CellObject, ISpeedyObject
 
     private void OnMoveStarted(GameCell nextCell)
     {
+        MoveStarting?.Invoke(nextCell);
         if (nextCell.IsMarked)
         {
             OnStepToMarkedCell(nextCell);
@@ -58,6 +63,11 @@ public abstract class Enemy : CellObject, ISpeedyObject
 
         CurrentCell = nextCell;
         CurrentCell.Marked += OnStepToMarkedCell;
+    }
+
+    private void OnMovePausing()
+    {
+        MovePausing?.Invoke();
     }
 
     public abstract void Die();
