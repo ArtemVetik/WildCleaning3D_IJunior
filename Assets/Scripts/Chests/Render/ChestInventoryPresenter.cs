@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -7,8 +8,8 @@ using UnityEngine.UI;
 public class ChestInventoryPresenter : MonoBehaviour
 {
     [SerializeField] private Image _preview;
-    [SerializeField] private Text _name;
-    [SerializeField] private Text _count;
+    [SerializeField] private TMP_Text _name;
+    [SerializeField] private TMP_Text _count;
     [SerializeField] private Button _useButton;
 
     public Chest Data { get; private set; }

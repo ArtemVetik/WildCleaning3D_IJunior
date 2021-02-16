@@ -12,7 +12,7 @@ public class BoosterMenuSlotsList : MonoBehaviour
     [SerializeField] private BoosterMenuSlot _template;
     [SerializeField] private Transform _container;
 
-    public readonly int MaxCount = 3;
+    public readonly int MaxCount = 2;
 
     private List<BoosterMenuSlot> _slots;
     private BoosterMenuSlot _currentSlot;

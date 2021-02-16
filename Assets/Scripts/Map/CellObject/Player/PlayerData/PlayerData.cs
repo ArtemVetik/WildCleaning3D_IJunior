@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class PlayerData : IPlayerData, ISavedObject
+public class PlayerData : IPlayerData, ISavedObject, ICloneable
 {
     [SerializeField] private float _startSpeed;
     [SerializeField] private float _startCleanliness;
@@ -14,10 +14,12 @@ public class PlayerData : IPlayerData, ISavedObject
     public string ID => _id;
     public virtual float Speed => _speed;
     public virtual float Cleanliness => _cleanliness;
+    public float MaxSpeed => 8f;
+    public float MaxCleanliness => 1f;
 
     public void Upgrade()
     {
-        _speed += 0.05f;
+        _speed = Mathf.Clamp(_speed + 0.05f, 0f, 8f);
         _cleanliness = Mathf.Clamp(_cleanliness + 0.01f, 0, 1);
     }
 
@@ -40,5 +42,17 @@ public class PlayerData : IPlayerData, ISavedObject
     public void Save(ISaveLoadVisiter saveLoadVisiter)
     {
         saveLoadVisiter.Save(this);
+    }
+
+    public object Clone()
+    {
+        var cloneData = new PlayerData();
+        cloneData._startSpeed = _startSpeed;
+        cloneData._startCleanliness = _startCleanliness;
+        cloneData._id = _id;
+        cloneData._speed = _speed;
+        cloneData._cleanliness = _cleanliness;
+
+        return cloneData;
     }
 }

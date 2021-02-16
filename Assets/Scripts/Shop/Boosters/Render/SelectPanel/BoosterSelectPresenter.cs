@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -7,9 +8,8 @@ using UnityEngine.UI;
 public class BoosterSelectPresenter : MonoBehaviour
 {
     [SerializeField] private Image _preview;
-    [SerializeField] private Text _name;
-    [SerializeField] private Text _description;
-    [SerializeField] private Text _count;
+    [SerializeField] private TMP_Text _name;
+    [SerializeField] private TMP_Text _count;
     [SerializeField] private Button _selectButton;
 
     public BoosterData Data { get; private set; }
@@ -32,7 +32,6 @@ public class BoosterSelectPresenter : MonoBehaviour
 
         _preview.sprite = data.Preview;
         _name.text = data.Name;
-        _description.text = data.Description;
         _count.text = count.ToString();
     }
 

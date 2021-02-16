@@ -16,6 +16,7 @@ public class Player : CellObject, IMoveable, ISpeedyObject
 
     public PlayerData DefaultCharacteristics => _defaultCharacteristics.Characteristic;
     public IPlayerData PlayerData => _characteristics;
+    public IPlayerData PlayerDataClone => _characteristics.Clone() as IPlayerData;
     public float Speed => _characteristics.Speed;
     public float Cleanliness => _characteristics.Cleanliness;
     public Vector2Int Direction => _playerMoveSystem.CurrentDirection;
@@ -46,12 +47,14 @@ public class Player : CellObject, IMoveable, ISpeedyObject
         _characteristics = newCharacteristics;
     }
 
-    public void Upgrade()
+    public IPlayerData Upgrade()
     {
         _characteristics = _defaultCharacteristics.Characteristic;
         _characteristics.Load(new JsonSaveLoad());
         _characteristics.Upgrade();
         _characteristics.Save(new JsonSaveLoad());
+
+        return _characteristics;
     }
 
     private void OnMoveEnded(GameCell finishCell)

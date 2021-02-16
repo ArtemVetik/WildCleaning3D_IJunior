@@ -6,6 +6,11 @@ using IJunior.TypedScenes;
 
 public class Menu : MonoBehaviour
 {
+    public void Reload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void LoadCleanerShop()
     {
         ShopScene.Load(ShopType.CleanerShop);

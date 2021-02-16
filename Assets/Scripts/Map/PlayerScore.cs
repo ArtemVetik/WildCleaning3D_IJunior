@@ -59,13 +59,17 @@ public class PlayerScore : MonoBehaviour
 
     private void OnEnable()
     {
+        _enemyContainer.EnemyDied += OnEnemyDied;
         _mapFiller.StartFilled += OnStartFilled;
+        _mapFiller.EndFilled += OnEndFilled;
         _endTrigger.LevelCompleted += OnLevelCompleted;
-    } 
+    }
 
     private void OnDisable()
     {
+        _enemyContainer.EnemyDied -= OnEnemyDied;
         _mapFiller.StartFilled -= OnStartFilled;
+        _mapFiller.EndFilled -= OnEndFilled;
         _endTrigger.LevelCompleted -= OnLevelCompleted;
     }
 
@@ -97,6 +101,23 @@ public class PlayerScore : MonoBehaviour
             ScoreCombined?.Invoke(scoreBonus);
 
         contour.ContourFilling -= OnContourFilling;
-        _enemyInContours.Remove(contour);
+    }
+
+    private void OnEndFilled(FillData data)
+    {
+        var findContour = _enemyInContours.Find((contour) => contour.FillData.Equals(data));
+        _enemyInContours.Remove(findContour);
+    }
+
+    private void OnEnemyDied(Enemy enemy)
+    {
+        foreach (var contour in _enemyInContours)
+        {
+            if (contour.Has(enemy))
+                return;
+        }
+
+        Score ++;
+        ScoreChanged?.Invoke(Score);
     }
 }

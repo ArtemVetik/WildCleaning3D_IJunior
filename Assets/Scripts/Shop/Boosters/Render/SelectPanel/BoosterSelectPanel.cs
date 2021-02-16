@@ -1,11 +1,14 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class BoosterSelectPanel : MonoBehaviour
 {
     [SerializeField] private BoosterSelectListView _boosterListView;
+    [SerializeField] private GameObject _emptyPlaceholder;
 
     private IEnumerable<BoosterSelectPresenter> _presenters;
 
@@ -16,6 +19,8 @@ public class BoosterSelectPanel : MonoBehaviour
         var groupsData = GroupBoosters(boosters);
         _presenters = _boosterListView.Render(groupsData);
         InitButtonEvents();
+
+        _emptyPlaceholder.SetActive(_presenters.Count() == 0);
 
         gameObject.SetActive(true);
     }

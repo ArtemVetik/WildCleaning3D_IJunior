@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using IJunior.TypedScenes;
@@ -7,6 +8,7 @@ public class ChestInventoryRender : MonoBehaviour
 {
     [SerializeField] private ChestDataBase _dataBase;
     [SerializeField] private ChestInventoryListView _chestListView;
+    [SerializeField] private GameObject _emptyPlaceholder;
 
     private ChestInventory _inventory;
     private IEnumerable<ChestInventoryPresenter> _presenters;
@@ -21,6 +23,8 @@ public class ChestInventoryRender : MonoBehaviour
 
         foreach (var presenter in _presenters)
             presenter.UseButtonClicked += OnUseButtonClicked;
+
+        _emptyPlaceholder.SetActive(_presenters.Count() == 0);
     }
 
     private IEnumerable<KeyValuePair<Chest, int>> GroupBoosters(IEnumerable<Chest> boosters)

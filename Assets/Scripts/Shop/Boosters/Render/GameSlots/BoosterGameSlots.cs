@@ -31,6 +31,10 @@ public class BoosterGameSlots : MonoBehaviour
     private void OnBoosterUsed(Booster booster)
     {
         _currentUse.Disable();
+
+        _currentUse.UseButtonClicked -= OnUseButtonClicked;
+        _currentUse.Data.Booster.Used -= OnBoosterUsed;
+        Destroy(_currentUse.gameObject);
     }
 
     private void OnUseButtonClicked(BoosterGameSlotPresenter presenter)
@@ -45,6 +49,9 @@ public class BoosterGameSlots : MonoBehaviour
         {
             foreach (var presenter in _presenters)
             {
+                if (presenter == null)
+                    continue;
+
                 presenter.UseButtonClicked -= OnUseButtonClicked;
                 presenter.Data.Booster.Used -= OnBoosterUsed;
                 Destroy(presenter.gameObject);

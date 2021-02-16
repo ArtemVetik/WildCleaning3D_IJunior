@@ -1,16 +1,18 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Text))]
+[RequireComponent(typeof(TMP_Text))]
 public class GameScoreViewer : MonoBehaviour
 {
     [SerializeField] private PlayerScore _playerScore;
     
-    private Text _scoreText;
+    private TMP_Text _scoreText;
 
     private void Awake()
     {
-        _scoreText = GetComponent<Text>();
+        _scoreText = GetComponent<TMP_Text>();
+        _scoreText.text = "0";
     }
 
     private void OnEnable()

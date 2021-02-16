@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuScoreViewer : MonoBehaviour
 {
-    [SerializeField] private Text _score;
+    [SerializeField] private TMP_Text _score;
 
     private void OnEnable()
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelChestSetter : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class LevelChestSetter : MonoBehaviour
     [SerializeField] private Chest _chest;
 
     private int _lastLevelChestIndex;
+
+    public bool CanAddChest => _levelLoader.LevelIndex % 5 == 0 && _levelLoader.LevelIndex != _lastLevelChestIndex;
 
     private void OnEnable()
     {
@@ -33,17 +36,14 @@ public class LevelChestSetter : MonoBehaviour
 
     private void OnLevelCompleted()
     {
-        if (_levelLoader.LevelIndex % 5 != 0)
-            return;
-
-        if (_levelLoader.LevelIndex == _lastLevelChestIndex)
+        if (CanAddChest == false)
             return;
 
         ChestInventory inventory = new ChestInventory(_dataBase);
         inventory.Load(new JsonSaveLoad());
         inventory.Add(_chest);
         inventory.Save(new JsonSaveLoad());
-        Debug.Log("Add chest");
+
         PlayerPrefs.SetInt(LevelChestKey, _levelLoader.LevelIndex);
     }
 }

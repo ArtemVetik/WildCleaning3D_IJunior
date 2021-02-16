@@ -8,4 +8,9 @@ public class AnimationEvents : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    private void HideGameObject()
+    {
+        gameObject.SetActive(false);
+    }
 }

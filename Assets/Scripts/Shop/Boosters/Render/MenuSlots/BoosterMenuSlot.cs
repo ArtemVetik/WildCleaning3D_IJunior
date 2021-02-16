@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class BoosterMenuSlot : MonoBehaviour
 {
+    [SerializeField] private Sprite _defaultIcon;
     [SerializeField] private Image _preview;
-    [SerializeField] private Text _name;
+    [SerializeField] private TMP_Text _name;
     [SerializeField] private Button _addButton;
     [SerializeField] private Button _removeButton;
 
@@ -22,6 +24,7 @@ public class BoosterMenuSlot : MonoBehaviour
         _removeButton.onClick.AddListener(OnRemoveButtonClick);
 
         Data = null;
+        SetDefaultView();
     }
 
     private void OnDisable()
@@ -59,7 +62,7 @@ public class BoosterMenuSlot : MonoBehaviour
 
     private void SetDefaultView()
     {
-        _preview.sprite = null;
-        _name.text = "";
+        _preview.sprite = _defaultIcon;
+        _name.text = "Add booster";
     }
 }

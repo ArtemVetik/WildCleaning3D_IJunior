@@ -9,9 +9,12 @@ public class StageInfo
     private HashSet<Enemy> _enemies;
 
     public event UnityAction<int> StageCompleted;
+    public event UnityAction<int> FilledCountChanged;
 
     public int StageNumber { get; private set; }
     public int Microbes { get; private set; }
+    public int FilledCount { get; private set; }
+    public int CellCount { get; private set; }
 
     public StageInfo(int stageNumber, GameCell checkpointCell, IEnumerable<Enemy> enemies)
     {
@@ -19,6 +22,9 @@ public class StageInfo
         _stageCells = new HashSet<GameCell>();
         InitStageCells(checkpointCell);
         InitEnemies(enemies);
+
+        CellCount = _stageCells.Count;
+        FilledCount = 0;
     }
 
     ~StageInfo()
@@ -82,6 +88,9 @@ public class StageInfo
         markedCell.Unmarked += OnCellUnmarked;
         _stageCells.Remove(markedCell);
 
+        FilledCount++;
+        FilledCountChanged?.Invoke(FilledCount);
+
         if (_stageCells.Count == 0)
             StageCompleted?.Invoke(StageNumber);
     }
@@ -90,6 +99,9 @@ public class StageInfo
     {
         unmarkedCell.Unmarked -= OnCellUnmarked;
         unmarkedCell.Marked += OnCellMarked;
+
+        FilledCount--;
+        FilledCountChanged?.Invoke(FilledCount);
 
         _stageCells.Add(unmarkedCell);
     }
