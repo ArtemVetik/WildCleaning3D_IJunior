@@ -6,13 +6,13 @@ using UnityEngine.Events;
 public class Microbe : Enemy
 {
     [SerializeField] private ParticleSystem _diedEffectTemplate;
+    [SerializeField] private Transform _effectPosition;
 
     public override event UnityAction<Enemy> Died;
 
     public override void Die()
     {
-        Instantiate(_diedEffectTemplate, transform.position, _diedEffectTemplate.transform.rotation);
-
+        Instantiate(_diedEffectTemplate, _effectPosition.position, _diedEffectTemplate.transform.rotation);
         Died?.Invoke(this);
         Destroy(gameObject);
     }
