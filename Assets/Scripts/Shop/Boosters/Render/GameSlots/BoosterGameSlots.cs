@@ -8,7 +8,7 @@ public class BoosterGameSlots : MonoBehaviour
 
     private IEnumerable<BoosterData> _boosters;
     private IEnumerable<BoosterGameSlotPresenter> _presenters;
-    private BoosterGameSlotPresenter _currentUse;
+    private BoosterGameSlotPresenter _currentPresenter;
 
     public void SetBoosters(IEnumerable<BoosterData> boosters)
     {
@@ -23,23 +23,19 @@ public class BoosterGameSlots : MonoBehaviour
             foreach (var presenter in _presenters)
             {
                 presenter.UseButtonClicked += OnUseButtonClicked;
-                presenter.Data.Booster.Used += OnBoosterUsed;
+                presenter.BoosterUsed += OnBoosterUsed;
             }
         }
     }
 
-    private void OnBoosterUsed(Booster booster)
-    {
-        _currentUse.Disable();
-
-        _currentUse.UseButtonClicked -= OnUseButtonClicked;
-        _currentUse.Data.Booster.Used -= OnBoosterUsed;
-    }
-
     private void OnUseButtonClicked(BoosterGameSlotPresenter presenter)
     {
-        _currentUse = presenter;
-        presenter.Data.Booster.Use();
+        _currentPresenter = presenter;
+    }
+
+    private void OnBoosterUsed(BoosterGameSlotPresenter presenter)
+    {
+        _currentPresenter.Disable();
     }
 
     private void OnDisable()
@@ -48,11 +44,8 @@ public class BoosterGameSlots : MonoBehaviour
         {
             foreach (var presenter in _presenters)
             {
-                if (presenter == null)
-                    continue;
-
                 presenter.UseButtonClicked -= OnUseButtonClicked;
-                presenter.Data.Booster.Used -= OnBoosterUsed;
+                presenter.BoosterUsed -= OnBoosterUsed;
                 Destroy(presenter.gameObject);
             }
         }

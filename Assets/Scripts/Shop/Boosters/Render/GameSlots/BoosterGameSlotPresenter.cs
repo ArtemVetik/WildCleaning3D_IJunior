@@ -13,10 +13,11 @@ public class BoosterGameSlotPresenter : MonoBehaviour
     [SerializeField] private Button _useButton;
 
     private BoosterGameSlotAnimation _animation;
+    private BoosterData _data;
 
-    public BoosterData Data { get; private set; }
 
     public event UnityAction<BoosterGameSlotPresenter> UseButtonClicked;
+    public event UnityAction<BoosterGameSlotPresenter> BoosterUsed;
 
     private void Awake()
     {
@@ -31,14 +32,23 @@ public class BoosterGameSlotPresenter : MonoBehaviour
     private void OnDisable()
     {
         _useButton.onClick.RemoveListener(OnUseButtonClick);
+
+        if (_data != null)
+            _data.Booster.Used -= OnBoosterUsed;
     }
 
     public void Render(BoosterData data)
     {
-        Data = data;
+        _data = data;
+        _data.Booster.Used += OnBoosterUsed;
 
         _preview.sprite = data.Preview;
         _name.text = data.Name;
+    }
+
+    private void OnBoosterUsed(Booster booster)
+    {
+        BoosterUsed?.Invoke(this);
     }
 
     public void Disable()
@@ -49,5 +59,6 @@ public class BoosterGameSlotPresenter : MonoBehaviour
     private void OnUseButtonClick()
     {
         UseButtonClicked?.Invoke(this);
+        _data.Booster.Use();
     }
 }
