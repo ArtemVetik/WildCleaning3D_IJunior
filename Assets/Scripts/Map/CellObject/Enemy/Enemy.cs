@@ -37,7 +37,7 @@ public abstract class Enemy : CellObject, ISpeedyObject
     private void Start()
     {
         CurrentCell.Marked += OnStepToMarkedCell;
-        _patternMoveSystem.StartMove(CurrentCell, _movePattern);
+        _patternMoveSystem.StartMove(CurrentCell, _movePattern, MeshHeight);
     }
 
     public void InitMovePattern(MovePattern movePattern)

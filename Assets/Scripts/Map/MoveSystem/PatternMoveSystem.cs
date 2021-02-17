@@ -7,6 +7,7 @@ public class PatternMoveSystem
 {
 	private PlaneMoveSystem _moveSystem;
 	private MovePattern _pattern;
+	private MeshHeight _meshHeight;
 	private int _patternIndex;
 
 	public event UnityAction<GameCell> MoveStarted;
@@ -17,12 +18,13 @@ public class PatternMoveSystem
 		_moveSystem = moveSystem;
 	}
 
-	public void StartMove(GameCell fromCell, MovePattern pattern)
+	public void StartMove(GameCell fromCell, MovePattern pattern, MeshHeight meshHeight)
 	{
 		if (pattern == null || pattern.VectorPattern.Count == 0)
 			return;
 
 		_pattern = pattern;
+		_meshHeight = meshHeight;
 		_patternIndex = 0;
 
 		MoveNext(fromCell);
@@ -39,7 +41,7 @@ public class PatternMoveSystem
 		}
 
 		_moveSystem.MoveEnded += OnMoveEnded;
-		_moveSystem.Move(adjacentCell, _pattern.VectorPattern[_patternIndex]);
+		_moveSystem.Move(adjacentCell, _pattern.VectorPattern[_patternIndex], _meshHeight.MaxMeshHeight);
 
 		MoveStarted?.Invoke(adjacentCell);
 	}
