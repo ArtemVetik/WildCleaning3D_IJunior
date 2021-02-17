@@ -18,7 +18,7 @@ public class Antiseptic : Booster
                 microbes.Add(enemy);
 
         for (int i = 0; i < microbes.Count; i++)
-            microbes[i].Die();
+            microbes[i].Die(Enemy.DeadType.Special);
 
         Used?.Invoke(this);
     }

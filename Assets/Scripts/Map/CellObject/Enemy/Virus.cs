@@ -9,7 +9,7 @@ public class Virus : Enemy
 
     public override event UnityAction<Enemy> Died;
 
-    public override void Die()
+    public override void Die(DeadType deadType = DeadType.Standart)
     {
         Instantiate(_diedEffectTemplate, transform.position, _diedEffectTemplate.transform.rotation);
 

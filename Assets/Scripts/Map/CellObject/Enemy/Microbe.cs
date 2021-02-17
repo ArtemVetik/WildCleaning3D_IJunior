@@ -5,14 +5,19 @@ using UnityEngine.Events;
 
 public class Microbe : Enemy
 {
-    [SerializeField] private ParticleSystem _diedEffectTemplate;
+    [SerializeField] private ParticleSystem _standartDiedEffectTemplate;
+    [SerializeField] private ParticleSystem _specialDiedEffectTemplate;
     [SerializeField] private Transform _effectPosition;
 
     public override event UnityAction<Enemy> Died;
 
-    public override void Die()
+    public override void Die(DeadType deadType = DeadType.Standart)
     {
-        Instantiate(_diedEffectTemplate, _effectPosition.position, _diedEffectTemplate.transform.rotation);
+        if (deadType == DeadType.Standart)
+            Instantiate(_standartDiedEffectTemplate, _effectPosition.position, _standartDiedEffectTemplate.transform.rotation);
+        else if (deadType == DeadType.Special)
+            Instantiate(_specialDiedEffectTemplate, _effectPosition.position, _specialDiedEffectTemplate.transform.rotation);
+
         Died?.Invoke(this);
         Destroy(gameObject);
     }

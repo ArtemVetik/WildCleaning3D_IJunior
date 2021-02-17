@@ -94,7 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76f33c48e44a8042a4c83f30d1bf663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _diedEffectTemplate: {fileID: 19800000, guid: 455ba30e3cc7e234cb9a8b20241fc47e, type: 3}
+  _standartDiedEffectTemplate: {fileID: 19800000, guid: 455ba30e3cc7e234cb9a8b20241fc47e, type: 3}
+  _specialDiedEffectTemplate: {fileID: 19800000, guid: c5eaab12d1954214c8f06840c833f036, type: 3}
   _effectPosition: {fileID: 8648309581106342375}
 --- !u!114 &3647002774183511411
 MonoBehaviour:

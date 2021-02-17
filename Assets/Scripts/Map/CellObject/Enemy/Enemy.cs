@@ -6,6 +6,11 @@ using UnityEngine.Events;
 [RequireComponent(typeof(PlaneMoveSystem))]
 public abstract class Enemy : CellObject, ISpeedyObject
 {    
+    public enum DeadType
+    {
+        Standart, Special
+    }
+
     protected StageInfo CurrentStage;
     
     private MovePattern _movePattern;
@@ -70,6 +75,6 @@ public abstract class Enemy : CellObject, ISpeedyObject
         MovePausing?.Invoke();
     }
 
-    public abstract void Die();
+    public abstract void Die(DeadType deadType = DeadType.Standart);
     protected abstract void OnStepToMarkedCell(GameCell markedCell);
 }

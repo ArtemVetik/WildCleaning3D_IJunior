@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 728fa64fe6dd24aa5ae13b1da2514961, type: 2}
-  m_Color: {r: 0.4764151, g: 0.91867596, b: 1, a: 1}
+  m_Color: {r: 0.4764151, g: 0.918676, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -88,6 +88,8 @@ GameObject:
   - component: {fileID: 2829937521092619620}
   - component: {fileID: 8811229402455928762}
   - component: {fileID: 1116384803127023618}
+  - component: {fileID: 4461503829717840169}
+  - component: {fileID: 328438037633919959}
   m_Layer: 5
   m_Name: BoosterGameSlot
   m_TagString: Untagged
@@ -212,6 +214,37 @@ MonoBehaviour:
   _preview: {fileID: 2465771849080431054}
   _name: {fileID: 5358937409915075105}
   _useButton: {fileID: 2829937521092619620}
+--- !u!95 &4461503829717840169
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751567656125068392}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b946afed533f2a64b829e06cf2425e02, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &328438037633919959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751567656125068392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a57f8dbd65140b4d8649ffc25231b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1095478190597171952
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Speedboost
   m_EditorClassIdentifier: 
   _guid: 42a80f8ce0cc1da45a6240c5bd6f7f9c
+  _fireEffect: {fileID: 8891297334280618237, guid: 1d95c44587771d342a657511543a508f, type: 3}

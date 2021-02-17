@@ -34,7 +34,6 @@ public class BoosterGameSlots : MonoBehaviour
 
         _currentUse.UseButtonClicked -= OnUseButtonClicked;
         _currentUse.Data.Booster.Used -= OnBoosterUsed;
-        Destroy(_currentUse.gameObject);
     }
 
     private void OnUseButtonClicked(BoosterGameSlotPresenter presenter)

@@ -5,15 +5,23 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(BoosterGameSlotAnimation))]
 public class BoosterGameSlotPresenter : MonoBehaviour
 {
     [SerializeField] private Image _preview;
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Button _useButton;
 
+    private BoosterGameSlotAnimation _animation;
+
     public BoosterData Data { get; private set; }
 
     public event UnityAction<BoosterGameSlotPresenter> UseButtonClicked;
+
+    private void Awake()
+    {
+        _animation = GetComponent<BoosterGameSlotAnimation>();
+    }
 
     private void OnEnable()
     {
@@ -35,9 +43,7 @@ public class BoosterGameSlotPresenter : MonoBehaviour
 
     public void Disable()
     {
-        _preview.sprite = null;
-        _name.text = "";
-        _useButton.interactable = false;
+        _animation.SetTrigger(BoosterGameSlotAnimation.Parameters.Hide);
     }
 
     private void OnUseButtonClick()
