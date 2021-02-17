@@ -10,6 +10,7 @@ public class LevelStages : MonoBehaviour
 
     private StageInfo _currentStage;
 
+    public IEnumerable<GameCell> StageCells => _currentStage.StageCells;
     public int StageCount => _levelNumber.CurrentLevel.KeyStagesPoint.Count;
 
     public event UnityAction<int> StageCompeted;

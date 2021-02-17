@@ -20,16 +20,19 @@ public class WatersBall : Booster
     {
         if (_instSelector)
             return;
-
+        
         _levelStages = FindObjectOfType<LevelStages>();
         _instSelector = Instantiate(_selectorTemplate);
         _instSelector.Raycasted += OnSelectorRaycaster;
         _instSelector.Canceled += OnCancelButtonClick;
+
+        EnableFraming();
     }
 
     private void OnCancelButtonClick()
     {
         ClearSelector();
+        HideFraming();
     }
 
     private void OnSelectorRaycaster(GameCell cell)
@@ -42,6 +45,19 @@ public class WatersBall : Booster
 
         Used?.Invoke(this);
         ClearSelector();
+        HideFraming();
+    }
+
+    private void EnableFraming()
+    {
+        foreach (var cell in _levelStages.StageCells)
+            cell.EnableFrame();
+    }
+
+    private void HideFraming()
+    {
+        foreach (var cell in _levelStages.StageCells)
+            cell.HideFrame();
     }
 
     private void FillInRadius(GameCell currentCell, GameCell center, float radius, HashSet<GameCell> markedCells)

@@ -7,20 +7,17 @@ using UnityEngine.Events;
 [RequireComponent(typeof(CellMarker))]
 public class GameCell : MonoBehaviour
 {
+    [SerializeField] private Floor _floor;
+    [SerializeField] private CellMarker _cellMarker;
+
     private Vector2Int _position;
     private Dictionary<Vector2Int, GameCell> _adjacentCells;
-    private CellMarker _cellMarker;
 
     public event UnityAction<GameCell> Marked;
     public event UnityAction<GameCell> Unmarked;
 
     public bool IsMarked { get; private set; }
     public Vector2Int Position => _position;
-
-    private void Awake()
-    {
-        _cellMarker = GetComponent<CellMarker>();
-    }
 
     public void Init(Vector2Int position)
     {
@@ -30,6 +27,16 @@ public class GameCell : MonoBehaviour
     public void InitAdjacentCells(Dictionary<Vector2Int, GameCell> adjacentCells)
     {
         _adjacentCells = adjacentCells;
+    }
+
+    public void EnableFrame()
+    {
+        _floor.EnableFrame();
+    }
+
+    public void HideFrame()
+    {
+        _floor.HideFrame();
     }
 
     public GameCell TryGetAdjacent(Vector2Int adjacentDirection)

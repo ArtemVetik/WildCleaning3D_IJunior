@@ -8,6 +8,8 @@ public class StageInfo
     private HashSet<GameCell> _stageCells;
     private HashSet<Enemy> _enemies;
 
+    public IEnumerable<GameCell> StageCells => _stageCells;
+
     public event UnityAction<int> StageCompleted;
     public event UnityAction<int> FilledCountChanged;
 
