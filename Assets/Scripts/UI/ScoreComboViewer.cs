@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Text))]
+[RequireComponent(typeof(TMP_Text))]
 [RequireComponent(typeof(Animator))]
 public class ScoreComboViewer : MonoBehaviour
 {
@@ -14,12 +15,12 @@ public class ScoreComboViewer : MonoBehaviour
 
     [SerializeField] private PlayerScore _playerScore;
 
-    private Text _scoreText;
+    private TMP_Text _scoreText;
     private Animator _animator;
 
     private void Awake()
     {
-        _scoreText = GetComponent<Text>();
+        _scoreText = GetComponent<TMP_Text>();
         _animator = GetComponent<Animator>();
     }
 
