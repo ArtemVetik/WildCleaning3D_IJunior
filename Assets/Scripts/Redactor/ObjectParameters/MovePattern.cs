@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditor;
+using System.IO;
 
 [Serializable]
 public enum Direction
@@ -26,6 +28,15 @@ public class MovePattern : ObjectParameters
     [SerializeField] private List<MovePatternDirection> _pattern;
 
     public List<Vector2Int> VectorPattern { get; private set; }
+
+    public override string Name
+    {
+        get
+        {
+            string assetPath = AssetDatabase.GetAssetPath(GetInstanceID());
+            return Path.GetFileNameWithoutExtension(assetPath);
+        }
+    }
 
     private void OnEnable()
     {

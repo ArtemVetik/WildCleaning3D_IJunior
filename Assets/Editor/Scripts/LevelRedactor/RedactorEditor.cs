@@ -92,6 +92,8 @@ public class RedactorEditor : Editor
 
         ShowTitle();
 
+        _levelRedactor.ShowObjectParameters = EditorGUILayout.Toggle("Show object parameters", _levelRedactor.ShowObjectParameters);
+
         if (_levelRedactor.CurrentLevelData == null)
             return;
 

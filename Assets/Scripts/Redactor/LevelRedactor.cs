@@ -22,6 +22,7 @@ namespace CustomRedactor
         [SerializeField] public List<EditorObjectData> EditorObjects = new List<EditorObjectData>();
 
         [HideInInspector] public int CurrentLevelIndex;
+        [HideInInspector] public bool ShowObjectParameters;
         [HideInInspector] public EditType EditType;
 
         private BoxCollider _collider;
@@ -82,6 +83,10 @@ namespace CustomRedactor
             if (_levelDateBase[CurrentLevelIndex].Map == null)
                 return;
 
+            var textStyle = new GUIStyle();
+            textStyle.normal.textColor = Color.yellow;
+            textStyle.fontSize = 16;
+
             Gizmos.color = Color.white;
             foreach (Vector2Int cell in map.Keys)
             {
@@ -122,6 +127,10 @@ namespace CustomRedactor
                     Gizmos.color = Color.blue;
                     Gizmos.DrawSphere(cell.ToVector3(0.4f), 0.25f);
                 }
+
+                var parameter = map[cell].Parameters;
+                if (ShowObjectParameters && parameter != null)
+                    Handles.Label(cell.ToVector3(1.5f), parameter.Name, textStyle);
             }
         }
     }
