@@ -14,7 +14,7 @@ public class LevelChestSetter : MonoBehaviour
 
     private int _lastLevelChestIndex;
 
-    public bool CanAddChest => _levelLoader.LevelIndex % 5 == 0 && _levelLoader.LevelIndex != _lastLevelChestIndex;
+    public bool CanAddChest => (_levelLoader.LevelIndex + 1) % 5 == 0 && _levelLoader.LevelIndex != _lastLevelChestIndex;
 
     private void OnEnable()
     {

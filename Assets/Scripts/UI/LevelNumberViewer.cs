@@ -17,6 +17,6 @@ public class LevelNumberViewer : MonoBehaviour
 
     private void Start()
     {
-        _levelNumber.text = _levelLoader.LevelIndex.ToString();
+        _levelNumber.text = (_levelLoader.LevelIndex + 1).ToString();
     }
 }

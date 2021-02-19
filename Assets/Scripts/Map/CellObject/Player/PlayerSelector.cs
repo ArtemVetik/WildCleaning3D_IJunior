@@ -27,7 +27,7 @@ public class PlayerSelector : ScriptableObject
     public Player GetPlayer()
     {
         var levelLoader = FindObjectOfType<CurrentLevelLoader>();
-        int levelNumber = levelLoader.LevelIndex;
+        int levelNumber = levelLoader.LevelIndex + 1;
         if (_players.Keys.Contains(levelNumber))
             return _players[levelNumber].Cleaner;
 

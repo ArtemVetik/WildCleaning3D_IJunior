@@ -743,7 +743,7 @@ MonoBehaviour:
       - {x: 2, y: 19}
       - {x: 2, y: 20}
       m_values:
-      - _levelObject: {fileID: 0}
+      - _levelObject: {fileID: 11400000, guid: 8542ae36e3c7ad34094f0cef95e3bfa2, type: 2}
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
