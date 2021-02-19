@@ -26,6 +26,28 @@ public class LevelDataBase : ScriptableObject
         return _levels.IndexOf(levelData);
     }
 
+    public void ShiftRight(LevelData levelData)
+    {
+        int index = _levels.IndexOf(levelData);
+        if (index >= _levels.Count - 1)
+            return;
+
+        var templateLevel = _levels[index];
+        _levels[index] = _levels[index + 1];
+        _levels[index + 1] = templateLevel;
+    }
+
+    public void ShiftLeft(LevelData levelData)
+    {
+        int index = _levels.IndexOf(levelData);
+        if (index < 1)
+            return;
+
+        var templateLevel = _levels[index];
+        _levels[index] = _levels[index - 1];
+        _levels[index - 1] = templateLevel;
+    }
+
     public void Clear()
     {
         _levels.Clear();

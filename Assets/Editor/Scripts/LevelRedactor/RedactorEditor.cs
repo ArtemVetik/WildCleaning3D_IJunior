@@ -220,6 +220,16 @@ public class RedactorEditor : Editor
 
         EditorGUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
+        if (GUILayout.Button(new GUIContent("<<", "Сместить влево"), GUILayout.Width(50)))
+        {
+            _levelRedactor.LevelDataBase.ShiftLeft(_levelRedactor.CurrentLevelData);
+            _levelRedactor.CurrentLevelIndex--;
+        }
+        if (GUILayout.Button(new GUIContent(">>", "Сместить вправо"), GUILayout.Width(50)))
+        {
+            _levelRedactor.LevelDataBase.ShiftRight(_levelRedactor.CurrentLevelData);
+            _levelRedactor.CurrentLevelIndex++;
+        }
         if (GUILayout.Button(new GUIContent("<-", "На уровень назад"), GUILayout.Width(50)))
             _levelRedactor.CurrentLevelIndex--;
         if (GUILayout.Button(new GUIContent("->", "На уровень вперед"), GUILayout.Width(50)))

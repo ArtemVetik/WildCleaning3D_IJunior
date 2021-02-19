@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using IJunior.TypedScenes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,5 +46,6 @@ public class TestPanel : MonoBehaviour
         int level = int.Parse(_levelField.text);
 
         PlayerPrefs.SetInt("CurrentLevelNumber", level);
+        MainScene.Load();
     }
 }

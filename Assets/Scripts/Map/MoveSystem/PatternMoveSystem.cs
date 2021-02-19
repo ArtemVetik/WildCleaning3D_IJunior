@@ -36,7 +36,7 @@ public class PatternMoveSystem
 		if (adjacentCell == null)
 		{
 			_patternIndex = (_patternIndex + 1) % _pattern.VectorPattern.Count;
-			from.StartCoroutine(MoveNextWithPause(from, 1.5f));
+			_moveSystem.StartCoroutine(MoveNextWithPause(from, 1.5f));
 			return;
 		}
 
