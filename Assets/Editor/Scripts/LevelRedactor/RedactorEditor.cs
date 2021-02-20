@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Events;
 using CustomRedactor;
-using System.Reflection;
 
 public enum EditorMode
 {
@@ -317,3 +314,4 @@ public class RedactorEditor : Editor
             _previewGameObjectEditor.OnInteractivePreviewGUI(GUILayoutUtility.GetRect(128, 128), GUIStyle.none);
     }
 }
+#endif

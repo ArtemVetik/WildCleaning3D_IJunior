@@ -10,6 +10,9 @@ public class TestPanel : MonoBehaviour
     [SerializeField] private CleanersDataBase _cleanerDataBase;
     [SerializeField] private InputField _scoreField;
     [SerializeField] private InputField _levelField;
+    [SerializeField] private GameObject[] _rooms;
+
+    private int _currentRoom = 0;
 
     public void DeleteAllPlayerPrefs()
     {
@@ -47,5 +50,23 @@ public class TestPanel : MonoBehaviour
 
         PlayerPrefs.SetInt("CurrentLevelNumber", level - 1);
         MainScene.Load();
+    }
+
+    public void NextRoom()
+    {
+        if (_currentRoom + 1 >= _rooms.Length)
+            return;
+
+        _rooms[_currentRoom].SetActive(false);
+        _rooms[++_currentRoom].SetActive(true);
+    }
+
+    public void PreviousRoom()
+    {
+        if (_currentRoom - 1 < 0)
+            return;
+
+        _rooms[_currentRoom].SetActive(false);
+        _rooms[--_currentRoom].SetActive(true);
     }
 }

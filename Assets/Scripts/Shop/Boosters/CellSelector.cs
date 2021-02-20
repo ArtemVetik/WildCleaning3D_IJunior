@@ -39,12 +39,6 @@ public class CellSelector : MonoBehaviour
         RaycastHit[] hitsInfo = Physics.RaycastAll(ray);
         foreach (var hit in hitsInfo)
         {
-            Debug.Log(hit.collider.gameObject.name + " " + hit.collider.gameObject.layer);
-            if (hit.collider.gameObject.layer == 5)
-            {
-                Debug.Log("!!!");
-                return;
-            }
             if (hit.collider.TryGetComponent(out GameCell cell))
                 Raycasted?.Invoke(cell);
         }

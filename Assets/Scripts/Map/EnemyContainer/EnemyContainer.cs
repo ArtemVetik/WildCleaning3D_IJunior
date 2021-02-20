@@ -16,16 +16,12 @@ public class EnemyContainer : MonoBehaviour
     private void OnEnable()
     {
         _spawner.CellObjectSpawned += OnCellObjectSpawned;
+        _enemies = new List<Enemy>();
     }
 
     private void OnDisable()
     {
         _spawner.CellObjectSpawned -= OnCellObjectSpawned;
-    }
-
-    private void Start()
-    {
-        _enemies = new List<Enemy>();
     }
 
     private void OnCellObjectSpawned(CellObject cellObject)

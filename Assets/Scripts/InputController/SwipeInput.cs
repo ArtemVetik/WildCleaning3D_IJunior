@@ -2,24 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwipeInput : MonoBehaviour
+public class SwipeInput : BaseInput
 {
-    private IMoveable _moveableObject;
-
-    public void Init(IMoveable moveableObject)
-    {
-        _moveableObject = moveableObject;
-    }
+    private Vector2 _startPosition;
+    private float _minSwipeDistance = 100f;
+    private float _maxDeltaTime = .2f;
+    private float _startTouchTime;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            _moveableObject.Move(Vector2Int.left);
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            _moveableObject.Move(Vector2Int.right);
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-            _moveableObject.Move(Vector2Int.up);
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-            _moveableObject.Move(Vector2Int.down);
+        if (Input.touchCount == 0)
+            return;
+
+        var firstTouch = Input.GetTouch(0);
+        if (firstTouch.fingerId != 0)
+            return;
+
+        if (firstTouch.phase == TouchPhase.Began)
+        {
+            _startPosition = firstTouch.position;
+            _startTouchTime = Time.time;
+        }
+        else if (firstTouch.phase == TouchPhase.Moved)
+        {
+            float swipeDistance = Vector2.Distance(firstTouch.position, _startPosition);
+            float deltaTime = Time.time - _startTouchTime;
+
+            if (swipeDistance >= _minSwipeDistance && deltaTime < _maxDeltaTime)
+            {
+                var deltaPosition = firstTouch.position - _startPosition;
+                if (Mathf.Abs(deltaPosition.x) > Mathf.Abs(deltaPosition.y))
+                    deltaPosition.y = 0;
+                else
+                    deltaPosition.x = 0;
+
+                deltaPosition.Normalize();
+                var direction = new Vector2Int((int)deltaPosition.x, (int)deltaPosition.y);
+                Move(direction);
+
+                _startTouchTime = float.MinValue;
+            }
+        }
     }
 }

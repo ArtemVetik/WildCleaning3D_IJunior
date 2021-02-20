@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -50,3 +50,4 @@ public class BoosterDataBaseEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+#endif

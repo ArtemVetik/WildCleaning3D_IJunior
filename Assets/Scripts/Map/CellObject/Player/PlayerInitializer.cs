@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class PlayerInitializer : MonoBehaviour
 {
-    [SerializeField] private SwipeInput _swipeInput;
+    [SerializeField] private BaseInput _swipeInput;
     [SerializeField] private MapFiller _filler;
 
     public Player InstPlayer { get; private set; }

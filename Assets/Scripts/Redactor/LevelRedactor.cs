@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using CustomRedactor;
 
@@ -80,6 +82,7 @@ namespace CustomRedactor
 
         private void DrawObjects(LevelDictionary map)
         {
+#if UNITY_EDITOR
             if (_levelDateBase[CurrentLevelIndex].Map == null)
                 return;
 
@@ -132,6 +135,7 @@ namespace CustomRedactor
                 if (ShowObjectParameters && parameter != null)
                     Handles.Label(cell.ToVector3(1.5f), parameter.Name, textStyle);
             }
+#endif
         }
     }
 }

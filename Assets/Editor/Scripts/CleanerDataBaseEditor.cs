@@ -1,7 +1,6 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 using System.Linq;
 using System.Reflection;
 using UnityEditor;
@@ -50,3 +49,4 @@ public class CleanerDataBaseEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+#endif

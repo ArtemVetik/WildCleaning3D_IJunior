@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.IO;
 
 [Serializable]
@@ -33,8 +35,12 @@ public class MovePattern : ObjectParameters
     {
         get
         {
+#if UNITY_EDITOR
             string assetPath = AssetDatabase.GetAssetPath(GetInstanceID());
             return Path.GetFileNameWithoutExtension(assetPath);
+#else
+            return string.Empty;
+#endif
         }
     }
 

@@ -7,7 +7,7 @@ public class EndLevelTrigger : MonoBehaviour
 {
     [SerializeField] private LevelStages _stages;
     [SerializeField] private PlayerInitializer _playerInitializer;
-    [SerializeField] private SwipeInput _inputSystem;
+    [SerializeField] private KeyboardInput _inputSystem;
     [SerializeField] private GameCanvas _gameCanvas;
     [SerializeField] private EndOfGameCanvas _endOfGameCanvas;
 
