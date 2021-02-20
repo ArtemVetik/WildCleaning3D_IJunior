@@ -7,6 +7,6 @@ public class OpenChestSceneMenu : MonoBehaviour
 {
     public void GoHome()
     {
-        MainScene.Load();
+        GameScene.Load();
     }
 }

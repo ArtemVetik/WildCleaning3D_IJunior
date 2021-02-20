@@ -49,7 +49,7 @@ public class TestPanel : MonoBehaviour
         int level = int.Parse(_levelField.text);
 
         PlayerPrefs.SetInt("CurrentLevelNumber", level - 1);
-        MainScene.Load();
+        GameScene.Load();
     }
 
     public void NextRoom()

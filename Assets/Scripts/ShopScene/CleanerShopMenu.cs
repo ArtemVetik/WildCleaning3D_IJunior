@@ -8,6 +8,6 @@ public class CleanerShopMenu : MonoBehaviour
 {
     public void GoHome()
     {
-        MainScene.Load();
+        GameScene.Load();
     }
 }
