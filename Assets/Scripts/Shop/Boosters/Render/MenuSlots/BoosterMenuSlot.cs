@@ -8,10 +8,13 @@ using UnityEngine.UI;
 public class BoosterMenuSlot : MonoBehaviour
 {
     [SerializeField] private Sprite _defaultIcon;
+    [SerializeField] private Sprite _lockIcon;
     [SerializeField] private Image _preview;
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Button _addButton;
     [SerializeField] private Button _removeButton;
+
+    private bool _locked;
 
     public BoosterData Data { get; private set; }
 
@@ -24,6 +27,7 @@ public class BoosterMenuSlot : MonoBehaviour
         _removeButton.onClick.AddListener(OnRemoveButtonClick);
 
         Data = null;
+        _locked = false;
         SetDefaultView();
     }
 
@@ -41,12 +45,22 @@ public class BoosterMenuSlot : MonoBehaviour
         _name.text = data.Name;
     }
 
+    public void RenderLocked(int lockLevel)
+    {
+        _locked = true;
+        _preview.sprite = _lockIcon;
+        _name.text = $"Locked up to {lockLevel}th level";
+
+        _removeButton.gameObject.SetActive(false);
+    }
+
     private void OnAddButtonClick()
     {
         if (Data != null)
             return;
 
-        AddButtonClicked?.Invoke(this);
+        if (_locked == false)
+            AddButtonClicked?.Invoke(this);
     }
 
     private void OnRemoveButtonClick()

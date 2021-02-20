@@ -6,13 +6,15 @@ using System.Linq;
 public class BoosterMenuSlotsList : MonoBehaviour
 {
     [SerializeField] private BoostersDataBase _dataBase;
+    [SerializeField] private CurrentLevelLoader _currentLevel;
     [SerializeField] private StartLevelTrigger _startTrigger;
     [SerializeField] private BoosterSelectPanel _selectPanel;
     [SerializeField] private BoosterGameSlots _gameSlots;
     [SerializeField] private BoosterMenuSlot _template;
     [SerializeField] private Transform _container;
+    [SerializeField] private SlotRestrictions _slotRestrictions;
 
-    public readonly int MaxCount = 2;
+    public int MaxCount => _slotRestrictions.SlotCount;
 
     private List<BoosterMenuSlot> _slots;
     private BoosterMenuSlot _currentSlot;
@@ -27,11 +29,15 @@ public class BoosterMenuSlotsList : MonoBehaviour
         _currentSlot = null;
         _gameStarted = false;
 
-        for (int i = 0; i < MaxCount; i++)
+        foreach (var slotRestriction in _slotRestrictions.Slots)
         {
             var slot = Instantiate(_template, _container);
             slot.AddButtonClicked += OnSlotAddButtonClicked;
             slot.RemoveButtonClicked += OnSlotRemoveButtonClicked;
+
+            if (_currentLevel.LevelIndex + 1 < slotRestriction.OpenedLevel)
+                slot.RenderLocked(slotRestriction.OpenedLevel);
+
             _slots.Add(slot);
         }
 
