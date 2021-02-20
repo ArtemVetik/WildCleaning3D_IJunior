@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
 public class PopupPanel : MonoBehaviour
@@ -15,6 +16,9 @@ public class PopupPanel : MonoBehaviour
 
     private Animator _animator;
 
+    public event UnityAction<PopupPanel> Opened;
+    public event UnityAction<PopupPanel> Closed;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -23,6 +27,7 @@ public class PopupPanel : MonoBehaviour
     private void OnEnable()
     {
         _closeButton.onClick.AddListener(OnCloseButtonClick);
+        Opened?.Invoke(this);
     }
 
     private void OnCloseButtonClick()
@@ -33,5 +38,6 @@ public class PopupPanel : MonoBehaviour
     private void OnDisable()
     {
         _closeButton.onClick.RemoveListener(OnCloseButtonClick);
+        Closed?.Invoke(this);
     }
 }
