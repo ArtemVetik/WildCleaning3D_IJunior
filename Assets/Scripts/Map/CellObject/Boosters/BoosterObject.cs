@@ -23,5 +23,6 @@ public abstract class BoosterObject : CellObject
         Collected?.Invoke(this);
     }
 
-    public abstract void Triggered(CellObject cellObject);    
+    public abstract void Triggered(CellObject cellObject);
+    public abstract void AddInInventory();
 }

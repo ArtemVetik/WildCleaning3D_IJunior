@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class SpeedboostObject : BoosterObject
 {
-    public override void Triggered(CellObject cellObject)
+    public override void AddInInventory()
     {
-        if (cellObject is Player == false)
-            return;
-
         BoosterInventory inventory = new BoosterInventory(BoostersDataBase);
         inventory.Load(new JsonSaveLoad());
 
@@ -22,6 +19,13 @@ public class SpeedboostObject : BoosterObject
         }
 
         inventory.Save(new JsonSaveLoad());
-        Destroy(gameObject);
+    }
+
+    public override void Triggered(CellObject cellObject)
+    {
+        if (cellObject is Player == false)
+            return;
+
+        gameObject.SetActive(false);
     }
 }

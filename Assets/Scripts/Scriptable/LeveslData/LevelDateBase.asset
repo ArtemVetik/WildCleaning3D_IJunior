@@ -739,6 +739,19 @@ MonoBehaviour:
       - {x: 14, y: 5}
       - {x: 14, y: 6}
       - {x: 13, y: 7}
+      - {x: 3, y: 11}
+      - {x: 4, y: 11}
+      - {x: 5, y: 11}
+      - {x: 6, y: 11}
+      - {x: 9, y: 11}
+      - {x: 10, y: 11}
+      - {x: 8, y: 11}
+      - {x: 7, y: 11}
+      - {x: 13, y: 11}
+      - {x: 14, y: 11}
+      - {x: 12, y: 11}
+      - {x: 11, y: 11}
+      - {x: 15, y: 11}
       m_values:
       - _levelObject: {fileID: 11400000, guid: 8542ae36e3c7ad34094f0cef95e3bfa2, type: 2}
         _parameters: {fileID: 0}
@@ -1048,6 +1061,32 @@ MonoBehaviour:
         _parameters: {fileID: 11400000, guid: ea823f9f832bedd4dbc9bf8392fdce55, type: 2}
       - _levelObject: {fileID: 11400000, guid: f496fc44d4bf12f44a304135ee6b5b09, type: 2}
         _parameters: {fileID: 11400000, guid: ea823f9f832bedd4dbc9bf8392fdce55, type: 2}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
         _parameters: {fileID: 0}
       - _levelObject: {fileID: 0}
