@@ -9,6 +9,7 @@ public class CameraFolowing : MonoBehaviour
     [SerializeField] private float _topDownAngle;
     [SerializeField] private float _distanceToPlayer;
     [SerializeField] private PlayerInitializer _playerInitializer;
+    [SerializeField] private BaseInput _input;
 
     private Player _player;
     private Vector3 _cameraShift;
@@ -17,11 +18,27 @@ public class CameraFolowing : MonoBehaviour
     private void OnEnable()
     {
         _playerInitializer.PlayerInitialized += OnPlayerInitialize;
+        _input.ScalingChanged += OnScalingChanged;
     }
 
     private void OnDisable()
     {
         _playerInitializer.PlayerInitialized -= OnPlayerInitialize;
+        _input.ScalingChanged += OnScalingChanged;
+    }
+
+    private void Update()
+    {
+        if (_player == null)
+            return;
+
+        _cameraShift = CalculateCameraShift();
+
+        Vector3 nextPlayerDirection = new Vector3(_player.Direction.x, 0, _player.Direction.y) * _distanceToPlayer / 20;
+        _playerDirection = Vector3.Lerp(_playerDirection, nextPlayerDirection, _speed * Time.deltaTime);
+
+        Vector3 targetPosition = _player.transform.position + _cameraShift + _playerDirection;
+        transform.position = Vector3.Lerp(transform.position, targetPosition, _speed * Time.deltaTime);
     }
 
     private void OnPlayerInitialize(Player player)
@@ -32,19 +49,10 @@ public class CameraFolowing : MonoBehaviour
         transform.eulerAngles = CalculateCameraEulerAngles();
     }
 
-    private void Update()
+    private void OnScalingChanged(float delta)
     {
-        if (_player == null)
-            return;
-
-        _distanceToPlayer -= Input.mouseScrollDelta.y;
-        _cameraShift = CalculateCameraShift();
-
-        Vector3 nextPlayerDirection = new Vector3(_player.Direction.x, 0, _player.Direction.y) * _distanceToPlayer / 20;
-        _playerDirection = Vector3.Lerp(_playerDirection, nextPlayerDirection, _speed * Time.deltaTime);
-
-        Vector3 targetPosition = _player.transform.position + _cameraShift + _playerDirection;
-        transform.position = Vector3.Lerp(transform.position, targetPosition, _speed * Time.deltaTime);
+        _distanceToPlayer -= delta;
+        _distanceToPlayer = Mathf.Clamp(_distanceToPlayer, 2f, 30f);
     }
 
     private Vector3 CalculateCameraShift()

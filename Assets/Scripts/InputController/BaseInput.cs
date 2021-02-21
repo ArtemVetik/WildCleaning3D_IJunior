@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BaseInput : MonoBehaviour
 {
     private IMoveable _moveableObject;
+
+    public event UnityAction<float> ScalingChanged;
 
     public void Init(IMoveable moveableObject)
     {
@@ -14,5 +17,10 @@ public class BaseInput : MonoBehaviour
     protected void Move(Vector2Int direction)
     {
         _moveableObject?.Move(direction);
+    }
+
+    protected void Scaling(float value)
+    {
+        ScalingChanged?.Invoke(value);
     }
 }
