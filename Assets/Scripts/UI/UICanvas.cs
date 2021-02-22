@@ -41,13 +41,15 @@ public class UICanvas : MonoBehaviour
     private void EnableInputs()
     {
         foreach (var input in _inputs)
-            input.enabled = true;
+            if (input)
+                input.enabled = true;
     }
 
     private void DisableInputs()
     {
         foreach (var input in _inputs)
-            input.enabled = false;
+            if (input)
+                input.enabled = false;
     }
 
     public void Hide()

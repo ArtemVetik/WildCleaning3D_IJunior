@@ -1,0 +1,5 @@
+Key,English,Russian
+UICanvas.Shop,SHOP,МАГАЗИН
+UICanvas.Chests,CHESTS,СУНДУКИ
+UICanvas.Boosters,BOOSTERS,БУСТЕРЫ
+UICanvas.BoosterSlotLock,Requires level {0},Нужен {0} уровень

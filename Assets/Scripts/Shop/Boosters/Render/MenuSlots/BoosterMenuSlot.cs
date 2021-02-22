@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.SimpleLocalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,6 +16,7 @@ public class BoosterMenuSlot : MonoBehaviour
     [SerializeField] private Button _removeButton;
 
     private bool _locked;
+    private int _lockLevel;
 
     public BoosterData Data { get; private set; }
 
@@ -25,6 +27,7 @@ public class BoosterMenuSlot : MonoBehaviour
     {
         _addButton.onClick.AddListener(OnAddButtonClick);
         _removeButton.onClick.AddListener(OnRemoveButtonClick);
+        LocalizationManager.LocalizationChanged += OnLocalizationChanged;
 
         Data = null;
         _locked = false;
@@ -35,6 +38,13 @@ public class BoosterMenuSlot : MonoBehaviour
     {
         _addButton.onClick.RemoveListener(OnAddButtonClick);
         _removeButton.onClick.RemoveListener(OnAddButtonClick);
+        LocalizationManager.LocalizationChanged -= OnLocalizationChanged;
+    }
+
+    private void OnLocalizationChanged()
+    {
+        var localizeText = LocalizationManager.Localize("UICanvas.BoosterSlotLock", _lockLevel);
+        _name.text = localizeText;
     }
 
     public void SetData(BoosterData data)
@@ -48,8 +58,12 @@ public class BoosterMenuSlot : MonoBehaviour
     public void RenderLocked(int lockLevel)
     {
         _locked = true;
+        _lockLevel = lockLevel;
+
         _preview.sprite = _lockIcon;
-        _name.text = $"Locked up to {lockLevel}th level";
+
+        var localizeText = LocalizationManager.Localize("UICanvas.BoosterSlotLock", lockLevel);
+        _name.text = localizeText;
 
         _removeButton.gameObject.SetActive(false);
     }

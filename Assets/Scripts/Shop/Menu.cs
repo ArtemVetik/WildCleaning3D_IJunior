@@ -16,6 +16,14 @@ public class Menu : MonoBehaviour
         ShopScene.Load(ShopType.CleanerShop);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+            Assets.SimpleLocalization.LocalizationManager.Language = "Russian";
+        if (Input.GetKeyDown(KeyCode.E))
+            Assets.SimpleLocalization.LocalizationManager.Language = "English";
+    }
+
     public void LoadBoosterShop()
     {
         ShopScene.Load(ShopType.BoosterShop);
