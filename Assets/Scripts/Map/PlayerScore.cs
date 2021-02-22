@@ -83,10 +83,15 @@ public class PlayerScore : MonoBehaviour
 
     private void OnLevelCompleted()
     {
-        ScoreBalance balance = new ScoreBalance();
-        balance.Load(new JsonSaveLoad());
-        balance.AddScore(Score);
-        balance.Save(new JsonSaveLoad());
+        ScoreBalance scoreBalance = new ScoreBalance();
+        scoreBalance.Load(new JsonSaveLoad());
+        scoreBalance.AddScore(Score);
+        scoreBalance.Save(new JsonSaveLoad());
+
+        DiamondBalance diamondBalance = new DiamondBalance();
+        diamondBalance.Load(new JsonSaveLoad());
+        diamondBalance.AddDiamond(1);
+        diamondBalance.Save(new JsonSaveLoad());
     }
 
     private void OnContourFilling(EnemyInContour contour)

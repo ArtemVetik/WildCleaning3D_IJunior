@@ -14,4 +14,7 @@
 
     void Save(ScoreBalance scoreBalance);
     ScoreBalance Load(ScoreBalance scoreBalance);
+
+    void Save(DiamondBalance diamondBalance);
+    DiamondBalance Load(DiamondBalance diamondBalance);
 }
