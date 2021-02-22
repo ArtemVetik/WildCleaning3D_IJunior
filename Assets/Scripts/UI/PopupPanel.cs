@@ -26,18 +26,18 @@ public class PopupPanel : MonoBehaviour
 
     private void OnEnable()
     {
-        _closeButton.onClick.AddListener(OnCloseButtonClick);
+        _closeButton.onClick.AddListener(Close);
         Opened?.Invoke(this);
     }
 
-    private void OnCloseButtonClick()
+    public void Close()
     {
         _animator.SetTrigger(AnimationParameters.Close);
     }
 
     private void OnDisable()
     {
-        _closeButton.onClick.RemoveListener(OnCloseButtonClick);
+        _closeButton.onClick.RemoveListener(Close);
         Closed?.Invoke(this);
     }
 }

@@ -1,0 +1,10 @@
+Key,English,Russian
+Boosters.AddBooster,Add booster,Добавить бустер
+Boosters.Speedboost,Speedboost,Ускорялка
+Boosters.WaterBall,Water ball,Шарик с водой
+Boosters.Antiseptic,Antiseptic,Антисептик
+,,
+,,
+Boosters.SelectPanel.Header,Select booster,Выберите бустер
+Boosters.SelectPanel.HelpText,Select the booster you want to use at this level,"Выберите бустер, который хотите использовать на этом уровне"
+Boosters.SelectPanel.EmptyInventory,You don't have boosters. You can purchase boosters in the shop,У вас нет бустеров. Вы можете приобрести бустеры в магазине.

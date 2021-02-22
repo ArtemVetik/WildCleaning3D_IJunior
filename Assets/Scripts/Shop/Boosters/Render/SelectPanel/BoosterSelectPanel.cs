@@ -9,6 +9,7 @@ public class BoosterSelectPanel : MonoBehaviour
 {
     [SerializeField] private BoosterSelectListView _boosterListView;
     [SerializeField] private GameObject _emptyPlaceholder;
+    [SerializeField] private PopupPanel _popup;
 
     private IEnumerable<BoosterSelectPresenter> _presenters;
 
@@ -55,7 +56,7 @@ public class BoosterSelectPanel : MonoBehaviour
     private void OnSelectButtonClicked(BoosterSelectPresenter presenter)
     {
         SelectButtonClicked?.Invoke(presenter.Data);
-        gameObject.SetActive(false);
+        _popup.Close();
     }
 
     private void OnDisable()

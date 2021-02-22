@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.SimpleLocalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -21,7 +22,7 @@ public class ChestInventoryPresenter : MonoBehaviour
         Data = data;
 
         _preview.sprite = data.Preview;
-        _name.text = data.Name;
+        _name.text = LocalizationManager.Localize(data.Name);
 
         _count.text = count.ToString();
     }

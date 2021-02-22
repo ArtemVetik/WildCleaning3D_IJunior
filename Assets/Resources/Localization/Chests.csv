@@ -1,0 +1,7 @@
+Key,English,Russian
+Chests.ScoreChest,Score chest,Сундук 1
+Chests.LevelChest,Level chest,Сундук 2
+,,
+Chests.SelectPanel.Header,Select chest,Выберите сундук
+Chests.SelectPanel.HelpText,Select the chest you want to open,"Выберите сундук, который хотите открыть"
+Chests.SelectPanel.EmptyInventory,You don't have chests. You can purchase chest in the shop,У Вас нет сундуков. Вы можете купить сундуки в магазине

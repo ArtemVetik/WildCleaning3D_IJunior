@@ -43,8 +43,16 @@ public class BoosterMenuSlot : MonoBehaviour
 
     private void OnLocalizationChanged()
     {
-        var localizeText = LocalizationManager.Localize("UICanvas.BoosterSlotLock", _lockLevel);
-        _name.text = localizeText;
+        if (_lockLevel != 0)
+        {
+            RenderLocked(_lockLevel);
+            return;
+        }
+
+        if (Data == null)
+            SetDefaultView();
+        else
+            SetData(Data);
     }
 
     public void SetData(BoosterData data)
@@ -52,7 +60,7 @@ public class BoosterMenuSlot : MonoBehaviour
         Data = data;
 
         _preview.sprite = data.Preview;
-        _name.text = data.Name;
+        _name.text = LocalizationManager.Localize(data.Name);
     }
 
     public void RenderLocked(int lockLevel)
@@ -91,6 +99,6 @@ public class BoosterMenuSlot : MonoBehaviour
     private void SetDefaultView()
     {
         _preview.sprite = _defaultIcon;
-        _name.text = "Add booster";
+        _name.text = LocalizationManager.Localize("Boosters.AddBooster");
     }
 }
