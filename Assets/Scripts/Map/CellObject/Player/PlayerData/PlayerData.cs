@@ -20,7 +20,12 @@ public class PlayerData : IPlayerData, ISavedObject, ICloneable
     public void Upgrade()
     {
         _speed = Mathf.Clamp(_speed + 0.05f, 0f, 8f);
-        _cleanliness = Mathf.Clamp(_cleanliness + 0.01f, 0, 1);
+        _cleanliness = Mathf.Clamp(_cleanliness + 0.01f, 0f, 1);
+    }
+
+    public void Downgrade()
+    {
+        _cleanliness = Mathf.Clamp(_cleanliness - 0.01f, 0f, 1f);
     }
 
     public void Load(ISaveLoadVisiter saveLoadVisiter)

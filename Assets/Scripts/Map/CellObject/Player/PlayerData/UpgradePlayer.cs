@@ -34,10 +34,30 @@ public class UpgradePlayer : MonoBehaviour
     private void OnEnable()
     {
         _endTrigger.LevelCompleted += OnLevelCompleted;
+        _endTrigger.LevelFailed += OnLevelFailed;
+    }
+
+    private void OnLevelFailed()
+    {
+        CleanerInventory inventory = new CleanerInventory(_dataBase);
+        inventory.Load(new JsonSaveLoad());
+
+        var player = _playerInitializer.InstPlayer;
+        var oldData = player.PlayerDataClone;
+
+        if (_playerSelector.HasInDictionary(player) && inventory.Contains(player.DefaultCharacteristics) == false)
+        {
+            PlayerUpgraded?.Invoke(oldData, oldData);
+            return;
+        }
+        var newData = player.Downgrade();
+
+        PlayerUpgraded?.Invoke(oldData, newData);
     }
 
     private void OnDestroy()
     {
         _endTrigger.LevelCompleted -= OnLevelCompleted;
+        _endTrigger.LevelFailed -= OnLevelFailed;
     }
 }

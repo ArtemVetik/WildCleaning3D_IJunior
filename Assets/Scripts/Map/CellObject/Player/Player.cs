@@ -57,6 +57,16 @@ public class Player : CellObject, IMoveable, ISpeedyObject
         return _characteristics;
     }
 
+    public IPlayerData Downgrade()
+    {
+        _characteristics = _defaultCharacteristics.Characteristic;
+        _characteristics.Load(new JsonSaveLoad());
+        _characteristics.Downgrade();
+        _characteristics.Save(new JsonSaveLoad());
+
+        return _characteristics;
+    }
+
     private void OnMoveEnded(GameCell finishCell)
     {
         CurrentCell = finishCell;
@@ -97,6 +107,7 @@ public class Player : CellObject, IMoveable, ISpeedyObject
         if (other.TryGetComponent(out Enemy enemy))
         {
             _playerMoveSystem.ForceStop();
+            GetComponent<Collider>().enabled = false;
             Died?.Invoke();
         }
     }

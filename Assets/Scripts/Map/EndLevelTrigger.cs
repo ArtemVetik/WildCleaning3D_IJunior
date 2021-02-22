@@ -14,6 +14,7 @@ public class EndLevelTrigger : MonoBehaviour
     private Player _player;
 
     public event UnityAction LevelCompleted;
+    public event UnityAction LevelFailed;
 
     private void OnEnable()
     {
@@ -52,5 +53,6 @@ public class EndLevelTrigger : MonoBehaviour
 
         _gameCanvas.Hide();
         _endOfGameCanvas.ShowLoose();
+        LevelFailed?.Invoke();
     }
 }
