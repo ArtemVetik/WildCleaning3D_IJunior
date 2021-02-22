@@ -44,6 +44,11 @@ namespace Assets.SimpleLocalization
             LocalizationManager.LocalizationChanged -= LocalizeFont;
         }
 
+        private void Start()
+        {
+            LocalizeFont();
+        }
+
         private void LocalizeFont()
         {
             var language = LocalizationManager.Language;
