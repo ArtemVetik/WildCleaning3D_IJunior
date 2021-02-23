@@ -5,10 +5,16 @@ using UnityEngine;
 public abstract class ChestItemAction : ScriptableObject
 {
     [SerializeField] private ShowRewardAnimation _showEffect;
-    [SerializeField] private string _rewardedInfo;
 
     public ShowRewardAnimation ShowEffect => _showEffect;
-    public string RewardedInfo => _rewardedInfo;
+    public string RewardedText { get; private set; }
 
-    public abstract void Use();
+    public void Use()
+    {
+        ApplyReward();
+        RewardedText = GetRewardedText();
+    }
+
+    public abstract void ApplyReward();
+    public abstract string GetRewardedText();
 }

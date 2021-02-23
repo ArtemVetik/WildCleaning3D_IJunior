@@ -8,12 +8,20 @@ public class AddBoosterAction : ChestItemAction
     [SerializeField] private BoostersDataBase _dataBase;
     [SerializeField] private Booster _booster;
 
-    public override void Use()
+    private BoosterData _data;
+
+    public override void ApplyReward()
     {
         BoosterInventory inventory = new BoosterInventory(_dataBase);
-
         inventory.Load(new JsonSaveLoad());
-        inventory.Add(_dataBase.FindFirst(_booster));
+
+        _data = _dataBase.FindFirst(_booster);
+        inventory.Add(_data);
         inventory.Save(new JsonSaveLoad());
+    }
+
+    public override string GetRewardedText()
+    {
+        return _data.Name;
     }
 }

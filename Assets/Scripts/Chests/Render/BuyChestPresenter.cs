@@ -10,7 +10,6 @@ public class BuyChestPresenter : MonoBehaviour
     [SerializeField] private Chest _chest;
     [SerializeField] private TMP_Text _name;
     [SerializeField] private TMP_Text _inStock;
-    [SerializeField] private TMP_Text _description;
     [SerializeField] private CellButton _cellButton;
     [SerializeField] private Animator _animator;
 
@@ -37,7 +36,6 @@ public class BuyChestPresenter : MonoBehaviour
 
         _name.text = _chest.Name;
         _inStock.text = $"In stock: {chestInventory.GetCount(_chest)}";
-        _description.text = _chest.Description;
 
         _diamond = new DiamondBalance();
         _diamond.Load(new JsonSaveLoad());

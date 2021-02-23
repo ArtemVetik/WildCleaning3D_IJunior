@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30b44b240b055e742a9e48404ac3b3a4, type: 3}
+  m_Name: ScoreRange_200_500_Action
+  m_EditorClassIdentifier: 
+  _showEffect: {fileID: 4209167745327448019, guid: f9870d6ccd38a5f4eabcfe4317b04260, type: 3}
+  _minScoreValue: 200
+  _maxScoreValue: 500

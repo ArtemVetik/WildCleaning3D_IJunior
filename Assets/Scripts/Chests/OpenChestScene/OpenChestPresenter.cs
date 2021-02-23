@@ -55,6 +55,7 @@ public class OpenChestPresenter : MonoBehaviour
     private void OnChestOpened()
     {
         var effect = Instantiate(_item.Action.ShowEffect, transform.position, _item.Action.ShowEffect.transform.rotation);
+        effect.SetRewardedText(_item.Action.RewardedText);
 
         effect.RewardShown += OnRewardedShown;
     }

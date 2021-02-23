@@ -8,10 +8,12 @@ public class TestPanel : MonoBehaviour
 {
     [SerializeField] private BoostersDataBase _boosterDataBase;
     [SerializeField] private CleanersDataBase _cleanerDataBase;
+    [SerializeField] private ChestDataBase _chestDataBase;
     [SerializeField] private InputField _scoreField;
     [SerializeField] private InputField _diamondField;
     [SerializeField] private InputField _levelField;
     [SerializeField] private GameObject[] _rooms;
+    [SerializeField] private Chest _levelChest;
 
     private int _currentRoom = 0;
 
@@ -53,6 +55,14 @@ public class TestPanel : MonoBehaviour
         balance.AddDiamond(score);
 
         balance.Save(new JsonSaveLoad());
+    }
+
+    public void AddLevelChest()
+    {
+        ChestInventory inventory = new ChestInventory(_chestDataBase);
+        inventory.Load(new JsonSaveLoad());
+        inventory.Add(_levelChest);
+        inventory.Save(new JsonSaveLoad());
     }
 
     public void SetLevel()

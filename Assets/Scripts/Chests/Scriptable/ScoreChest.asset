@@ -19,15 +19,11 @@ MonoBehaviour:
   _preview: {fileID: 21300000, guid: d9492978ed96d47ff8ff81b515b88302, type: 3}
   _chestAnimation: {fileID: -3007555522485489936, guid: a36705206acb2b94ca0209da506cbc47, type: 3}
   _items:
-  - _action: {fileID: 11400000, guid: 09bc664790393024d8980f428dbd77ea, type: 2}
-    _probability: 0.3
-  - _action: {fileID: 11400000, guid: 3e25a26b0df15ff409e334472e8f3b86, type: 2}
-    _probability: 0.15
-  - _action: {fileID: 11400000, guid: c97be6fbb400a1d4f9283fb6c41a6b49, type: 2}
-    _probability: 0.1
-  - _action: {fileID: 11400000, guid: 8a805c4378fd1034484a2ae02018428d, type: 2}
-    _probability: 0.15
-  - _action: {fileID: 11400000, guid: 3118064933369f444931a75d98b713a8, type: 2}
-    _probability: 0.15
-  - _action: {fileID: 11400000, guid: d36c3475cbad15341a378e0e67876f43, type: 2}
-    _probability: 0.15
+  - _action: {fileID: 11400000, guid: 34e2efb6e1a0f9744bdab0329f897f3a, type: 2}
+    _probability: 0.25
+  - _action: {fileID: 11400000, guid: 313a5720d20ca9142956abbf7c599021, type: 2}
+    _probability: 0.25
+  - _action: {fileID: 11400000, guid: c67d6c5bc325756469524e5f89bd6bc3, type: 2}
+    _probability: 0.25
+  - _action: {fileID: 11400000, guid: a89ed93392f2cac42a95918e0ee11ac5, type: 2}
+    _probability: 0.25

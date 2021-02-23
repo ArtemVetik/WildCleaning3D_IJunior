@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1edb267e37fa84bafdee6eb8e2a402, type: 3}
+  m_Name: WaterBallRangeAction
+  m_EditorClassIdentifier: 
+  _showEffect: {fileID: 5575784305515026212, guid: 0bcd65ea7374c764d9e99eceda901e62, type: 3}
+  _dataBase: {fileID: 11400000, guid: 75f3341af809ff74cbf08a61a313c18d, type: 2}
+  _booster: {fileID: 11400000, guid: 48b911eebd7908740ab6c3d5769a7a99, type: 2}
+  _minCount: 1
+  _maxCount: 3

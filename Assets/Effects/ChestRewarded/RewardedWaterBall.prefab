@@ -328,7 +328,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 9}
-  m_SizeDelta: {x: 20, y: 5}
+  m_SizeDelta: {x: 30, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8924338329544592541
 MeshRenderer:
@@ -418,8 +418,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14660,6 +14660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ad40bdc0194d64aa5cab75f675a55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rewardedText: {fileID: 1656527991250091729}
 --- !u!1 &7011535164340638639
 GameObject:
   m_ObjectHideFlags: 0
