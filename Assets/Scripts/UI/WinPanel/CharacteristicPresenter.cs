@@ -23,12 +23,12 @@ public class CharacteristicPresenter : MonoBehaviour
 
         if (_inPercents)
         {
-            _sliderText.text = $"{(value / maxValue * 100):N2}%";
-            _upgrageText.text = string.Format("{0:+0.00;-0.00;0}", upgradeValue * 100);
+            _sliderText.text = string.Format("{0:0.##;0.##;0}%", (value / maxValue * 100));
+            _upgrageText.text = string.Format("{0:+0.##;-0.##;0}%", upgradeValue * 100);
         }
         else
         {
-            _sliderText.text = $"{value:N2}/{maxValue:N2}";
+            _sliderText.text = $"{value:0.##}/{maxValue:0.##}";
             _upgrageText.text = string.Format("{0:+0.00;-0.00;0}", upgradeValue);
         }
 
