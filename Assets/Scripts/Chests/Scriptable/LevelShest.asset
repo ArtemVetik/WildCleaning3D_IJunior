@@ -16,7 +16,7 @@ MonoBehaviour:
   _name: Chests.LevelChest
   _description: '!!!'
   _price: 0
-  _preview: {fileID: 21300000, guid: d9492978ed96d47ff8ff81b515b88302, type: 3}
+  _preview: {fileID: 21300000, guid: 2a4d44994961b3c4489249e7e6b0bd13, type: 3}
   _chestAnimation: {fileID: 6373337972126553566, guid: df740f27330bdad4b9dd2388718c8bfa, type: 3}
   _items:
   - _action: {fileID: 11400000, guid: 59db16e7d693ac94f9aad47673f7091d, type: 2}
