@@ -8,7 +8,7 @@ public class BoosterViewer : ShopViewer
 {
     [SerializeField] private Button _nextButton;
     [SerializeField] private Button _previousButton;
-    [SerializeField] private Button _cellButton;
+    [SerializeField] private CellButton _cellButton;
 
     private List<BoosterShopPresenter> _presenters;
     private BoosterShopPresenter _currentPresenter;
@@ -39,6 +39,11 @@ public class BoosterViewer : ShopViewer
         SetCameraTarget(presenter.transform);
         _currentPresenter = presenter;
         _currentPresenter.InitButtonsEvent(_cellButton);
+
+        ScoreBalance score = new ScoreBalance();
+        score.Load(new JsonSaveLoad());
+
+        _cellButton.RenderPrice(_currentPresenter.BoosterPrice, score.Balance < presenter.BoosterPrice);
 
         UpdateAnimations();
     }

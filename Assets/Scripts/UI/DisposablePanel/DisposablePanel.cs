@@ -9,7 +9,6 @@ public class DisposablePanel : MonoBehaviour
 
     public virtual bool TryOpen(int currentLevel)
     {
-        Debug.Log(PlayerPrefs.HasKey(_panelID));
         if (PlayerPrefs.HasKey(_panelID))
             return false;
 

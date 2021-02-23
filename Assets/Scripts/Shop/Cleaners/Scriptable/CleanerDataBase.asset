@@ -18,17 +18,20 @@ MonoBehaviour:
     _preview: {fileID: 21300000, guid: 18d8b6f1612006b47851ea84d7c6120d, type: 3}
     _name: Default cleaner
     _description: defaultdefaultdefault
+    _price: 0
     _prefab: {fileID: 11400000, guid: b8f03b39d96224742b139ee7e165c825, type: 2}
     _emptyModel: {fileID: 5206035691834104484, guid: f6bdfade4228f9c48afda65aa7b9f11d, type: 3}
   - _guid: f1b750d2-b24c-4441-a4b1-6b207cc53fba
     _preview: {fileID: 21300000, guid: d4ae825bed006db4a9ad661e7def1ad7, type: 3}
     _name: Holy Cleaner
     _description: HolyHolyHolyHoly
+    _price: 50
     _prefab: {fileID: 11400000, guid: 10e50554a1e330f49a5bdb825fc7ee21, type: 2}
     _emptyModel: {fileID: 2601990514882863208, guid: 5ae845a1b5b27ad4b9174ab72a38dd02, type: 3}
   - _guid: 8b5d9cb1-a903-44b3-a899-d3d114cb0d75
     _preview: {fileID: 21300000, guid: d02030b397b244d42b3a6baf26608464, type: 3}
     _name: DevilCleaner
     _description: DevilDevilDevilDevil
+    _price: 50
     _prefab: {fileID: 11400000, guid: 934189966108f3c4ba3ec40e19a4ce3b, type: 2}
     _emptyModel: {fileID: 96402860526629668, guid: 94dbcc0c1ba134a42969c77391ec317a, type: 3}

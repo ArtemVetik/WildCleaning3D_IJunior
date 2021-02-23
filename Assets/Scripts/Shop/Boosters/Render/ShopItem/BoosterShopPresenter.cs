@@ -18,6 +18,7 @@ public class BoosterShopPresenter : MonoBehaviour
     private GameObject _model;
 
     public BoosterData Data { get; private set; }
+    public int BoosterPrice => Data.Price;
 
     public UnityAction<BoosterShopPresenter> SellButtonClicked;
     public BoosterPresenterAnimation Animation { get; private set; }
@@ -27,14 +28,14 @@ public class BoosterShopPresenter : MonoBehaviour
         Animation = GetComponent<BoosterPresenterAnimation>();
     }
 
-    public void InitButtonsEvent(Button cellButton)
+    public void InitButtonsEvent(CellButton cellButton)
     {
-        cellButton.onClick.AddListener(OnCellButtonClick);
+        cellButton.ButtonClicked += OnCellButtonClick;
     }
 
-    public void RemoveButtonsEvent(Button cellButton)
+    public void RemoveButtonsEvent(CellButton cellButton)
     {
-        cellButton.onClick.RemoveListener(OnCellButtonClick);
+        cellButton.ButtonClicked -= OnCellButtonClick;
     }
 
     public void Render(BoosterData data, BoosterInventory inventory)
@@ -62,7 +63,7 @@ public class BoosterShopPresenter : MonoBehaviour
         _inStock.text = $"In stock: {inStockCount.ToString()}";
     }
 
-    public void OnCellButtonClick()
+    public void OnCellButtonClick(CellButton cellButton)
     {
         SellButtonClicked?.Invoke(this);
     }

@@ -9,6 +9,7 @@ public class TestPanel : MonoBehaviour
     [SerializeField] private BoostersDataBase _boosterDataBase;
     [SerializeField] private CleanersDataBase _cleanerDataBase;
     [SerializeField] private InputField _scoreField;
+    [SerializeField] private InputField _diamondField;
     [SerializeField] private InputField _levelField;
     [SerializeField] private GameObject[] _rooms;
 
@@ -40,6 +41,16 @@ public class TestPanel : MonoBehaviour
 
         ScoreBalance balance = new ScoreBalance();
         balance.AddScore(score);
+
+        balance.Save(new JsonSaveLoad());
+    }
+
+    public void SetDiamond()
+    {
+        int score = int.Parse(_diamondField.text);
+
+        DiamondBalance balance = new DiamondBalance();
+        balance.AddDiamond(score);
 
         balance.Save(new JsonSaveLoad());
     }

@@ -24,6 +24,7 @@ public class CleanerPresenter : MonoBehaviour
     public Transform EffectsContainer => _effectsContainer;
     public CleanerPresenterAnimation Animation { get; private set; }
     public CleanerData Data { get; private set; }
+    public int CleanerPrice => Data.Price;
 
     public event UnityAction<CleanerPresenter> CellButtonClicked;
     public event UnityAction<CleanerPresenter> SelectButtonClicked;
@@ -33,15 +34,15 @@ public class CleanerPresenter : MonoBehaviour
         Animation = GetComponent<CleanerPresenterAnimation>();
     }
 
-    public void InitButtonsEvent(Button cellButton, Button selectButton)
+    public void InitButtonsEvent(CellButton cellButton, Button selectButton)
     {
-        cellButton.onClick.AddListener(OnCellButtonClick);
+        cellButton.ButtonClicked += OnCellButtonClick;
         selectButton.onClick.AddListener(OnSelectButtonClick);
     }
 
-    public void RemoveButtonsEvent(Button cellButton, Button selectButton)
+    public void RemoveButtonsEvent(CellButton cellButton, Button selectButton)
     {
-        cellButton.onClick.RemoveListener(OnCellButtonClick);
+        cellButton.ButtonClicked -= OnCellButtonClick;
         selectButton.onClick.RemoveListener(OnSelectButtonClick);
     }
 
@@ -90,7 +91,7 @@ public class CleanerPresenter : MonoBehaviour
         _glassBox.SetActive(false);
     }
 
-    private void OnCellButtonClick()
+    private void OnCellButtonClick(CellButton button)
     {
         CellButtonClicked?.Invoke(this);
     }

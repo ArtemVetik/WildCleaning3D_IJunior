@@ -8,7 +8,7 @@ public class CleanerViewer : ShopViewer
     [SerializeField] private CleanersDataBase _dataBase;
     [SerializeField] private Button _nextButton;
     [SerializeField] private Button _previousButton;
-    [SerializeField] private Button _cellButton;
+    [SerializeField] private CellButton _cellButton;
     [SerializeField] private Button _selectButton;
 
     private List<CleanerPresenter> _presenters;
@@ -54,6 +54,11 @@ public class CleanerViewer : ShopViewer
         SetCameraTarget(presenter.transform);
         _currentPresenter = presenter;
         _currentPresenter.InitButtonsEvent(_cellButton, _selectButton);
+
+        DiamondBalance diamond = new DiamondBalance();
+        diamond.Load(new JsonSaveLoad());
+
+        _cellButton.RenderPrice(presenter.CleanerPrice, diamond.Balance < presenter.CleanerPrice);
 
         UpdateAnimations();
         UpdateUI();

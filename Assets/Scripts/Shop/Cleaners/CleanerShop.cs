@@ -73,6 +73,9 @@ public class CleanerShop : MonoBehaviour
 
     private void OnCellButtonClicked(CleanerPresenter presenter)
     {
+        if (SpendBalance(presenter.CleanerPrice) == false)
+            return;
+
         _inventory.Add(presenter.Data);
         _inventory.Save(new JsonSaveLoad());
 
@@ -80,6 +83,17 @@ public class CleanerShop : MonoBehaviour
         Instantiate(_buyedEffect, presenter.EffectsContainer);
 
         _cleanerViewer.UpdateUI();
+    }
+
+    private bool SpendBalance(int value)
+    {
+        DiamondBalance diamond = new DiamondBalance();
+        diamond.Load(new JsonSaveLoad());
+
+        bool spend = diamond.SpendDiamond(value);
+        diamond.Save(new JsonSaveLoad());
+
+        return spend;
     }
 
     private void OnDisable()
