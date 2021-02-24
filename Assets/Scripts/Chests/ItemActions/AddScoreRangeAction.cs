@@ -18,11 +18,11 @@ public class AddScoreRangeAction : ChestItemAction
 
     public override void ApplyReward()
     {
-        ScoreBalance balance = new ScoreBalance();
+        GoldBalance balance = new GoldBalance();
         balance.Load(new JsonSaveLoad());
 
         _rewardCount = Random.Range(_minScoreValue, _maxScoreValue + 1);
-        balance.AddScore(_rewardCount);
+        balance.Add(_rewardCount);
         balance.Save(new JsonSaveLoad());
     }
 

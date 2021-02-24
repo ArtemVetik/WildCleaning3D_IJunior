@@ -83,14 +83,14 @@ public class PlayerScore : MonoBehaviour
 
     private void OnLevelCompleted()
     {
-        ScoreBalance scoreBalance = new ScoreBalance();
+        GoldBalance scoreBalance = new GoldBalance();
         scoreBalance.Load(new JsonSaveLoad());
-        scoreBalance.AddScore(Score);
+        scoreBalance.Add(Score);
         scoreBalance.Save(new JsonSaveLoad());
 
         DiamondBalance diamondBalance = new DiamondBalance();
         diamondBalance.Load(new JsonSaveLoad());
-        diamondBalance.AddDiamond(1);
+        diamondBalance.Add(1);
         diamondBalance.Save(new JsonSaveLoad());
     }
 

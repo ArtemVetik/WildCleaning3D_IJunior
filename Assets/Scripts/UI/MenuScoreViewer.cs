@@ -10,17 +10,17 @@ public class MenuScoreViewer : MonoBehaviour
 
     private void OnEnable()
     {
-        ScoreBalance.ScoreChanged += OnScoreBalanceChanged;
+        GoldBalance.ScoreChanged += OnScoreBalanceChanged;
     }
 
     private void OnDisable()
     {
-        ScoreBalance.ScoreChanged -= OnScoreBalanceChanged;
+        GoldBalance.ScoreChanged -= OnScoreBalanceChanged;
     }
 
     private void Start()
     {
-        ScoreBalance balance = new ScoreBalance();
+        GoldBalance balance = new GoldBalance();
         balance.Load(new JsonSaveLoad());
         _score.text = balance.Balance.ToString();
     }

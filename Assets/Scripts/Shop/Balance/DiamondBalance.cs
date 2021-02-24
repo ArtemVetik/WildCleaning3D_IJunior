@@ -13,7 +13,7 @@ public class DiamondBalance : ISavedObject
 
     public static event UnityAction<int> DiamondChanged;
 
-    public void AddDiamond(int value)
+    public void Add(int value)
     {
         _balance += value;
         DiamondChanged?.Invoke(Balance);

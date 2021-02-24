@@ -10,7 +10,7 @@ public class PurchaseGemsButton : PurchaseConsumableButton
 
         DiamondBalance balance = new DiamondBalance();
         balance.Load(new JsonSaveLoad());
-        balance.AddDiamond(gems);
+        balance.Add(gems);
         balance.Save(new JsonSaveLoad());
     }
 

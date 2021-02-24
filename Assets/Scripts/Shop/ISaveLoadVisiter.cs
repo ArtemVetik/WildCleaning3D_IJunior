@@ -12,8 +12,8 @@
     void Save(ChestInventory chestInventory);
     ChestInventory Load(ChestInventory chestInventory);
 
-    void Save(ScoreBalance scoreBalance);
-    ScoreBalance Load(ScoreBalance scoreBalance);
+    void Save(GoldBalance scoreBalance);
+    GoldBalance Load(GoldBalance scoreBalance);
 
     void Save(DiamondBalance diamondBalance);
     DiamondBalance Load(DiamondBalance diamondBalance);

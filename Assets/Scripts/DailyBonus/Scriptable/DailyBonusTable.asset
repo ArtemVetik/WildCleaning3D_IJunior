@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab1700a14fbaf504aa1e45d83b64ef06, type: 3}
+  m_Name: DailyBonusTable
+  m_EditorClassIdentifier: 
+  _table:
+  - _day: 1
+    _preview: {fileID: 21300000, guid: e2aa7efb96122471ab3c04c46224d37a, type: 3}
+    _action: {fileID: 11400000, guid: 13ddf7a0b8ebca94188f32d4b8381572, type: 2}
+  - _day: 2
+    _preview: {fileID: 21300000, guid: db12e142f01474ce8981e3cba2269099, type: 3}
+    _action: {fileID: 11400000, guid: 13ddf7a0b8ebca94188f32d4b8381572, type: 2}
+  - _day: 3
+    _preview: {fileID: 21300000, guid: 4d573c3484b44472ea16adc26e6fa5d0, type: 3}
+    _action: {fileID: 11400000, guid: 293ecdd04ae4bd54cb6538af59eb629d, type: 2}
+  - _day: 4
+    _preview: {fileID: 21300000, guid: dad74013a0ec24e3ca38d2b98cfa5f62, type: 3}
+    _action: {fileID: 11400000, guid: 293ecdd04ae4bd54cb6538af59eb629d, type: 2}

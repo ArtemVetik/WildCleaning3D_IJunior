@@ -23,7 +23,7 @@ public class BoosterShop : MonoBehaviour
 
     private void OnSellButtonClicked(BoosterShopPresenter presenter)
     {
-        ScoreBalance money = new ScoreBalance();
+        GoldBalance money = new GoldBalance();
         money.Load(new JsonSaveLoad());
 
         if (money.Balance < presenter.BoosterPrice)

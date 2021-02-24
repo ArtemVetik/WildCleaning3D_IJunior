@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 7cc6923d65c0bb04ba9b334f123cc4c8
+  - enabled: 1
+    path: Assets/Packs/GUI Kit Casual Game/Scenes/DemoScene_CtrPanel.unity
+    guid: 736194c0bdd684919960fb3930417927
   m_configObjects: {}

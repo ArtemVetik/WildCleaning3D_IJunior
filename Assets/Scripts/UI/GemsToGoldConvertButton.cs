@@ -34,11 +34,11 @@ public class GemsToGoldConvertButton : MonoBehaviour
         if (diamond.Balance < _gemsToRemove)
             return;
 
-        ScoreBalance gold = new ScoreBalance();
+        GoldBalance gold = new GoldBalance();
         gold.Load(new JsonSaveLoad());
 
         diamond.SpendDiamond(_gemsToRemove);
-        gold.AddScore(_goldToAdd);
+        gold.Add(_goldToAdd);
 
         diamond.Save(new JsonSaveLoad());
         gold.Save(new JsonSaveLoad());

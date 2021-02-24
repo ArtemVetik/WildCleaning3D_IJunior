@@ -41,8 +41,8 @@ public class TestPanel : MonoBehaviour
     {
         int score = int.Parse(_scoreField.text);
 
-        ScoreBalance balance = new ScoreBalance();
-        balance.AddScore(score);
+        GoldBalance balance = new GoldBalance();
+        balance.Add(score);
 
         balance.Save(new JsonSaveLoad());
     }
@@ -52,7 +52,7 @@ public class TestPanel : MonoBehaviour
         int score = int.Parse(_diamondField.text);
 
         DiamondBalance balance = new DiamondBalance();
-        balance.AddDiamond(score);
+        balance.Add(score);
 
         balance.Save(new JsonSaveLoad());
     }

@@ -40,7 +40,7 @@ public class BoosterViewer : ShopViewer
         _currentPresenter = presenter;
         _currentPresenter.InitButtonsEvent(_cellButton);
 
-        ScoreBalance score = new ScoreBalance();
+        GoldBalance score = new GoldBalance();
         score.Load(new JsonSaveLoad());
 
         _cellButton.RenderPrice(_currentPresenter.BoosterPrice, score.Balance < presenter.BoosterPrice);

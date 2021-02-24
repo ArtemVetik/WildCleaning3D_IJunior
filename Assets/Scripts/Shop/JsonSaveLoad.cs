@@ -93,19 +93,19 @@ public class JsonSaveLoad : ISaveLoadVisiter
     #endregion
 
     #region ScoreBalance
-    public void Save(ScoreBalance scoreBalance)
+    public void Save(GoldBalance scoreBalance)
     {
         string saveJson = JsonUtility.ToJson(scoreBalance, true);
         PlayerPrefs.SetString(ScoreBalanceKey, saveJson);
         PlayerPrefs.Save();
     }
 
-    public ScoreBalance Load(ScoreBalance scoreBalance)
+    public GoldBalance Load(GoldBalance scoreBalance)
     {
         if (PlayerPrefs.HasKey(ScoreBalanceKey))
         {
             string saveJson = PlayerPrefs.GetString(ScoreBalanceKey);
-            return JsonUtility.FromJson<ScoreBalance>(saveJson);
+            return JsonUtility.FromJson<GoldBalance>(saveJson);
         }
 
         return scoreBalance;

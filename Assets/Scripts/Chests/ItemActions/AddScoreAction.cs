@@ -9,9 +9,9 @@ public class AddScoreAction : ChestItemAction
 
     public override void ApplyReward()
     {
-        ScoreBalance balance = new ScoreBalance();
+        GoldBalance balance = new GoldBalance();
         balance.Load(new JsonSaveLoad());
-        balance.AddScore(_scoreValue);
+        balance.Add(_scoreValue);
         balance.Save(new JsonSaveLoad());
     }
 

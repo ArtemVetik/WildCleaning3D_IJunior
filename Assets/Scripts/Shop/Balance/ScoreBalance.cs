@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [Serializable]
-public class ScoreBalance : ISavedObject
+public class GoldBalance : ISavedObject
 {
     [SerializeField] private int _balance;
 
@@ -13,7 +13,7 @@ public class ScoreBalance : ISavedObject
 
     public static event UnityAction<int> ScoreChanged;
 
-    public void AddScore(int value)
+    public void Add(int value)
     {
         _balance += value;
         ScoreChanged?.Invoke(Balance);
