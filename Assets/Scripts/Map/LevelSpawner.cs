@@ -10,6 +10,7 @@ public class LevelSpawner : MonoBehaviour
     [SerializeField] private CurrentLevelLoader _levelLoader;
     [SerializeField] private GameCell _floor;
     [SerializeField] private PlayerInitializer _playerInitializer;
+    [SerializeField] private Transform _spawnContainer;
 
     public event UnityAction<CellObject> CellObjectSpawned;
     public event UnityAction SpawnCompleted;
@@ -40,6 +41,7 @@ public class LevelSpawner : MonoBehaviour
 
         var inst = Instantiate(cellData.LevelObject.Prefab, targetCell.transform.position, cellData.LevelObject.Prefab.transform.rotation);
         inst.transform.position += Vector3.up * (inst.MeshHeight.MaxMeshHeight / 2f + 0.05f);
+        inst.transform.parent = _spawnContainer;
 
         inst.Init(targetCell);
 
@@ -52,7 +54,7 @@ public class LevelSpawner : MonoBehaviour
 
     private GameCell SpawnCell(Vector2Int cell, GameCell template)
     {
-        GameCell gameCell = Instantiate(template, cell.ToVector3(), Quaternion.identity);
+        GameCell gameCell = Instantiate(template, cell.ToVector3(), Quaternion.identity, _spawnContainer);
         gameCell.Init(cell);
         InstCells.Add(gameCell);
         return gameCell;
