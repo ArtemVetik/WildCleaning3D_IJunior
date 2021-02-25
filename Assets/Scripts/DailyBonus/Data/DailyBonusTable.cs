@@ -7,5 +7,7 @@ public class DailyBonusTable : ScriptableObject
 {
     [SerializeField] private List<DailyBonusData> _table;
 
+    public int ItemCount => _table.Count;
+
     public IEnumerable<DailyBonusData> Data => _table;
 }

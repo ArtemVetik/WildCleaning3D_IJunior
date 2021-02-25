@@ -34,9 +34,6 @@ public class PlayerSelector : ScriptableObject
         var inventory = new CleanerInventory(_dataBase);
         inventory.Load(new JsonSaveLoad());
 
-        if (inventory.SelectedCleaner == null)
-            inventory.SelectCleaner(_dataBase.DefaultData);
-
         return inventory.SelectedCleaner.Prefab.Cleaner;
     }
 }

@@ -17,4 +17,7 @@
 
     void Save(DiamondBalance diamondBalance);
     DiamondBalance Load(DiamondBalance diamondBalance);
+
+    void Save(DailyBonusSaves dailyBonusSaves);
+    DailyBonusSaves Load(DailyBonusSaves dailyBonusSaves);
 }
