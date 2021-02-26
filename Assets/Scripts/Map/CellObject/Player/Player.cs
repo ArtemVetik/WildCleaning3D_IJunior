@@ -86,6 +86,8 @@ public class Player : CellObject, IMoveable, ISpeedyObject
     public void Replace(GameCell cell)
     {
         _playerMoveSystem.ForceStop();
+        _playerMoveSystem.ResetDirection();
+
         CurrentCell = cell;
         transform.position = cell.transform.position + Vector3.up * MeshHeight.MaxMeshHeight / 2f;
     }
@@ -94,6 +96,11 @@ public class Player : CellObject, IMoveable, ISpeedyObject
     {
         _filler.TryFill(_tail);
         _tail.Clear();
+    }
+
+    public void ForceStop()
+    {
+        _playerMoveSystem.ForceStop();
     }
 
     private void OnPlayerStopped(GameCell cell)

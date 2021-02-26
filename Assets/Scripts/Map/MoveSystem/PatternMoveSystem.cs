@@ -3,61 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PatternMoveSystem 
+public class PatternMoveSystem
 {
-	private PlaneMoveSystem _moveSystem;
-	private MovePattern _pattern;
-	private MeshHeight _meshHeight;
-	private int _patternIndex;
+    private PlaneMoveSystem _moveSystem;
+    private MovePattern _pattern;
+    private MeshHeight _meshHeight;
+    private int _patternIndex;
 
-	public event UnityAction<GameCell> MoveStarted;
-	public event UnityAction MovePausing;
+    public event UnityAction<GameCell> MoveStarted;
+    public event UnityAction MovePausing;
 
-	public PatternMoveSystem(PlaneMoveSystem moveSystem)
-	{
-		_moveSystem = moveSystem;
-	}
+    public PatternMoveSystem(PlaneMoveSystem moveSystem)
+    {
+        _moveSystem = moveSystem;
+    }
 
-	public void StartMove(GameCell fromCell, MovePattern pattern, MeshHeight meshHeight)
-	{
-		if (pattern == null || pattern.VectorPattern.Count == 0)
-			return;
+    public void StartMove(GameCell fromCell, MovePattern pattern, MeshHeight meshHeight)
+    {
+        if (pattern == null || pattern.VectorPattern.Count == 0)
+            return;
 
-		_pattern = pattern;
-		_meshHeight = meshHeight;
-		_patternIndex = 0;
+        _pattern = pattern;
+        _meshHeight = meshHeight;
+        _patternIndex = 0;
 
-		MoveNext(fromCell);
-	}
+        MoveNext(fromCell);
+    }
 
-	private void MoveNext(GameCell from)
-	{
-		GameCell adjacentCell = from.TryGetAdjacent(_pattern.VectorPattern[_patternIndex]);
-		if (adjacentCell == null)
-		{
-			_patternIndex = (_patternIndex + 1) % _pattern.VectorPattern.Count;
-			_moveSystem.StartCoroutine(MoveNextWithPause(from, 1.5f));
-			return;
-		}
+    private void MoveNext(GameCell from)
+    {
+        GameCell adjacentCell = from.TryGetAdjacent(_pattern.VectorPattern[_patternIndex]);
+        if (adjacentCell == null)
+        {
+            _patternIndex = (_patternIndex + 1) % _pattern.VectorPattern.Count;
+            _moveSystem.StartCoroutine(MoveNextWithPause(from, 1.5f));
+            return;
+        }
 
-		_moveSystem.MoveEnded += OnMoveEnded;
-		_moveSystem.Move(adjacentCell, _pattern.VectorPattern[_patternIndex], _meshHeight.MaxMeshHeight);
+        _moveSystem.MoveEnded += OnMoveEnded;
 
-		MoveStarted?.Invoke(adjacentCell);
-	}
+        var nextPatternIndex = (_patternIndex + 1) % _pattern.VectorPattern.Count;
 
-	private IEnumerator MoveNextWithPause(GameCell from, float pause)
-	{
-		MovePausing?.Invoke();
-		yield return new WaitForSeconds(pause);
-		MoveNext(from);
-	}
+        if (_pattern.VectorPattern[nextPatternIndex] == _pattern.VectorPattern[_patternIndex])
+            _moveSystem.StartMove(adjacentCell, _pattern.VectorPattern[_patternIndex], _meshHeight.MaxMeshHeight);
+        else
+            _moveSystem.StartMoveLerp(adjacentCell, _pattern.VectorPattern[_patternIndex], _meshHeight.MaxMeshHeight);
 
-	private void OnMoveEnded(GameCell finishCell)
-	{
-		_moveSystem.MoveEnded -= OnMoveEnded;
-		_patternIndex = (_patternIndex + 1) % _pattern.VectorPattern.Count;
+        MoveStarted?.Invoke(adjacentCell);
+    }
 
-		MoveNext(finishCell);
-	}
+    private IEnumerator MoveNextWithPause(GameCell from, float pause)
+    {
+        MovePausing?.Invoke();
+        yield return new WaitForSeconds(pause);
+        MoveNext(from);
+    }
+
+    private void OnMoveEnded(GameCell finishCell)
+    {
+        _moveSystem.MoveEnded -= OnMoveEnded;
+        _patternIndex = (_patternIndex + 1) % _pattern.VectorPattern.Count;
+
+        MoveNext(finishCell);
+    }
 }

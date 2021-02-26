@@ -34,6 +34,7 @@ public class EndLevelTrigger : MonoBehaviour
     private void OnAllStagesComplete()
     {
         _inputSystem.enabled = false;
+        _player.ForceStop();
 
         _gameCanvas.Hide();
         _endOfGameCanvas.ShowWin();

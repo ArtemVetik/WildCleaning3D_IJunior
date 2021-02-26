@@ -41,6 +41,11 @@ public class PlayerMoveSystem
         _moveSystem.ForceStop();
     }
 
+    public void ResetDirection()
+    {
+        _moveSystem.ResetDirection();
+    }
+
     private void OnMoveEnded(GameCell finishCell)
     {
         _moveSystem.MoveEnded -= OnMoveEnded;
@@ -63,7 +68,7 @@ public class PlayerMoveSystem
         }
 
         _moveSystem.MoveEnded += OnMoveEnded;
-        _moveSystem.Move(adjacentCell, _nextMoveDirection, _meshHeight.MaxMeshHeight);
+        _moveSystem.StartMove(adjacentCell, _nextMoveDirection, _meshHeight.MaxMeshHeight);
         return true;
     }
 }

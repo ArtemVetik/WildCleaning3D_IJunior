@@ -7,7 +7,7 @@ public class MapFiller : MonoBehaviour
 {
     [SerializeField] private CurrentLevelLoader _levelLoader;
 
-    public event UnityAction<FillData> StartFilled;
+    public event UnityAction<FillData> StartFilling;
     public event UnityAction<FillData> EndFilled;
 
     public void TryFill(PlayerTail tail)
@@ -24,7 +24,7 @@ public class MapFiller : MonoBehaviour
             rightFillData = SetFillData(rightTail, rightFillData, mapTemplate);
 
 
-        if (leftFillData.FilledCells.Count == 0 || rightFillData.FilledCells.Count == 0)
+        if (leftFillData.CellCount == 0 || rightFillData.CellCount == 0)
             return;
 
         FillData targetFillData;
@@ -35,13 +35,13 @@ public class MapFiller : MonoBehaviour
         }
         else
         {
-            if (leftFillData.FilledCells.Count < rightFillData.FilledCells.Count)
+            if (leftFillData.CellCount < rightFillData.CellCount)
                 targetFillData = leftFillData;
             else
                 targetFillData = rightFillData;
         }
 
-        StartFilled?.Invoke(targetFillData);
+        StartFilling?.Invoke(targetFillData);
         StartCoroutine(Fill(targetFillData));
     }
 
@@ -61,7 +61,7 @@ public class MapFiller : MonoBehaviour
     private FillData SetFillData(GameCell currentCell, FillData data, int[,] mapTemplate)
     {
         if (currentCell == null)
-            return new FillData(data.FilledCells, false);
+            return new FillData(new List<GameCell>(data.FilledCells), false);
         if (currentCell.IsMarked || mapTemplate[currentCell.Position.y, currentCell.Position.x] != 0)
             return data;
 
@@ -78,17 +78,25 @@ public class MapFiller : MonoBehaviour
 
 public struct FillData
 {
-    public List<GameCell> FilledCells { get; private set; }
+    private List<GameCell> _filledCells;
+
+    public IEnumerable<GameCell> FilledCells => _filledCells;
+    public int CellCount => _filledCells.Count;
     public bool IsClosed { get; private set; }
 
     public FillData(List<GameCell> filledCells, bool isClosed)
     {
-        FilledCells = filledCells;
+        _filledCells = filledCells;
         IsClosed = isClosed;
+    }
+
+    public GameCell Find(System.Predicate<GameCell> match)
+    {
+        return _filledCells.Find(match);
     }
 
     public void Add(GameCell filledCell)
     {
-        FilledCells.Add(filledCell);
+        _filledCells.Add(filledCell);
     }
 }

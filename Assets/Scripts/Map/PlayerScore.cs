@@ -18,7 +18,7 @@ public class EnemyInContour
 
         foreach (var enemy in _enemyContainer.Enemies)
         {
-            if (fillData.FilledCells.Find((cell) => cell.Position == enemy.CurrentCell.Position))
+            if (fillData.Find((cell) => cell.Position == enemy.CurrentCell.Position))
                 _enemies.Add(enemy);
         }
 
@@ -60,7 +60,7 @@ public class PlayerScore : MonoBehaviour
     private void OnEnable()
     {
         _enemyContainer.EnemyDied += OnEnemyDied;
-        _mapFiller.StartFilled += OnStartFilled;
+        _mapFiller.StartFilling += OnStartFilled;
         _mapFiller.EndFilled += OnEndFilled;
         _endTrigger.LevelCompleted += OnLevelCompleted;
     }
@@ -68,7 +68,7 @@ public class PlayerScore : MonoBehaviour
     private void OnDisable()
     {
         _enemyContainer.EnemyDied -= OnEnemyDied;
-        _mapFiller.StartFilled -= OnStartFilled;
+        _mapFiller.StartFilling -= OnStartFilled;
         _mapFiller.EndFilled -= OnEndFilled;
         _endTrigger.LevelCompleted -= OnLevelCompleted;
     }
