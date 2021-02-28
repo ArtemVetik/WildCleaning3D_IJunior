@@ -4279,3 +4279,198 @@ MonoBehaviour:
     KeyStagesPoint:
     - {x: 10, y: 0}
     - {x: 9, y: 9}
+  - Size: {x: 28, y: 29}
+    Map:
+      m_keys:
+      - {x: 8, y: 2}
+      - {x: 8, y: 1}
+      - {x: 8, y: 0}
+      - {x: 9, y: 0}
+      - {x: 10, y: 0}
+      - {x: 11, y: 0}
+      - {x: 11, y: 1}
+      - {x: 10, y: 1}
+      - {x: 10, y: 2}
+      - {x: 9, y: 2}
+      - {x: 9, y: 1}
+      - {x: 11, y: 2}
+      - {x: 12, y: 2}
+      - {x: 12, y: 3}
+      - {x: 11, y: 3}
+      - {x: 10, y: 3}
+      - {x: 9, y: 3}
+      - {x: 9, y: 4}
+      - {x: 8, y: 4}
+      - {x: 8, y: 3}
+      - {x: 7, y: 3}
+      - {x: 7, y: 2}
+      - {x: 7, y: 1}
+      - {x: 7, y: 0}
+      - {x: 12, y: 1}
+      - {x: 12, y: 4}
+      - {x: 11, y: 4}
+      - {x: 11, y: 5}
+      - {x: 10, y: 5}
+      - {x: 9, y: 5}
+      - {x: 8, y: 5}
+      - {x: 7, y: 5}
+      - {x: 7, y: 4}
+      - {x: 6, y: 4}
+      - {x: 6, y: 3}
+      - {x: 10, y: 4}
+      - {x: 6, y: 5}
+      - {x: 5, y: 5}
+      - {x: 6, y: 2}
+      - {x: 6, y: 1}
+      - {x: 6, y: 0}
+      - {x: 5, y: 3}
+      - {x: 5, y: 4}
+      - {x: 5, y: 2}
+      - {x: 5, y: 1}
+      - {x: 5, y: 0}
+      - {x: 5, y: 6}
+      - {x: 6, y: 6}
+      - {x: 13, y: 3}
+      - {x: 13, y: 2}
+      - {x: 12, y: 0}
+      - {x: 13, y: 1}
+      - {x: 13, y: 0}
+      - {x: 13, y: 4}
+      - {x: 13, y: 5}
+      - {x: 12, y: 5}
+      - {x: 13, y: 6}
+      - {x: 12, y: 6}
+      - {x: 11, y: 6}
+      - {x: 10, y: 6}
+      - {x: 9, y: 6}
+      - {x: 8, y: 6}
+      - {x: 7, y: 6}
+      m_values:
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 11400000, guid: 8542ae36e3c7ad34094f0cef95e3bfa2, type: 2}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 11400000, guid: f496fc44d4bf12f44a304135ee6b5b09, type: 2}
+        _parameters: {fileID: 11400000, guid: 2fb7631efd4d1f3418d1da4d26b4a91f, type: 2}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+      - _levelObject: {fileID: 0}
+        _parameters: {fileID: 0}
+    KeyStagesPoint:
+    - {x: 9, y: 0}

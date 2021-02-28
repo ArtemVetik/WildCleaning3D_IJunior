@@ -43,12 +43,23 @@ public class PatternMoveSystem
         _moveSystem.MoveEnded += OnMoveEnded;
 
         var nextPatternIndex = (_patternIndex + 1) % _pattern.VectorPattern.Count;
+        var previousPatternIndex = (_patternIndex - 1 < 0) ? _pattern.VectorPattern.Count - 1 : _patternIndex - 1;
 
-        if (_pattern.VectorPattern[nextPatternIndex] == _pattern.VectorPattern[_patternIndex])
-            _moveSystem.StartMove(adjacentCell, _pattern.VectorPattern[_patternIndex], _meshHeight.MaxMeshHeight);
-        else
-            _moveSystem.StartMoveLerp(adjacentCell, _pattern.VectorPattern[_patternIndex], _meshHeight.MaxMeshHeight);
+        var currentPattern = _pattern.VectorPattern[_patternIndex];
+        var nextPattern = _pattern.VectorPattern[nextPatternIndex];
+        var previousPattern = _pattern.VectorPattern[previousPatternIndex];
 
+        var moveType = PlaneMoveSystem.MoveType.Normal;
+        if (currentPattern == nextPattern && currentPattern == previousPattern)
+            moveType = PlaneMoveSystem.MoveType.Normal;
+        else if (previousPattern != currentPattern && currentPattern != nextPattern)
+            moveType = PlaneMoveSystem.MoveType.StartEndLerp;
+        else if (previousPattern != currentPattern)
+            moveType = PlaneMoveSystem.MoveType.StartLerp;
+        else if (currentPattern != nextPattern)
+            moveType = PlaneMoveSystem.MoveType.EndLerp;
+
+        _moveSystem.StartMove(adjacentCell, _pattern.VectorPattern[_patternIndex], _meshHeight.MaxMeshHeight, moveType);
         MoveStarted?.Invoke(adjacentCell);
     }
 

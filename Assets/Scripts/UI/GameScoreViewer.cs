@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,13 +7,17 @@ using UnityEngine.UI;
 public class GameScoreViewer : MonoBehaviour
 {
     [SerializeField] private PlayerScore _playerScore;
-    
+
     private TMP_Text _scoreText;
+    private Coroutine _scoreChangeCoroutine;
+    private int _currentScore;
 
     private void Awake()
     {
         _scoreText = GetComponent<TMP_Text>();
-        _scoreText.text = "0";
+
+        _currentScore = 0;
+        _scoreText.text = _currentScore.ToString();
     }
 
     private void OnEnable()
@@ -27,6 +32,22 @@ public class GameScoreViewer : MonoBehaviour
 
     private void OnScoreChanged(int score)
     {
-        _scoreText.text = score.ToString();
+        if (_scoreChangeCoroutine != null)
+            StopCoroutine(_scoreChangeCoroutine);
+
+        _scoreChangeCoroutine = StartCoroutine(ScoreChanger(score));
+    }
+
+    private IEnumerator ScoreChanger(int toScore)
+    {
+        var delay = new WaitForSeconds(1f / (toScore - _currentScore));
+        _scoreText.text = _currentScore.ToString();
+
+        while (_currentScore < toScore)
+        {
+            yield return delay;
+            _currentScore++;
+            _scoreText.text = _currentScore.ToString();
+        }
     }
 }
