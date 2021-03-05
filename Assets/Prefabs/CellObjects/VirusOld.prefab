@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7914012813375456837}
   - component: {fileID: 1290936580364320327}
   - component: {fileID: 2373892381055039678}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RNA and N protein 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4165963747357092029, guid: 11fd8e7342604564bbe270b630ecd4e8, type: 3}
+  - {fileID: 2100000, guid: 9417a4aeb038dfa43bcc30aeae13e02f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 7792774433053616016}
   - component: {fileID: 1311686773888845103}
   - component: {fileID: 1235048289912403187}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: M-Protein
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2969109006729699242, guid: 11fd8e7342604564bbe270b630ecd4e8, type: 3}
+  - {fileID: 2100000, guid: 738dd03b23ac6c240bb98fcab2efd9b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 9110443268269928628}
   - component: {fileID: 8871745682897496509}
   - component: {fileID: 2777619612263138407}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hemagglutinin-esterase dimer (HE)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7125601413868074210, guid: 11fd8e7342604564bbe270b630ecd4e8, type: 3}
+  - {fileID: 2100000, guid: d0137b3ce3990194284b529b83a143f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 7738584133222638558}
   - component: {fileID: 2242242281589395044}
   - component: {fileID: 7646317454212094200}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spike Glycoprotein (S)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4535949686980011482, guid: 11fd8e7342604564bbe270b630ecd4e8, type: 3}
+  - {fileID: 2100000, guid: 410194882d8193345b62eaa956d4f0d7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 2418044607483561590}
   - component: {fileID: 2259227991292383834}
   - component: {fileID: 772349630227492915}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: E-Protein
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,9 @@ GameObject:
   - component: {fileID: 8247102954964467907}
   - component: {fileID: -8953530835542812769}
   - component: {fileID: -8178171590623480732}
-  m_Layer: 0
+  - component: {fileID: 7308389228114309811}
+  - component: {fileID: 8969680176207317436}
+  m_Layer: 9
   m_Name: VirusOld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +476,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8642827038864465045, guid: 11fd8e7342604564bbe270b630ecd4e8, type: 3}
+  - {fileID: 2100000, guid: 01a19157dcee1a5429cfd245f65fe0d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -684,6 +686,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d85a41223df50c04b937d5dde35bf1e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7308389228114309811
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443583030638819899}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc6cf61b2ef7bc642bac2d0dcd74c49e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8969680176207317436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443583030638819899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2ec22d9c6e8b9478c5149cf489f860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8811781515073015426
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,7 +728,7 @@ GameObject:
   - component: {fileID: 7729332752749699992}
   - component: {fileID: 7019670066119770570}
   - component: {fileID: 8130660846216833431}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RNA and N protein
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -743,7 +776,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4165963747357092029, guid: 11fd8e7342604564bbe270b630ecd4e8, type: 3}
+  - {fileID: 2100000, guid: 9417a4aeb038dfa43bcc30aeae13e02f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

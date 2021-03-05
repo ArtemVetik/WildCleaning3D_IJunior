@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3443795400020525434}
   - component: {fileID: 3142107693951566767}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6262481166261527094}
   - component: {fileID: 3639352903700605096}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpotLightLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7840764288687017089}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ModelContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 6295532625939636204}
   - component: {fileID: 4369504217464028219}
   - component: {fileID: 4627329643000010974}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 3054474151709492444}
   - component: {fileID: 5423100757617603288}
   - component: {fileID: 5279963501466187780}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RewardedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8493477423345416193}
   - component: {fileID: 871055804109301123}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpotLightRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 6488930941654715770}
   - component: {fileID: 4553890856644307554}
   - component: {fileID: 8651771129353433957}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5301,7 +5301,7 @@ GameObject:
   - component: {fileID: 8009719509570648273}
   - component: {fileID: 8641738155549707220}
   - component: {fileID: 2672767986066378705}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CFX_Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10058,7 +10058,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2726652991780724351}
   - component: {fileID: 6343847873652883351}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PointLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10152,7 +10152,7 @@ GameObject:
   - component: {fileID: 4858397327839604204}
   - component: {fileID: 5986203207363981054}
   - component: {fileID: 8071034541344401798}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CFX_Magical_Source 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14898,7 +14898,7 @@ GameObject:
   - component: {fileID: 5941211966282450721}
   - component: {fileID: 5941211966282450720}
   - component: {fileID: 6053659635172446666}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RewardedAntiseptic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14969,7 +14969,7 @@ GameObject:
   - component: {fileID: 7322778285461206643}
   - component: {fileID: 2204358968073686528}
   - component: {fileID: 8763206589418254552}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sub-firework
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19615,7 +19615,7 @@ GameObject:
   - component: {fileID: 2754153598091451268}
   - component: {fileID: 5721502159143786333}
   - component: {fileID: 215833046494606883}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CFXR Firework 3 (Multicolor)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24441,7 +24441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7699094235823640668}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24475,7 +24475,7 @@ GameObject:
   - component: {fileID: 1224965630899620288}
   - component: {fileID: 924206929954977573}
   - component: {fileID: 3595331330538814142}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Waves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29040,9 +29040,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7840764288687017089}
     m_Modifications:
+    - target: {fileID: 1605537214888670430, guid: 3bb4d0e73056a544896ed9a6cefeff12, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158490513655676508, guid: 3bb4d0e73056a544896ed9a6cefeff12, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2696557504358562424, guid: 3bb4d0e73056a544896ed9a6cefeff12, type: 3}
       propertyPath: m_Name
       value: Antiseptik
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696557504358562424, guid: 3bb4d0e73056a544896ed9a6cefeff12, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3325847233081172162, guid: 3bb4d0e73056a544896ed9a6cefeff12, type: 3}
       propertyPath: m_RootOrder
@@ -29087,6 +29099,14 @@ PrefabInstance:
     - target: {fileID: 3325847233081172162, guid: 3bb4d0e73056a544896ed9a6cefeff12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7053881104118490191, guid: 3bb4d0e73056a544896ed9a6cefeff12, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9145166640169910230, guid: 3bb4d0e73056a544896ed9a6cefeff12, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bb4d0e73056a544896ed9a6cefeff12, type: 3}

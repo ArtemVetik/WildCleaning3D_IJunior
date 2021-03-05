@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 404186}
   - component: {fileID: 19832784}
   - component: {fileID: 19918548}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4810,7 +4810,7 @@ GameObject:
   - component: {fileID: 443126}
   - component: {fileID: 19854642}
   - component: {fileID: 19999264}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ConfettiDirectionalRainbow 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9494,7 +9494,7 @@ GameObject:
   - component: {fileID: 484964}
   - component: {fileID: 19850206}
   - component: {fileID: 19978748}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Clouds
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 486644}
   - component: {fileID: 19889386}
   - component: {fileID: 19957476}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4837,7 +4837,7 @@ GameObject:
   - component: {fileID: 419464}
   - component: {fileID: 19841656}
   - component: {fileID: 19960958}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PoisonSkullExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9620,7 +9620,7 @@ GameObject:
   - component: {fileID: 466378}
   - component: {fileID: 19818344}
   - component: {fileID: 19915788}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Droplets
   m_TagString: Untagged
   m_Icon: {fileID: 0}

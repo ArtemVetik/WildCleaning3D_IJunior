@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 498542}
   - component: {fileID: 19811136}
   - component: {fileID: 19907284}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Waterdrops
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4845,7 +4845,7 @@ GameObject:
   - component: {fileID: 476410}
   - component: {fileID: 19861780}
   - component: {fileID: 19913428}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WaterVertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9679,7 +9679,7 @@ GameObject:
   - component: {fileID: 410056}
   - component: {fileID: 19873706}
   - component: {fileID: 19914986}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WaterSplashSharp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14480,7 +14480,7 @@ GameObject:
   - component: {fileID: 4765756488214888}
   - component: {fileID: 198113975042880732}
   - component: {fileID: 199284937260922260}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WaterVerticalWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}

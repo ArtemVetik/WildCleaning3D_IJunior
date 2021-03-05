@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6211033230793546701}
   - component: {fileID: 6805890346841118841}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpotLightLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4638179311007224173}
   - component: {fileID: 8874450165701052334}
   - component: {fileID: 1699597397385029877}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3665114165769265244}
   - component: {fileID: 4196672594896242427}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 3925557054671464897}
   - component: {fileID: 8924338329544592541}
   - component: {fileID: 1656527991250091729}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RewardedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 6715900957095273578}
   - component: {fileID: 3245086692606494593}
   - component: {fileID: 1925572028862012231}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CFX_Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5232,7 +5232,7 @@ GameObject:
   - component: {fileID: 6250052519980490094}
   - component: {fileID: 1425930227300214474}
   - component: {fileID: 1412651335925826135}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sub-firework
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9875,7 +9875,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1764293220236728658}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9909,7 +9909,7 @@ GameObject:
   - component: {fileID: 1275685486244392012}
   - component: {fileID: 6115333908504290596}
   - component: {fileID: 2549494617365533300}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Waves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14476,7 +14476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3971987670778851948}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ModelContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14508,7 +14508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3584612067453056432}
   - component: {fileID: 2570023715223701675}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpotLightRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14601,7 +14601,7 @@ GameObject:
   - component: {fileID: 5941211966282450721}
   - component: {fileID: 5941211966282450720}
   - component: {fileID: 5575784305515026212}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RewardedWaterBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14671,7 +14671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 552674006424425170}
   - component: {fileID: 3104890156068144515}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PointLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14764,7 +14764,7 @@ GameObject:
   - component: {fileID: 4445144193744663207}
   - component: {fileID: 4326256923731127056}
   - component: {fileID: 1515089289733077731}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19469,7 +19469,7 @@ GameObject:
   - component: {fileID: 3872121163412616402}
   - component: {fileID: 69201956967028298}
   - component: {fileID: 9216647170036628815}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CFX_Magical_Source 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24216,7 +24216,7 @@ GameObject:
   - component: {fileID: 2872930838712363590}
   - component: {fileID: 6488762967387757499}
   - component: {fileID: 7227340287382210662}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CFXR Firework 3 (Multicolor)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29040,6 +29040,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3971987670778851948}
     m_Modifications:
+    - target: {fileID: 3700940960993539733, guid: de995d475e7ec8a48821d3501a4468ca, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581982522306435406, guid: de995d475e7ec8a48821d3501a4468ca, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4974825515567648488, guid: de995d475e7ec8a48821d3501a4468ca, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -29087,6 +29095,10 @@ PrefabInstance:
     - target: {fileID: 5639054145307923538, guid: de995d475e7ec8a48821d3501a4468ca, type: 3}
       propertyPath: m_Name
       value: WaterBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639054145307923538, guid: de995d475e7ec8a48821d3501a4468ca, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de995d475e7ec8a48821d3501a4468ca, type: 3}

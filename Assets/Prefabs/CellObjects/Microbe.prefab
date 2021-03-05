@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2887120963825303764}
   - component: {fileID: 59428674188506068}
   - component: {fileID: 6206621087203098702}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 3446436756747834296}
   - component: {fileID: 8089225635710056339}
   - component: {fileID: 7079238701420826107}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 5723147199469115659}
   - component: {fileID: 3637209420486088323}
   - component: {fileID: -9077920202216527783}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Microbe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4891364548672530077}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffectPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}

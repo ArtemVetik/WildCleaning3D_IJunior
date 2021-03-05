@@ -11,9 +11,17 @@ PrefabInstance:
       propertyPath: particleTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4236185658745226932, guid: e05875e1c2e842843a233da3102d88b0, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4955258683705561151, guid: e05875e1c2e842843a233da3102d88b0, type: 3}
       propertyPath: m_Name
       value: CFXR Firework 3 (Yellow)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955258683705561151, guid: e05875e1c2e842843a233da3102d88b0, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4955258683705986079, guid: e05875e1c2e842843a233da3102d88b0, type: 3}
       propertyPath: m_RootOrder
@@ -86,6 +94,10 @@ PrefabInstance:
     - target: {fileID: 4955258683721189727, guid: e05875e1c2e842843a233da3102d88b0, type: 3}
       propertyPath: InitialModule.startColor.minColor.r
       value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785571900578968187, guid: e05875e1c2e842843a233da3102d88b0, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5976247937605990866, guid: e05875e1c2e842843a233da3102d88b0, type: 3}
       propertyPath: m_Color.b

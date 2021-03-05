@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4706010589103734}
   - component: {fileID: 198013141880738672}
   - component: {fileID: 199555625889044616}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FlamethrowerSpikyRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4814,7 +4814,7 @@ GameObject:
   - component: {fileID: 4324273196920272}
   - component: {fileID: 198386312665508766}
   - component: {fileID: 199140215904790328}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Embers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9573,7 +9573,7 @@ GameObject:
   - component: {fileID: 4575250235104774}
   - component: {fileID: 198419720430732200}
   - component: {fileID: 199837363607960798}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14305,7 +14305,7 @@ GameObject:
   - component: {fileID: 4150028099720618}
   - component: {fileID: 198331450109412420}
   - component: {fileID: 199770661925782528}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19094,7 +19094,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4061890551829026}
   - component: {fileID: 108480414514101076}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

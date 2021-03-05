@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8239676092593361382}
   - component: {fileID: 1693370575974727992}
   - component: {fileID: 6669773619135869593}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sub-firework
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4658,7 +4658,7 @@ GameObject:
   - component: {fileID: 4955258683721189727}
   - component: {fileID: 4955258683721167103}
   - component: {fileID: 2104650088403106994}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CFXR Firework 3 (White)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9485,7 +9485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8173245854579188853}
   - component: {fileID: 5976247937605990866}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

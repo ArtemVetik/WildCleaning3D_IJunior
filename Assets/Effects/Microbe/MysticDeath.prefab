@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 474478}
   - component: {fileID: 19806568}
   - component: {fileID: 19935744}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4837,7 +4837,7 @@ GameObject:
   - component: {fileID: 433388}
   - component: {fileID: 19860838}
   - component: {fileID: 19976082}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Droplets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9681,7 +9681,7 @@ GameObject:
   - component: {fileID: 456036}
   - component: {fileID: 19890420}
   - component: {fileID: 19983812}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14481,7 +14481,7 @@ GameObject:
   - component: {fileID: 19899072}
   - component: {fileID: 19981246}
   - component: {fileID: 8265350}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MysticDeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19362,7 +19362,7 @@ GameObject:
   - component: {fileID: 496924}
   - component: {fileID: 19828610}
   - component: {fileID: 19906296}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CloudNova
   m_TagString: Untagged
   m_Icon: {fileID: 0}

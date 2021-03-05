@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2212638966259541098}
   - component: {fileID: 530837130996744203}
   - component: {fileID: 6544254428623914686}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3563220117382720217}
   - component: {fileID: 7107980569815095517}
   - component: {fileID: -3532018187198427553}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Speedboost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
