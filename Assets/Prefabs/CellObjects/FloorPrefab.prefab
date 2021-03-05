@@ -141,8 +141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _marker: {fileID: -8095731511940516078}
   _frame: {fileID: 7812509019303527604}
-  _cleanEffectTemplate: {fileID: 19873706, guid: f3173907599264643b6fc6e6f212d702, type: 3}
-  _superCleanEffectTemplate: {fileID: 19875188, guid: 5d14af83c411ec44b94d2be9434ab549, type: 3}
+  _cleanEffectTemplate: {fileID: 6686612338838312482, guid: a9da2656d90015348aa64c604098cb93, type: 3}
+  _superCleanEffectTemplate: {fileID: 6686612338838312482, guid: 802a6dd2d5526634a9ad3737a5022fe0, type: 3}
 --- !u!1 &4931167043568436598
 GameObject:
   m_ObjectHideFlags: 0
