@@ -59,10 +59,10 @@ public class GameCell : MonoBehaviour
         return false;
     }
 
-    public void Mark()
+    public void Mark(CellMarker.Type type = CellMarker.Type.Normal)
     {
         IsMarked = true;
-        _cellMarker.Mark();
+        _cellMarker.Mark(type);
         Marked?.Invoke(this);
     }
 

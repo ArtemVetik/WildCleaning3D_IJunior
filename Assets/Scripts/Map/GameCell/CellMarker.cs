@@ -5,11 +5,16 @@ using UnityEngine.Events;
 
 public class CellMarker : MonoBehaviour
 {
+    public enum Type
+    {
+        Normal, Combo,
+    }
+
     [SerializeField] private SpriteRenderer _dirtySprite;
 
     private Coroutine _fillCoroutine;
 
-    public event UnityAction Marked;
+    public event UnityAction<Type> Marked;
     public event UnityAction Unmarked;
 
     private void Start()
@@ -17,13 +22,13 @@ public class CellMarker : MonoBehaviour
         _dirtySprite.color = Color.white;
     }
 
-    public void Mark()
+    public void Mark(Type type = Type.Normal)
     {
         if (_fillCoroutine != null)
             StopCoroutine(_fillCoroutine);
 
         _fillCoroutine = StartCoroutine(FillFloor(new Color(0,0,0,0)));
-        Marked?.Invoke();
+        Marked?.Invoke(type);
     }
 
     public void Unmark()

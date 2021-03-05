@@ -7,7 +7,8 @@ public class Floor : CellObject
     [SerializeField] private CellMarker _marker;
     [SerializeField] private GameObject _frame;
     [SerializeField] private ParticleSystem _cleanEffectTemplate;
-    
+    [SerializeField] private ParticleSystem _superCleanEffectTemplate;
+
     public bool IsMarked { get; private set; }
 
     private void OnEnable()
@@ -37,11 +38,17 @@ public class Floor : CellObject
         _frame.SetActive(false);
     }
 
-    private void OnMarked()
+    private void OnMarked(CellMarker.Type type)
     {
         if (IsMarked == false)
-            Instantiate(_cleanEffectTemplate, transform.position + Vector3.up * transform.localScale.y / 2, _cleanEffectTemplate.transform.rotation);
-        
+        {
+            var position = transform.position + Vector3.up * transform.localScale.y / 1.5f;
+            if (type == CellMarker.Type.Normal)
+                Instantiate(_cleanEffectTemplate, position, _cleanEffectTemplate.transform.rotation);
+            else if (type == CellMarker.Type.Combo)
+                Instantiate(_superCleanEffectTemplate, position, _superCleanEffectTemplate.transform.rotation);
+        }
+
         IsMarked = true;
         HideFrame();
     }

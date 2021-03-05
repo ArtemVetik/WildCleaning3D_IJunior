@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ShopScene.unity
     guid: 2c53fd32b2118e04f8b129e720a156a2
+  - enabled: 1
+    path: Assets/PostProcessing/Utilities/CustomMotionTexture/ExampleScene.unity
+    guid: ed3a9f41209f84f6db99e07013da9628
   m_configObjects: {}

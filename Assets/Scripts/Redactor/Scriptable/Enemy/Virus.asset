@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ac90df5624fed4092284ad0b8ff7c6, type: 3}
   m_Name: Virus
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 8247102954964467907, guid: 13d916c22bdbe8449a2bbb5aaa602d15, type: 3}
+  _prefab: {fileID: 8247102954964467907, guid: 593ac94d810d269489bf5142711c44ec, type: 3}

@@ -676,7 +676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultCharacteristics: {fileID: 11400000, guid: 78a3e7a74427f344abf39b4dfe336c53, type: 2}
-  _diedEffectTemplate: {fileID: 19800004, guid: 255581d532a320a4eaf5a39baf6d6d94, type: 3}
+  _diedEffectTemplate: {fileID: 19864276, guid: e53222c002f89a2408c98578e2fc06a9, type: 3}
 --- !u!54 &5260673012888249493
 Rigidbody:
   m_ObjectHideFlags: 0

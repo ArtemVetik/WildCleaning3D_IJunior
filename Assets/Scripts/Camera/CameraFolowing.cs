@@ -9,7 +9,7 @@ public class CameraFolowing : MonoBehaviour
     [SerializeField] private float _yAngle;
     [SerializeField] private float _topDownAngle;
     [SerializeField] private float _distanceToPlayer;
-    [SerializeField] private float _heightShift;
+    [SerializeField] private Vector3 _shift;
     [SerializeField] private PlayerInitializer _playerInitializer;
     [SerializeField] private BaseInput _input;
 
@@ -40,7 +40,7 @@ public class CameraFolowing : MonoBehaviour
         Vector3 nextPlayerDirection = new Vector3(_player.Direction.x, 0, _player.Direction.y) * _distanceToPlayer / 20;
         _playerDirection = Vector3.Lerp(_playerDirection, nextPlayerDirection, _speed * Time.deltaTime);
 
-        Vector3 targetPosition = _player.transform.position + _cameraShift + _playerDirection * 2f;
+        Vector3 targetPosition = _player.transform.position + _cameraShift;// + _playerDirection * 2f;
         _cameraHolder.transform.position = Vector3.Lerp(_cameraHolder.transform.position, targetPosition, _speed * Time.deltaTime);
     }
 
@@ -67,7 +67,7 @@ public class CameraFolowing : MonoBehaviour
         float x = Mathf.Sin(_yAngle * Mathf.Deg2Rad);
 
         Vector3 cameraShift = new Vector3(x, 0, z) * linearDistance * -1;
-        cameraShift += Vector3.up * (height + _heightShift);
+        cameraShift += Vector3.up * height + _shift;
 
         return cameraShift;
     }

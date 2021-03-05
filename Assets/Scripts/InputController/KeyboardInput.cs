@@ -14,5 +14,8 @@ public class KeyboardInput : BaseInput
             Move(Vector2Int.up);
         if (Input.GetKeyDown(KeyCode.DownArrow))
             Move(Vector2Int.down);
+
+        var scroll = Input.mouseScrollDelta.y;
+        Scaling(scroll);
     }
 }

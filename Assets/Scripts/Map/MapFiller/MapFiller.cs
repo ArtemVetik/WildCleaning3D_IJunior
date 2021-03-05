@@ -51,7 +51,7 @@ public class MapFiller : MonoBehaviour
 
         foreach (var cell in fillData.FilledCells)
         {
-            cell.Mark();
+            cell.Mark(CellMarker.Type.Combo);
             yield return delay;
         }
 
