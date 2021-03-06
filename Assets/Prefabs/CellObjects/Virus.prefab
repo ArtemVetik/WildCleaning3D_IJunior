@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 7308389228114309811}
   - component: {fileID: 8969680176207317436}
   m_Layer: 9
-  m_Name: VirusOld
+  m_Name: Virus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff38b68224a4674ca46b8f91eb79ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _diedEffectTemplate: {fileID: 19868354, guid: 76ea784c73256a744b24cba813a687e3, type: 3}
+  _diedEffectTemplate: {fileID: 19872744, guid: 4eb434a7f69bea54cb7048bbe4ea2247, type: 3}
 --- !u!114 &-8953530835542812769
 MonoBehaviour:
   m_ObjectHideFlags: 0
