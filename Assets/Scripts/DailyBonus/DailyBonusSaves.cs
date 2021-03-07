@@ -7,6 +7,7 @@ public class DailyBonusSaves : ISavedObject
     [SerializeField] private long _binaryTime;
     [SerializeField] private int _daysInGame;
 
+    public int MaxDays => 4;
     public long BinaryTime => _binaryTime;
     public int DaysInGame => _daysInGame;
 
@@ -16,14 +17,19 @@ public class DailyBonusSaves : ISavedObject
         _daysInGame = 0;
     }
 
-    public void AddDayInGame()
+    public void AddDayInGame(DateTime time)
     {
         _daysInGame++;
+        if (_daysInGame > MaxDays)
+            _daysInGame = 0;
+
+        _binaryTime = time.ToBinary();
     }
 
     public void ResetDaysInGame()
     {
         _daysInGame = 0;
+        _binaryTime = DateTime.Now.ToBinary();
     }
 
     public void Load(ISaveLoadVisiter saveLoadVisiter)

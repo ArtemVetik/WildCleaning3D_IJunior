@@ -134,7 +134,7 @@ public class JsonSaveLoad : ISaveLoadVisiter
     }
     #endregion
 
-    #region
+    #region DailyBonus
     public void Save(DailyBonusSaves dailyBonusSaves)
     {
         string saveJson = JsonUtility.ToJson(dailyBonusSaves, true);

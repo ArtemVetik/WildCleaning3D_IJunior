@@ -5,6 +5,7 @@ using System;
 
 public static class DailyBonusService
 {
+    private static readonly string ShowPanelKey = "ShowDailyPanel";
     private static DailyBonusSaves _saves;
 
     static DailyBonusService()
@@ -23,17 +24,27 @@ public static class DailyBonusService
         var subtract = currentDay.Subtract(lastDay);
 
         if (subtract.Days < 1)
-            return false;
+        {
+            if (PlayerPrefs.HasKey(ShowPanelKey))
+                return false;
+
+            PlayerPrefs.SetInt(ShowPanelKey, 1);
+            _saves.Save(new JsonSaveLoad());
+            return true;
+        }
+
+        PlayerPrefs.DeleteKey(ShowPanelKey);
 
         if (subtract.Days == 1)
         {
-            _saves.AddDayInGame();
+            _saves.AddDayInGame(DateTime.Now);
             _saves.Save(new JsonSaveLoad());
             return true;
         }
 
         _saves.ResetDaysInGame();
         _saves.Save(new JsonSaveLoad());
-        return false;
+        PlayerPrefs.SetInt(ShowPanelKey, 1);
+        return true;
     }
 }
