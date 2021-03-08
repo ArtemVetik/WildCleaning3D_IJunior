@@ -10,4 +10,14 @@ public class DailyBonusTable : ScriptableObject
     public int ItemCount => _table.Count;
 
     public IEnumerable<DailyBonusData> Data => _table;
+
+    public void RemoveAt(int index)
+    {
+        _table.RemoveAt(index);
+    }
+
+    public void Add(DailyBonusData data)
+    {
+        _table.Add(data);
+    }
 }

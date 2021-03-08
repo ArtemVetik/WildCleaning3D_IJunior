@@ -12,17 +12,17 @@ public class BoosterDataBaseEditor : Editor
     private BoostersDataBase _dataBase;
     private SerializedProperty _dataBaseList;
     private FieldInfo _dataBaseListInfo;
-    private List<string> _boosterDataFields;
+    private List<FieldInfo> _boosterDataFields;
 
     private void OnEnable()
     {
         _dataBase = target as BoostersDataBase;
 
-        _boosterDataFields = new List<string>();
+        _boosterDataFields = new List<FieldInfo>();
         foreach (var field in typeof(BoosterData).GetFields(BindingFlags.NonPublic | BindingFlags.Instance))
-            _boosterDataFields.Add(field.Name);
+            _boosterDataFields.Add(field);
         foreach (var field in typeof(GUIDData).GetFields(BindingFlags.NonPublic | BindingFlags.Instance))
-            _boosterDataFields.Add(field.Name);
+            _boosterDataFields.Add(field);
 
         FieldInfo[] allFields = _dataBase.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
         _dataBaseListInfo = allFields.ToList().Find((field) => field.FieldType.IsEquivalentTo(typeof(List<BoosterData>)));
@@ -38,7 +38,9 @@ public class BoosterDataBaseEditor : Editor
         {
             SerializedProperty element = _dataBaseList.GetArrayElementAtIndex(i);
             foreach (var item in _boosterDataFields)
-                EditorGUILayout.PropertyField(element.FindPropertyRelative(item));
+            {
+                EditorGUILayout.PropertyField(element.FindPropertyRelative(item.Name));
+            }
 
             if (GUILayout.Button(new GUIContent("-", "Удалить")))
                 _dataBase.RemoveAt(i);
