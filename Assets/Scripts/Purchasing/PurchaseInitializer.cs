@@ -6,6 +6,9 @@ public class PurchaseInitializer : MonoBehaviour
 {
     private void Awake()
     {
+        // tempolary disable 
+        return;
+
         var purchasingComponents = GetComponentsInChildren<IPurchasingComponent>();
         var instance = Singleton<PurchaseManager>.Instance;
 
