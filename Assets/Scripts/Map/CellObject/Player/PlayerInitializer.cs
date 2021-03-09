@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class PlayerInitializer : MonoBehaviour
 {
+    [SerializeField] private BaseInput _keyboardInput;
     [SerializeField] private BaseInput _swipeInput;
     [SerializeField] private MapFiller _filler;
 
@@ -14,7 +15,11 @@ public class PlayerInitializer : MonoBehaviour
 
     public void SetPlayer(Player player)
     {
+#if UNITY_EDITOR
+        _keyboardInput.Init(player);
+#else
         _swipeInput.Init(player);
+#endif
         player.Init(_filler);
 
         InstPlayer = player;

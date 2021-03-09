@@ -11,7 +11,8 @@ public class CameraFolowing : MonoBehaviour
     [SerializeField] private float _distanceToPlayer;
     [SerializeField] private Vector3 _shift;
     [SerializeField] private PlayerInitializer _playerInitializer;
-    [SerializeField] private BaseInput _input;
+    [SerializeField] private BaseInput _keyboardInput;
+    [SerializeField] private BaseInput _swipeInput;
 
     private Player _player;
     private Vector3 _cameraShift;
@@ -20,13 +21,21 @@ public class CameraFolowing : MonoBehaviour
     private void OnEnable()
     {
         _playerInitializer.PlayerInitialized += OnPlayerInitialize;
-        _input.ScalingChanged += OnScalingChanged;
+#if UNITY_EDITOR
+        _keyboardInput.ScalingChanged += OnScalingChanged;
+#else
+        _swipeInput.ScalingChanged += OnScalingChanged;
+#endif
     }
 
     private void OnDisable()
     {
         _playerInitializer.PlayerInitialized -= OnPlayerInitialize;
-        _input.ScalingChanged += OnScalingChanged;
+#if UNITY_EDITOR
+        _keyboardInput.ScalingChanged -= OnScalingChanged;
+#else
+        _swipeInput.ScalingChanged -= OnScalingChanged;
+#endif
     }
 
     private void LateUpdate()
