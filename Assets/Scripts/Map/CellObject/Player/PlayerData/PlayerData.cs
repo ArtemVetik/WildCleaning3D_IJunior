@@ -57,7 +57,7 @@ public class PlayerData : IPlayerData, ISavedObject, ICloneable
         cloneData._id = _id;
         cloneData._speed = _speed;
         cloneData._cleanliness = _cleanliness;
-
+        Debug.Log(_speed);
         return cloneData;
     }
 }

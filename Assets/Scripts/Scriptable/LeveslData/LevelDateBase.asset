@@ -1157,7 +1157,7 @@ MonoBehaviour:
         _parameters: {fileID: 0}
     KeyStagesPoint:
     - {x: 9, y: 0}
-    - {x: 9, y: 12}
+    - {x: 9, y: 11}
   - Size: {x: 20, y: 29}
     Map:
       m_keys:

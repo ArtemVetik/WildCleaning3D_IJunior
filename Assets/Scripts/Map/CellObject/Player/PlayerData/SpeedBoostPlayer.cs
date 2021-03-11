@@ -6,5 +6,5 @@ public class SpeedBoostPlayer : PlayerDataDecorator
 {
 	public SpeedBoostPlayer(IPlayerData data) : base(data) { }
 
-	public override float Speed => Data.Speed * 2f;
+	public override float Speed => Data.Speed * 1.5f;
 }

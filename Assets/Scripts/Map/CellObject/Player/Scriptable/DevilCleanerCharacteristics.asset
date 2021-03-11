@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _guid: 78a3e7a74427f344abf39b4dfe336c53
   _characteristic:
-    _startSpeed: 4
+    _startSpeed: 6
     _startCleanliness: 0.5
     _id: 78a3e7a74427f344abf39b4dfe336c53
-    _speed: 0
-    _cleanliness: 0
+    _speed: 4.1000004
+    _cleanliness: 0.35000014

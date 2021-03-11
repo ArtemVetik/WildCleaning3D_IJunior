@@ -18,7 +18,7 @@ public class UpgradePlayer : MonoBehaviour
         inventory.Load(new JsonSaveLoad());
 
         var player = _playerInitializer.InstPlayer;
-        var oldData = player.PlayerDataClone;
+        var oldData = player.StartPlayerData;
 
         if (_playerSelector.HasInDictionary(player) && inventory.Contains(player.DefaultCharacteristics) == false)
         {
@@ -43,7 +43,7 @@ public class UpgradePlayer : MonoBehaviour
         inventory.Load(new JsonSaveLoad());
 
         var player = _playerInitializer.InstPlayer;
-        var oldData = player.PlayerDataClone;
+        var oldData = player.StartPlayerData;
 
         if (_playerSelector.HasInDictionary(player) && inventory.Contains(player.DefaultCharacteristics) == false)
         {
