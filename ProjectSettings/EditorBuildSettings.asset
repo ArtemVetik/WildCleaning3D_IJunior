@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ShopScene.unity
     guid: 2c53fd32b2118e04f8b129e720a156a2
-  - enabled: 1
-    path: Assets/Packs/AurynSky/Gems Ultimate Pack/Scenes/DemoScene_Gems.unity
-    guid: 830994939b34e2d4ba127ff3d156a0f6
   m_configObjects: {}

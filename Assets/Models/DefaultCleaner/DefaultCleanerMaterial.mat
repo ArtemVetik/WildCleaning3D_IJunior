@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DefaultCleanerMaterial
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
+  m_Shader: {fileID: 4800000, guid: 4afb2fb87321fe647840db5fb623fc28, type: 3}
+  m_ShaderKeywords: TCP2_RAMPTEXT _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -19,6 +19,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BlendTex1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BlendTex2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 5e59ade78a53ca948a49d1d1e9a94620, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -35,6 +43,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DetailTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 2800000, guid: b71ec91445bdfb344b6367ceb99f00a9, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -47,6 +59,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: f1edadee83a2de2469915119dd9a1076, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 2800000, guid: 9c76f09a29be03747ad7b49e0672ec5b, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -55,24 +71,76 @@ Material:
         m_Texture: {fileID: 2800000, guid: 3d623b1e7882a7345a6460e7e2a894a9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Ramp:
+        m_Texture: {fileID: 2800000, guid: ccad9b0732473ee4e95de81e50e9050f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RampOtherLights:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ThresholdTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _RampSmooth: 1
+    - _RampSmoothAdd: 0.75
+    - _RampSmoothDir: 0.5
+    - _RampSmoothOtherLights: 0.5
+    - _RampSmoothPoint: 0.5
+    - _RampSmoothSpot: 0.5
+    - _RampSmoothing: 0.1
+    - _RampThreshold: 0.052
+    - _RampThresholdDir: 0.5
+    - _RampThresholdOtherLights: 0.5
+    - _RampThresholdPoint: 0.5
+    - _RampThresholdSpot: 0.5
+    - _RimMax: 0.85
+    - _RimMin: 0.6
+    - _RimStrength: 0.5
+    - _Shadow_HSV_H: 32
+    - _Shadow_HSV_S: 0
+    - _Shadow_HSV_V: -0.485
+    - _Smoothness: 0.2
     - _SmoothnessTextureChannel: 0
+    - _SpecBlend: 0.564
+    - _SpecSmooth: 0.416
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _TCP2_DISABLE_WRAPPED_LIGHT: 0
+    - _TCP2_RAMPTEXT: 1
+    - _TCP2_SPEC_TOON: 0
+    - _TCP2_STYLIZED_FRESNEL: 0
+    - _ThresholdScale: 4
+    - _ThresholdStrength: 1
     - _UVSec: 0
     - _ZWrite: 1
+    - __BeginGroup_OtherLights: 0
+    - __EndGroup: 0
+    - __dummy__: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
+    - _SColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}
+    - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _VColorBlendOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _VColorBlendSmooth: {r: 0.25, g: 0.25, b: 0.25, a: 0.25}
   m_BuildTextureStacks: []
