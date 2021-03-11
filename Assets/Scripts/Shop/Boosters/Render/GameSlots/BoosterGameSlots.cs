@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoosterGameSlots : MonoBehaviour
 {
+    [SerializeField] private GameCanvas _canvas;
     [SerializeField] private BoosterGameSlotsListView _gameSlots;
 
     private IEnumerable<BoosterData> _boosters;
@@ -16,6 +17,25 @@ public class BoosterGameSlots : MonoBehaviour
     }
 
     private void OnEnable()
+    {
+        _canvas.Enabled += OnCanvasEnabled;
+        _canvas.Disabled += OnCanvasDisabled;
+    }
+
+    private void OnCanvasDisabled()
+    {
+        if (_presenters != null)
+        {
+            foreach (var presenter in _presenters)
+            {
+                presenter.UseButtonClicked -= OnUseButtonClicked;
+                presenter.BoosterUsed -= OnBoosterUsed;
+                Destroy(presenter.gameObject);
+            }
+        }
+    }
+
+    private void OnCanvasEnabled()
     {
         if (_boosters != null)
         {
@@ -40,14 +60,7 @@ public class BoosterGameSlots : MonoBehaviour
 
     private void OnDisable()
     {
-        if (_presenters != null)
-        {
-            foreach (var presenter in _presenters)
-            {
-                presenter.UseButtonClicked -= OnUseButtonClicked;
-                presenter.BoosterUsed -= OnBoosterUsed;
-                Destroy(presenter.gameObject);
-            }
-        }
+        _canvas.Enabled -= OnCanvasEnabled;
+        _canvas.Disabled -= OnCanvasDisabled;
     }
 }

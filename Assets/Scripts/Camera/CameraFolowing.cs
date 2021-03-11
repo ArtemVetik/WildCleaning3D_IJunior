@@ -38,6 +38,11 @@ public class CameraFolowing : MonoBehaviour
 #endif
     }
 
+    private void Update()
+    {
+        
+    }
+
     private void LateUpdate()
     {
         if (_player == null)

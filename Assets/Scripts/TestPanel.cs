@@ -14,6 +14,8 @@ public class TestPanel : MonoBehaviour
     [SerializeField] private InputField _levelField;
     [SerializeField] private GameObject[] _rooms;
     [SerializeField] private Chest _levelChest;
+    [SerializeField] private GameObject _cam1;
+    [SerializeField] private GameObject _cam2;
 
     private int _currentRoom = 0;
 
@@ -89,5 +91,15 @@ public class TestPanel : MonoBehaviour
 
         _rooms[_currentRoom].SetActive(false);
         _rooms[--_currentRoom].SetActive(true);
+    }
+
+    public void Cam1()
+    {
+        _cam1.SetActive(!_cam1.activeSelf);
+    }
+
+    public void Cam2()
+    {
+        _cam2.SetActive(!_cam2.activeSelf);
     }
 }

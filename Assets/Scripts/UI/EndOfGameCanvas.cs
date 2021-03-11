@@ -2,27 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Canvas))]
 public class EndOfGameCanvas : MonoBehaviour
 {
     [SerializeField] private WinPanel _winPanel;
     [SerializeField] private LoosePanel _loosePanel;
 
+    private Canvas _canvas;
+
+    private void Awake()
+    {
+        _canvas = GetComponent<Canvas>();
+    }
+
     public void ShowWin()
     {
-        gameObject.SetActive(true);
+        _canvas.enabled = true;
         _loosePanel.Hide();
         _winPanel.Show();
     }
 
     public void ShowLoose()
     {
-        gameObject.SetActive(true);
+        _canvas.enabled = true;
         _winPanel.Hide();
         _loosePanel.Show();
     }
 
     public void Hide()
     {
-        gameObject.SetActive(false);
+        _canvas.enabled = false;
     }
 }

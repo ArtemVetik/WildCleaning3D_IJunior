@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Canvas))]
 public class UICanvas : MonoBehaviour
 {
     [SerializeField] private BaseInput[] _inputs;
 
     private PopupPanel[] _childPanels;
     private List<PopupPanel> _panelsBuffer;
+    private Canvas _canvas;
 
     private void Awake()
     {
+        _canvas = GetComponent<Canvas>();
         _childPanels = GetComponentsInChildren<PopupPanel>(true);
         _panelsBuffer = new List<PopupPanel>();
     }
@@ -54,7 +57,7 @@ public class UICanvas : MonoBehaviour
 
     public void Hide()
     {
-        gameObject.SetActive(false);
+        _canvas.enabled = false;
     }
 
     private void OnDisable()
