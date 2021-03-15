@@ -36,11 +36,13 @@ public class CameraAnimationSwitcher : MonoBehaviour
 
     private void OnStartFilling(FillData data)
     {
-        _animations.SetTrigger(CameraAnimations.Parameters.StartFilling);
+        if (data.CellCount >= 10)
+            _animations.SetTrigger(CameraAnimations.Parameters.StartFilling);
     }
 
     private void OnEndFilling(FillData data)
     {
-        _animations.SetTrigger(CameraAnimations.Parameters.EndFilling);
+        if (data.CellCount >= 10)
+            _animations.SetTrigger(CameraAnimations.Parameters.EndFilling);
     }
 }
