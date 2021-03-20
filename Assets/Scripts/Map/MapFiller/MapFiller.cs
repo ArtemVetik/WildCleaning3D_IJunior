@@ -23,9 +23,6 @@ public class MapFiller : MonoBehaviour
         foreach (var rightTail in tail.GetFromRightSide())
             rightFillData = SetFillData(rightTail, rightFillData, mapTemplate);
 
-        //if (leftFillData.CellCount == 0 || rightFillData.CellCount == 0)
-        //    return;
-
         FillData targetFillData;
 
         if (leftFillData.IsClosed != rightFillData.IsClosed)
@@ -50,7 +47,7 @@ public class MapFiller : MonoBehaviour
                     targetFillData = rightFillData;
             }
         }
-        
+
         StartFilling?.Invoke(targetFillData);
         StartCoroutine(Fill(targetFillData));
     }

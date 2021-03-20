@@ -22,12 +22,29 @@ public class CellMarker : MonoBehaviour
         _dirtySprite.color = Color.white;
     }
 
+    public void PartiallyMark()
+    {
+        if (_fillCoroutine != null)
+            StopCoroutine(_fillCoroutine);
+
+        _fillCoroutine = StartCoroutine(FillFloor(new Color(0.35f, 0.63f, 1f, 1f)));
+        Marked?.Invoke(Type.Normal);
+    }
+
+    public void SetColor(Color color)
+    {
+        if (_fillCoroutine != null)
+            StopCoroutine(_fillCoroutine);
+
+        _fillCoroutine = StartCoroutine(FillFloor(color));
+    }
+
     public void Mark(Type type = Type.Normal)
     {
         if (_fillCoroutine != null)
             StopCoroutine(_fillCoroutine);
 
-        _fillCoroutine = StartCoroutine(FillFloor(new Color(0,0,0,0)));
+        _fillCoroutine = StartCoroutine(FillFloor(Color.clear));
         Marked?.Invoke(type);
     }
 

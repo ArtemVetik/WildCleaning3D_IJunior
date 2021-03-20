@@ -17,5 +17,5 @@ MonoBehaviour:
     _startSpeed: 6
     _startCleanliness: 0.5
     _id: 78a3e7a74427f344abf39b4dfe336c53
-    _speed: 4.1000004
-    _cleanliness: 0.35000014
+    _speed: 5
+    _cleanliness: 0.5

@@ -482,6 +482,7 @@ GameObject:
   - component: {fileID: 6307354462049792975}
   - component: {fileID: 1982341487006518345}
   - component: {fileID: 5358937409915075105}
+  - component: {fileID: 4772426370233008134}
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -605,6 +606,23 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4772426370233008134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6835463743318005981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 694754b3c0aa69b458e740936b71309f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fonts:
+  - _name: English
+    _font: {fileID: 11400000, guid: c1482dbce654844b9ba1c753cbea5d80, type: 2}
+  - _name: Russian
+    _font: {fileID: 11400000, guid: cdc5e14049d672140b2223855efaf9e2, type: 2}
 --- !u!1 &9047220745589198313
 GameObject:
   m_ObjectHideFlags: 0

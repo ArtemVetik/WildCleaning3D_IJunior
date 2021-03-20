@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SimpleInteriorsHouses
-  m_Shader: {fileID: 4800000, guid: e1ac70b013bdb9f4395782bbbe3c0dbe, type: 3}
-  m_ShaderKeywords: TCP2_DISABLE_WRAPPED_LIGHT TCP2_MOBILE TCP2_REFLECTIONS_FRESNEL
+  m_Shader: {fileID: 4800000, guid: dd496457a855aa341b0d7b7b475a7a3a, type: 3}
+  m_ShaderKeywords: OUTLINES TCP2_COLORS_AS_NORMALS TCP2_MOBILE TCP2_REFLECTIONS_FRESNEL
     TCP2_RIM_LIGHTING_LIGHTMASK TCP2_UV_NORMALS_FULL
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
@@ -161,7 +161,7 @@ Material:
     - _OcclusionStrength: 1
     - _Offset1: 0
     - _Offset2: 0
-    - _Outline: 9.21
+    - _Outline: 2
     - _OutlineLightingType: 0
     - _OutlineLightingTypeURP: 0
     - _OutlineMinWidth: 1
@@ -174,10 +174,10 @@ Material:
     - _RampBandsSmoothing: 0.1
     - _RampOffset: 0
     - _RampScale: 1
-    - _RampSmooth: 0.283
+    - _RampSmooth: 0.81
     - _RampSmoothAdd: 0.792
     - _RampSmoothing: 0.001
-    - _RampThreshold: 0.892
+    - _RampThreshold: 0.668
     - _RampType: 0
     - _ReceiveShadowsOff: 1
     - _ReflectionMapType: 0
@@ -250,7 +250,7 @@ Material:
     - _FoamSpeed: {r: 2, g: 2, b: 2, a: 2}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}
     - _MatCapColor: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.5}
     - _SColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

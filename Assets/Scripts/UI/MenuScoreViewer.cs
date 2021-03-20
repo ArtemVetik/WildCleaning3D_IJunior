@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,11 +23,19 @@ public class MenuScoreViewer : MonoBehaviour
     {
         GoldBalance balance = new GoldBalance();
         balance.Load(new JsonSaveLoad());
-        _score.text = balance.Balance.ToString();
+        SetScoreText(balance.Balance);
     }
 
     private void OnScoreBalanceChanged(int scoreValue)
     {
-        _score.text = scoreValue.ToString();
+        SetScoreText(scoreValue);
+    }
+
+    private void SetScoreText(int scoreValue)
+    {
+        if (scoreValue == 0)
+            _score.text = "0";
+        else
+            _score.text = scoreValue.ToString("#,#", CultureInfo.InvariantCulture);
     }
 }

@@ -13,7 +13,7 @@ public class Player : CellObject, IMoveable, ISpeedyObject
     private PlayerData _characteristics;
     private MapFiller _filler;
     private PlayerTail _tail;
-
+    private bool _isDied = false;
     public PlayerData DefaultCharacteristics => _defaultCharacteristics.Characteristic;
     public IPlayerData PlayerData => _characteristics;
     public IPlayerData StartPlayerData { get; private set; }
@@ -72,14 +72,17 @@ public class Player : CellObject, IMoveable, ISpeedyObject
     private void OnMoveEnded(GameCell finishCell)
     {
         CurrentCell = finishCell;
-        finishCell.Mark();
 
+        if (finishCell.IsMarked)
+            return;
+
+        finishCell.PartiallyMark();
         _tail.Add(finishCell, _playerMoveSystem.CurrentDirection);
     }
 
     public void Move(Vector2Int direction)
     {
-        bool move = _playerMoveSystem.Move(CurrentCell, direction);
+        bool move = _playerMoveSystem.Move(CurrentCell, direction, _tail);
 
         if (move)
             MoveStarted?.Invoke();
@@ -96,8 +99,7 @@ public class Player : CellObject, IMoveable, ISpeedyObject
 
     private void OnMarkedCellCrossed(GameCell cell)
     {
-        _filler.TryFill(_tail);
-        _tail.Clear();
+        FillContour();
     }
 
     public void ForceStop()
@@ -107,7 +109,13 @@ public class Player : CellObject, IMoveable, ISpeedyObject
 
     private void OnPlayerStopped(GameCell cell)
     {
+        FillContour();
+    }
+
+    private void FillContour()
+    {
         _filler.TryFill(_tail);
+        _tail.FillTail();
         _tail.Clear();
     }
 
@@ -115,20 +123,35 @@ public class Player : CellObject, IMoveable, ISpeedyObject
     {
         if (other.TryGetComponent(out Enemy enemy))
         {
-            _playerMoveSystem.ForceStop();
-            GetComponent<Collider>().enabled = false;
+            if (_isDied)
+                return;
+
             Died?.Invoke();
         }
     }
 
     private void OnDied()
     {
+        _playerMoveSystem.ForceStop();
+        GetComponent<Collider>().enabled = false;
+
         Vector3 spawnPosition = transform.position + Vector3.up * transform.localScale.y;
         Instantiate(_diedEffectTemplate, spawnPosition, _diedEffectTemplate.transform.rotation);
+
+        _isDied = true;
+    }
+
+    private void OnTailDamaged()
+    {
+        if (_isDied)
+            return;
+
+        Died?.Invoke();
     }
 
     private void OnEnable()
     {
+        _tail.Damaged += OnTailDamaged;
         _playerMoveSystem.MoveEnded += OnMoveEnded;
         _playerMoveSystem.Stopped += OnPlayerStopped;
         _playerMoveSystem.MarkedCellCrossed += OnMarkedCellCrossed;
@@ -137,6 +160,7 @@ public class Player : CellObject, IMoveable, ISpeedyObject
 
     private void OnDisable()
     {
+        _tail.Damaged -= OnTailDamaged;
         _playerMoveSystem.MoveEnded -= OnMoveEnded;
         _playerMoveSystem.Stopped -= OnPlayerStopped;
         _playerMoveSystem.MarkedCellCrossed -= OnMarkedCellCrossed;

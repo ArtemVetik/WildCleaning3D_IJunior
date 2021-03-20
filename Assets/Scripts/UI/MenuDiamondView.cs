@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 
@@ -21,11 +22,19 @@ public class MenuDiamondView : MonoBehaviour
     {
         DiamondBalance balance = new DiamondBalance();
         balance.Load(new JsonSaveLoad());
-        _diamond.text = balance.Balance.ToString();
+        SetDiamondText(balance.Balance);
     }
 
     private void OnDiamondBalanceChanged(int scoreValue)
     {
-        _diamond.text = scoreValue.ToString();
+        SetDiamondText(scoreValue);
+    }
+
+    private void SetDiamondText(int scoreValue)
+    {
+        if (scoreValue == 0)
+            _diamond.text = "0";
+        else
+            _diamond.text = string.Format(CultureInfo.InvariantCulture, "{0:#,#}", scoreValue);
     }
 }

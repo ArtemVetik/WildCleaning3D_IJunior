@@ -22,10 +22,11 @@ public class PlayerMoveSystem
         _meshHeight = meshHeight;
     }
 
-    public bool Move(GameCell fromCell, Vector2Int direction)
+    public bool Move(GameCell fromCell, Vector2Int direction, PlayerTail tail)
     {
-        if (direction == _moveSystem.Direction * -1)
-            return false;
+        if (tail.Count > 0)
+            if (_nextMoveDirection == direction * -1)
+                return false;
 
         _nextMoveDirection = direction;
 

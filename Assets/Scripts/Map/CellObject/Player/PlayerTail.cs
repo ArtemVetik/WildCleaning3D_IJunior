@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public struct TailData
 {
@@ -23,13 +25,31 @@ public class PlayerTail
         _tail = new List<TailData>();
     }
 
+    public int Count => _tail.Count;
+    public event UnityAction Damaged;
+
     public void Add(GameCell cell, Vector2Int forwardDirection)
     {
         _tail.Add(new TailData(cell, forwardDirection));
+        cell.Damaged += OnCellDamaged;
+    }
+
+    private void OnCellDamaged(GameCell cell)
+    {
+        Damaged?.Invoke();
+    }
+
+    public void FillTail()
+    {
+        foreach (var tailData in _tail)
+            tailData.Cell.Mark();
     }
 
     public void Clear()
     {
+        foreach (var tailData in _tail)
+            tailData.Cell.Damaged -= OnCellDamaged;
+
         _tail.Clear();
     }
 

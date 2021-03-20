@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Globalization;
 
 [RequireComponent(typeof(TMP_Text))]
 public class GameScoreViewer : MonoBehaviour
@@ -17,7 +18,7 @@ public class GameScoreViewer : MonoBehaviour
         _scoreText = GetComponent<TMP_Text>();
 
         _currentScore = 0;
-        _scoreText.text = _currentScore.ToString();
+        SetScoreText(_currentScore);
     }
 
     private void OnEnable()
@@ -41,13 +42,21 @@ public class GameScoreViewer : MonoBehaviour
     private IEnumerator ScoreChanger(int toScore)
     {
         var delay = new WaitForSeconds(1f / (toScore - _currentScore));
-        _scoreText.text = _currentScore.ToString();
+        SetScoreText(_currentScore);
 
         while (_currentScore < toScore)
         {
             yield return delay;
             _currentScore++;
-            _scoreText.text = _currentScore.ToString();
+            SetScoreText(_currentScore);
         }
+    }
+
+    private void SetScoreText(int scoreValue)
+    {
+        if (scoreValue == 0)
+            _scoreText.text = "0";
+        else
+            _scoreText.text = scoreValue.ToString("#,#", CultureInfo.InvariantCulture);
     }
 }

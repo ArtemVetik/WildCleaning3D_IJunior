@@ -13,14 +13,18 @@ public class GameCell : MonoBehaviour
     private Vector2Int _position;
     private Dictionary<Vector2Int, GameCell> _adjacentCells;
 
+    public event UnityAction<GameCell> Damaged;
     public event UnityAction<GameCell> Marked;
     public event UnityAction<GameCell> Unmarked;
 
     public bool IsMarked { get; private set; }
+    public bool IsPartiallyMarked { get; private set; }
     public Vector2Int Position => _position;
 
     public void Init(Vector2Int position)
     {
+        IsPartiallyMarked = false;
+        IsMarked = false;
         _position = position;
     }
 
@@ -37,6 +41,12 @@ public class GameCell : MonoBehaviour
     public void HideFrame()
     {
         _floor.HideFrame();
+    }
+
+    public void ApplyDamage()
+    {
+        _cellMarker.SetColor(Color.red);
+        Damaged?.Invoke(this);
     }
 
     public GameCell TryGetAdjacent(Vector2Int adjacentDirection)
@@ -59,8 +69,17 @@ public class GameCell : MonoBehaviour
         return false;
     }
 
+    public void PartiallyMark()
+    {
+        IsMarked = true;
+        IsPartiallyMarked = true;
+        _cellMarker.PartiallyMark();
+        Marked?.Invoke(this);
+    }
+
     public void Mark(CellMarker.Type type = CellMarker.Type.Normal)
     {
+        IsPartiallyMarked = false;
         IsMarked = true;
         _cellMarker.Mark(type);
         Marked?.Invoke(this);

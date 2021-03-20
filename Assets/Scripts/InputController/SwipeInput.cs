@@ -5,12 +5,17 @@ using UnityEngine;
 public class SwipeInput : BaseInput
 {
     private readonly float ScreenDiagonal = Mathf.Sqrt(Screen.width * Screen.width + Screen.height * Screen.height);
-    private float _minSwipeDistance = 100f;
-    private float _maxDeltaTime = .2f;
-    private float _startTouchTime;
+    private float _minSwipeDistance;
+    //private float _maxDeltaTime = .2f;
+    //private float _startTouchTime;
     private Vector2 _startPosition;
     private float _lastScaleValue;
     private Vector2[] _startScalingPositions = new Vector2[2];
+
+    private void Start()
+    {
+        _minSwipeDistance = 0.05f * Screen.height;
+    }
 
     private void Update()
     {
@@ -62,14 +67,14 @@ public class SwipeInput : BaseInput
         if (firstTouch.phase == TouchPhase.Began)
         {
             _startPosition = firstTouch.position;
-            _startTouchTime = Time.time;
+            //_startTouchTime = Time.time;
         }
         else if (firstTouch.phase == TouchPhase.Moved)
         {
             float swipeDistance = Vector2.Distance(firstTouch.position, _startPosition);
-            float deltaTime = Time.time - _startTouchTime;
+            //float deltaTime = Time.time - _startTouchTime;
 
-            if (swipeDistance >= _minSwipeDistance && deltaTime < _maxDeltaTime)
+            if (swipeDistance >= _minSwipeDistance /* && deltaTime < _maxDeltaTime */)
             {
                 var deltaPosition = firstTouch.position - _startPosition;
                 if (Mathf.Abs(deltaPosition.x) > Mathf.Abs(deltaPosition.y))
@@ -81,7 +86,8 @@ public class SwipeInput : BaseInput
                 var direction = new Vector2Int((int)deltaPosition.x, (int)deltaPosition.y);
                 Move(direction);
 
-                _startTouchTime = float.MinValue;
+                _startPosition = firstTouch.position;
+                //_startTouchTime = float.MinValue;
             }
         }
     }

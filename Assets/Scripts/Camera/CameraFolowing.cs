@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraFolowing : MonoBehaviour
 {
-    [SerializeField] private Transform _cameraHolder;
     [SerializeField] private float _speed;
     [SerializeField] private float _yAngle;
     [SerializeField] private float _topDownAngle;
@@ -38,24 +37,19 @@ public class CameraFolowing : MonoBehaviour
 #endif
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void LateUpdate()
     {
         if (_player == null)
             return;
 
         _cameraShift = CalculateCameraShift();
-        _cameraHolder.transform.eulerAngles = CalculateCameraEulerAngles();
+        transform.eulerAngles = CalculateCameraEulerAngles();
 
         Vector3 nextPlayerDirection = new Vector3(_player.Direction.x, 0, _player.Direction.y) * _distanceToPlayer / 20;
         _playerDirection = Vector3.Lerp(_playerDirection, nextPlayerDirection, _speed * Time.deltaTime);
 
         Vector3 targetPosition = _player.transform.position + _cameraShift;// + _playerDirection * 2f;
-        _cameraHolder.transform.position = Vector3.Lerp(_cameraHolder.transform.position, targetPosition, _speed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, _speed * Time.deltaTime);
     }
 
     private void OnPlayerInitialize(Player player)
@@ -63,7 +57,7 @@ public class CameraFolowing : MonoBehaviour
         _player = player;
         _cameraShift = CalculateCameraShift();
 
-        _cameraHolder.transform.eulerAngles = CalculateCameraEulerAngles();
+        transform.eulerAngles = CalculateCameraEulerAngles();
     }
 
     private void OnScalingChanged(float delta)
@@ -88,6 +82,6 @@ public class CameraFolowing : MonoBehaviour
 
     private Vector3 CalculateCameraEulerAngles()
     {
-        return new Vector3(0.7f * _topDownAngle, _yAngle, _cameraHolder.transform.eulerAngles.z);
+        return new Vector3(0.7f * _topDownAngle, _yAngle, transform.eulerAngles.z);
     }
 }

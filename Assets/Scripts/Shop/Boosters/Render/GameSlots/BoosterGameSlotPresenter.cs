@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.SimpleLocalization;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -43,7 +44,7 @@ public class BoosterGameSlotPresenter : MonoBehaviour
         _data.Booster.Used += OnBoosterUsed;
 
         _preview.sprite = data.Preview;
-        _name.text = data.Name;
+        _name.text = LocalizationManager.Localize(data.Name);
     }
 
     private void OnBoosterUsed(Booster booster)

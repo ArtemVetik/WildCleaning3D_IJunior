@@ -58,6 +58,11 @@ public abstract class Enemy : CellObject, ISpeedyObject
     private void OnMoveStarted(GameCell nextCell)
     {
         MoveStarting?.Invoke(nextCell);
+        if (nextCell.IsPartiallyMarked)
+        {
+            nextCell.ApplyDamage();
+            return;
+        }
         if (nextCell.IsMarked)
         {
             OnStepToMarkedCell(nextCell);

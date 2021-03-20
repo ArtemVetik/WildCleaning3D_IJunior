@@ -45,11 +45,11 @@ public class DailyBonusTableEditor : Editor
                     EditorGUILayout.PropertyField(serializableField);
                     GUI.enabled = true;
                 }
-                else if (item.FieldType == typeof(Sprite))
-                {
-                    var rect = new Rect(0, (i-1) * 10, 150, 150);
-                    serializableField.objectReferenceValue = EditorGUI.ObjectField(rect, serializableField.objectReferenceValue, typeof(Texture2D), false);
-                }
+                //else if (item.FieldType == typeof(Sprite))
+                //{
+                //    var rect = new Rect(0, (i-1) * 10, 150, 150);
+                //    serializableField.objectReferenceValue = EditorGUI.ObjectField(rect, serializableField.objectReferenceValue, typeof(Texture2D), false);
+                //}
                 else
                 {
                     EditorGUILayout.PropertyField(serializableField);
