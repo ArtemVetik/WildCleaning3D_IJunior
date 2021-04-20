@@ -249,6 +249,7 @@ public class RedactorEditor : Editor
         EditorGUILayout.EndVertical();
 
         _levelRedactor.CurrentLevelIndex = Mathf.Clamp(_levelRedactor.CurrentLevelIndex, 0, _levelRedactor.LevelDataBase.Count - 1);
+        _levelRedactor.UpdateRoomDecor();
     }
 
     private void SetMapSize()

@@ -9,6 +9,8 @@ public class GameCell : MonoBehaviour
 {
     [SerializeField] private Floor _floor;
     [SerializeField] private CellMarker _cellMarker;
+    [SerializeField] private DirtySelector _dirtySelector;
+    [SerializeField] private Material _floorMaterial;
 
     private Vector2Int _position;
     private Dictionary<Vector2Int, GameCell> _adjacentCells;
@@ -21,11 +23,13 @@ public class GameCell : MonoBehaviour
     public bool IsPartiallyMarked { get; private set; }
     public Vector2Int Position => _position;
 
-    public void Init(Vector2Int position)
+    public void Init(Vector2Int position, Texture floorUV, Sprite[] dirtySprites)
     {
         IsPartiallyMarked = false;
         IsMarked = false;
         _position = position;
+        _dirtySelector.Init(dirtySprites);
+        _floorMaterial.mainTexture = floorUV;
     }
 
     public void InitAdjacentCells(Dictionary<Vector2Int, GameCell> adjacentCells)
@@ -83,6 +87,11 @@ public class GameCell : MonoBehaviour
         IsMarked = true;
         _cellMarker.Mark(type);
         Marked?.Invoke(this);
+    }
+
+    public void DoubleMark()
+    {
+        _cellMarker.DoubleMark();
     }
 
     public void Unmark()

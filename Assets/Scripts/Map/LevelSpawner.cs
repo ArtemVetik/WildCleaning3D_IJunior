@@ -11,14 +11,19 @@ public class LevelSpawner : MonoBehaviour
     [SerializeField] private GameCell _floor;
     [SerializeField] private PlayerInitializer _playerInitializer;
     [SerializeField] private Transform _spawnContainer;
+    [SerializeField] private GameObject _roomHolder; 
 
     public event UnityAction<CellObject> CellObjectSpawned;
     public event UnityAction SpawnCompleted;
 
     public List<GameCell> InstCells { get; private set; }
 
+    private RoomRenderSettings _roomRenderSettings;
+
     private void Start()
     {
+        _roomRenderSettings = _roomHolder.GetComponentInChildren<RoomRenderSettings>();
+
         InstCells = new List<GameCell>();
 
         foreach (Vector2Int cell in _levelLoader.CurrentLevel.Map.Keys)
@@ -55,7 +60,7 @@ public class LevelSpawner : MonoBehaviour
     private GameCell SpawnCell(Vector2Int cell, GameCell template)
     {
         GameCell gameCell = Instantiate(template, cell.ToVector3(), Quaternion.identity, _spawnContainer);
-        gameCell.Init(cell);
+        gameCell.Init(cell, _roomRenderSettings.FloorUV, _roomRenderSettings.DirtySprites);
         InstCells.Add(gameCell);
         return gameCell;
     }

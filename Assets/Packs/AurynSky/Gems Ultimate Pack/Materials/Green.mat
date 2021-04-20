@@ -107,7 +107,7 @@ Material:
     - _FresnelMax: 1.5
     - _FresnelMin: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.592
+    - _Glossiness: 0.215
     - _GlossyReflections: 1
     - _HSV_H: 0
     - _HSV_S: 0
@@ -124,7 +124,7 @@ Material:
     - _OcclusionStrength: 1
     - _Offset1: 0
     - _Offset2: 0
-    - _Outline: 10
+    - _Outline: 0
     - _OutlineLightingType: 0
     - _OutlineLightingTypeURP: 0
     - _OutlineMinWidth: 1
@@ -140,7 +140,7 @@ Material:
     - _RampSmooth: 1
     - _RampSmoothAdd: 0
     - _RampSmoothing: 1
-    - _RampThreshold: 0.525
+    - _RampThreshold: 0.194
     - _RampType: 0
     - _ReceiveShadowsOff: 1
     - _ReflectionMapType: 0
@@ -154,8 +154,8 @@ Material:
     - _SketchHalftoneMax: 1
     - _SketchHalftoneMin: 0.2
     - _SmoothnessTextureChannel: 0
-    - _SpecBlend: 0.948
-    - _SpecSmooth: 0.962
+    - _SpecBlend: 1
+    - _SpecSmooth: 0.236
     - _SpecularHighlights: 1
     - _SpecularMapType: 0
     - _SpecularRoughness: 0.5

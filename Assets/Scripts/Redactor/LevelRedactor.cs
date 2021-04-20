@@ -20,6 +20,7 @@ namespace CustomRedactor
     {
         [SerializeField] private LevelDataBase _levelDateBase;
         [SerializeField] private EditorObjectData _currentObject;
+        [SerializeField] private Room[] _rooms;
 
         [SerializeField] public List<EditorObjectData> EditorObjects = new List<EditorObjectData>();
 
@@ -45,6 +46,17 @@ namespace CustomRedactor
         public void SetCurrentObject(EditorObjectData data)
         {
             _currentObject = data;
+        }
+
+        private void Start()
+        {
+            _rooms = FindObjectsOfType<Room>();
+        }
+
+        public void UpdateRoomDecor()
+        {
+            foreach (var room in _rooms)
+                room.ShowDecorInEditor(CurrentLevelIndex + 1);
         }
 
         public void LeftMouseHandler(Vector2Int cell)

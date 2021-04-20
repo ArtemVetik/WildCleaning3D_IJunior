@@ -10,6 +10,7 @@ public class CameraFolowing : MonoBehaviour
     [SerializeField] private float _distanceToPlayer;
     [SerializeField] private Vector3 _shift;
     [SerializeField] private PlayerInitializer _playerInitializer;
+    [SerializeField] private CameraPositionLimiter _limiter;
     [SerializeField] private BaseInput _keyboardInput;
     [SerializeField] private BaseInput _swipeInput;
 
@@ -49,6 +50,10 @@ public class CameraFolowing : MonoBehaviour
         _playerDirection = Vector3.Lerp(_playerDirection, nextPlayerDirection, _speed * Time.deltaTime);
 
         Vector3 targetPosition = _player.transform.position + _cameraShift;// + _playerDirection * 2f;
+        float xClamp = Mathf.Clamp(targetPosition.x, float.MinValue, _limiter.XMax);
+        float zClamp = Mathf.Clamp(targetPosition.z, _limiter.ZMin, float.MaxValue);
+        targetPosition = new Vector3(xClamp, targetPosition.y, zClamp);
+
         transform.position = Vector3.Lerp(transform.position, targetPosition, _speed * Time.deltaTime);
     }
 
@@ -82,6 +87,6 @@ public class CameraFolowing : MonoBehaviour
 
     private Vector3 CalculateCameraEulerAngles()
     {
-        return new Vector3(0.7f * _topDownAngle, _yAngle, transform.eulerAngles.z);
+        return new Vector3(_topDownAngle, _yAngle, transform.eulerAngles.z);
     }
 }

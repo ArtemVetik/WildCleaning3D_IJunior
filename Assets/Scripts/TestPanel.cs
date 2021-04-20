@@ -18,7 +18,6 @@ public class TestPanel : MonoBehaviour
     [SerializeField] private GameObject _cam2;
 
     private int _currentRoom = 0;
-
     public void DeleteAllPlayerPrefs()
     {
         PlayerPrefs.DeleteAll();

@@ -9,8 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: DefaultCleanerMaterial
   m_Shader: {fileID: 4800000, guid: 0d325ef349acc794da37e3dd556b7a99, type: 3}
-  m_ShaderKeywords: OUTLINES TCP2_NONE TCP2_RAMPTEXT _METALLICGLOSSMAP _NORMALMAP
-    _PARALLAXMAP
+  m_ShaderKeywords: OUTLINES TCP2_COLORS_AS_NORMALS TCP2_RAMPTEXT _METALLICGLOSSMAP
+    _NORMALMAP _PARALLAXMAP
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -93,6 +93,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _DstBlendOutline: 10
     - _EnableConstSizeOutline: 0
     - _EnableTexturedOutline: 0
     - _EnableZSmooth: 0
@@ -104,7 +105,7 @@ Material:
     - _OcclusionStrength: 1
     - _Offset1: 0
     - _Offset2: 0
-    - _Outline: 2
+    - _Outline: 3
     - _Parallax: 0.02
     - _RampSmooth: 1
     - _RampSmoothAdd: 0.75
@@ -126,10 +127,11 @@ Material:
     - _Shadow_HSV_V: -0.485
     - _Smoothness: 0.2
     - _SmoothnessTextureChannel: 0
-    - _SpecBlend: 0.564
-    - _SpecSmooth: 0.416
+    - _SpecBlend: 1
+    - _SpecSmooth: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _SrcBlendOutline: 5
     - _StencilRef: 1
     - _TCP2_DISABLE_WRAPPED_LIGHT: 0
     - _TCP2_RAMPTEXT: 1
@@ -149,7 +151,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
     - _SColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

@@ -583,6 +583,7 @@ GameObject:
   - component: {fileID: 3026152197873648022}
   - component: {fileID: 3177536345437342177}
   - component: {fileID: 4086942802702190127}
+  - component: {fileID: 6700954411686264557}
   m_Layer: 9
   m_Name: HolyCleaner
   m_TagString: Untagged
@@ -680,6 +681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultCharacteristics: {fileID: 11400000, guid: 01d07a5c0f9f4bd4183d597f15115c03, type: 2}
   _diedEffectTemplate: {fileID: 19864276, guid: e53222c002f89a2408c98578e2fc06a9, type: 3}
+  _replacer: {fileID: 6700954411686264557}
 --- !u!54 &5260673012888249493
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -718,7 +720,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7192504265858284951}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4b3c3ba149592c140bb924d303415028, type: 2}
   m_CullingMode: 0
@@ -739,6 +741,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d85a41223df50c04b937d5dde35bf1e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6700954411686264557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192504265858284951}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5a8e9e2e4347743801b30404aced37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7281638239180973169

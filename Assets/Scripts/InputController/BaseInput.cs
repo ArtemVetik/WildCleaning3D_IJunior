@@ -21,6 +21,7 @@ public class BaseInput : MonoBehaviour
 
     protected void Scaling(float value)
     {
+        return;
         ScalingChanged?.Invoke(value);
     }
 }

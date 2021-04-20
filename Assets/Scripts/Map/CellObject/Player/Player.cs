@@ -8,12 +8,15 @@ public class Player : CellObject, IMoveable, ISpeedyObject
 {
     [SerializeField] private PlayerCharacteristics _defaultCharacteristics;
     [SerializeField] private ParticleSystem _diedEffectTemplate;
+    [SerializeField] private PlayerReplacer _replacer;
 
     private PlayerMoveSystem _playerMoveSystem;
     private PlayerData _characteristics;
     private MapFiller _filler;
     private PlayerTail _tail;
     private bool _isDied = false;
+    private bool _moveLocked = false;
+
     public PlayerData DefaultCharacteristics => _defaultCharacteristics.Characteristic;
     public IPlayerData PlayerData => _characteristics;
     public IPlayerData StartPlayerData { get; private set; }
@@ -74,7 +77,10 @@ public class Player : CellObject, IMoveable, ISpeedyObject
         CurrentCell = finishCell;
 
         if (finishCell.IsMarked)
+        {
+            finishCell.DoubleMark();
             return;
+        }
 
         finishCell.PartiallyMark();
         _tail.Add(finishCell, _playerMoveSystem.CurrentDirection);
@@ -82,6 +88,9 @@ public class Player : CellObject, IMoveable, ISpeedyObject
 
     public void Move(Vector2Int direction)
     {
+        if (_moveLocked)
+            return;
+
         bool move = _playerMoveSystem.Move(CurrentCell, direction, _tail);
 
         if (move)
@@ -90,11 +99,25 @@ public class Player : CellObject, IMoveable, ISpeedyObject
 
     public void Replace(GameCell cell)
     {
+        //_playerMoveSystem.ForceStop();
+        //_playerMoveSystem.ResetDirection();
+
+        //CurrentCell = cell;
+        //transform.position = cell.transform.position + Vector3.up * MeshHeight.MaxMeshHeight / 2f;
+
         _playerMoveSystem.ForceStop();
         _playerMoveSystem.ResetDirection();
 
+        _moveLocked = true;
+
+        _replacer.Replaced += OnReplaced;
+        _replacer.Replace(transform, cell.transform.position + Vector3.up * MeshHeight.MaxMeshHeight / 2f, cell);
+    }
+
+    private void OnReplaced(GameCell cell)
+    {
         CurrentCell = cell;
-        transform.position = cell.transform.position + Vector3.up * MeshHeight.MaxMeshHeight / 2f;
+        _moveLocked = false;
     }
 
     private void OnMarkedCellCrossed(GameCell cell)

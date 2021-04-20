@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ShopScene.unity
     guid: 2c53fd32b2118e04f8b129e720a156a2
+  - enabled: 1
+    path: Assets/Packs/SimpleInteriorsHouses/Demo/Demo.unity
+    guid: a35ea3ee9628f0242805237941e2c812
+  - enabled: 1
+    path: Assets/Packs/SimpleNaturePack/Scenes/SimpleNaturePack_Overview.unity
+    guid: b818941d93326b949a3840a1d79ea88f
+  - enabled: 1
+    path: Assets/Packs/SimpleNaturePack/Scenes/SimpleNaturePack_Demo.unity
+    guid: 5e7af4bd95ac53a4cb784a9eedf8f6f9
   m_configObjects: {}

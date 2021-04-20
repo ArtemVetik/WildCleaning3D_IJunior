@@ -15,6 +15,7 @@ public class CellMarker : MonoBehaviour
     private Coroutine _fillCoroutine;
 
     public event UnityAction<Type> Marked;
+    public event UnityAction DoubleMarked;
     public event UnityAction Unmarked;
 
     private void Start()
@@ -27,7 +28,7 @@ public class CellMarker : MonoBehaviour
         if (_fillCoroutine != null)
             StopCoroutine(_fillCoroutine);
 
-        _fillCoroutine = StartCoroutine(FillFloor(new Color(0.35f, 0.63f, 1f, 1f)));
+        _fillCoroutine = StartCoroutine(FillFloor(new Color(0f, 0f, 1f, 1f)));
         Marked?.Invoke(Type.Normal);
     }
 
@@ -48,6 +49,11 @@ public class CellMarker : MonoBehaviour
         Marked?.Invoke(type);
     }
 
+    public void DoubleMark()
+    {
+        DoubleMarked?.Invoke();
+    }
+
     public void Unmark()
     {
         if (_fillCoroutine != null)
@@ -61,7 +67,7 @@ public class CellMarker : MonoBehaviour
     {
         while (_dirtySprite.color != targetColor)
         {
-            _dirtySprite.color = Color.Lerp(_dirtySprite.color, targetColor, 2f * Time.deltaTime);
+            _dirtySprite.color = Color.Lerp(_dirtySprite.color, targetColor, 3f * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
     }
